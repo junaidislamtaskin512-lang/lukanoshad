@@ -579,10 +579,10 @@
             </div>
         </div>
 
-        <!-- SECTION 2: ADD NEW SHOP -->
+        <!-- SECTION 2: ADD NEW SHOP WITH REAL-TIME TIMING -->
         <div id="sectionAddShop" class="hidden">
             <div class="profile-card">
-                <h3 style="color: var(--primary); text-align: center; margin-bottom: 12px; font-size:1.1rem;">🏪 নতুন দোকানের তথ্য যুক্ত করুন</h3>
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 12px; font-size:1.1rem;">🏪 নতুন দোকানের তথ্য ও সময় যুক্ত করুন</h3>
                 <form onsubmit="submitShopForApproval(event)">
                     <div class="form-group">
                         <label>দোকানের নাম:</label>
@@ -606,12 +606,20 @@
                         <input type="text" id="newShopLoc" placeholder="যেমন: কাজীপাড়া, মিরপুর ১০, ঢাকা" required>
                     </div>
                     <div class="form-group">
+                        <label>খোলার সময় (Open Time):</label>
+                        <input type="time" id="newShopOpenTime" value="10:00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>বন্ধের সময় (Close Time):</label>
+                        <input type="time" id="newShopCloseTime" value="23:00" required>
+                    </div>
+                    <div class="form-group">
                         <label>বিশেষত্ব (Speciality):</label>
-                        <input type="text" id="newShopSpecial" placeholder="যেমন: চুইঝাল, মোমো, পিজ্জা, চাপ, শর্মা" required>
+                        <input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা, চাপ, শর্মা" required>
                     </div>
                     <div class="form-group">
                         <label>আশেপাশের বাস ও গাড়ির রুট (Bus Routes):</label>
-                        <input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস, বসুমতী" required>
+                        <input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required>
                     </div>
                     <div class="form-group">
                         <label>গুগল ম্যাপ লিংক (Google Maps):</label>
@@ -672,7 +680,7 @@
                     <span class="orbit-food-item of-left">🥟</span>
                     <span class="orbit-food-item of-right">🍜</span>
                 </div>
-                <!-- YOUR ADMIN PROFILE IMAGE HERE -->
+                <!-- ADMIN PROFILE IMAGE -->
                 <img src="79566.jpg" alt="Junaid Islam Taskin" class="dev-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
             </div>
             
@@ -786,7 +794,7 @@
         </a>
     </div>
 
-    <!-- JavaScript Core Application Logic -->
+    <!-- JavaScript Core Application Logic with Real-Time Open/Closed Calculation -->
     <script>
         function sanitizeInput(str) {
             return String(str).replace(/[&<>"']/g, function(m) {
@@ -798,42 +806,14 @@
             document.getElementById('splashScreen').style.display = 'none';
         }, 1200);
 
-        // Expanded Rich Database across all Divisions of Bangladesh with full English and Bengali tags for universal search
         let allStreetFoodShops = [
-            // ঢাকা বিভাগ (Dhaka Division)
-            { id: 1, name: "লাভ রোড স্ট্রিট চিজি মোমো ও ফুচকা", division: "ঢাকা বিভাগ", loc: "লাভ রোড, মিরপুর ২, ঢাকা", special: "চিজি স্মোকড মোমো, শাহী ফুচকা, বার্গার", buses: "আলিফ, বৈশাখী, বিকল্প, বিহঙ্গ", mapUrl: "https://www.google.com/maps?q=Mirpur+2+Love+Road+Dhaka", img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 18, isOpen: true, tags: "momo momos chicken-momo fuchka burger mirpur mirpur-2 মিরপুর মোমো ফুচকা", menu: [{ item: "চিজি স্মোকড চিকেন মোমো (Chicken Momo)", price: 130 }, { item: "স্পেশাল টক-মিষ্টি ফুচকা", price: 80 }, { item: "চিজ বার্গার (Cheese Burger)", price: 120 }] },
-            { id: 2, name: "মামা মোমো, হটডগ ও ফ্রেঞ্চ ফ্রাই হাব", division: "ঢাকা বিভাগ", loc: "মিরপুর ১০ গোল চত্বর, ঢাকা", special: "স্টিম মোমো, ফ্রাইড মোমো, হটডগ, ফ্রাই", buses: "মেট্রোরেল স্টেশন ১০, লোকাল বাস", mapUrl: "https://www.google.com/maps?q=Mirpur+10+Circle+Dhaka", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", rating: 4.6, reviewsCount: 14, isOpen: true, tags: "momo momos hotdog french-fries fries mirpur mirpur-10 মিরপুর ১০ মোমো", menu: [{ item: "চিকেন স্টিম মোমো (Steam Momo)", price: 120 }, { item: "স্পাইসি হটডগ (Hotdog)", price: 110 }, { item: "ফ্রেঞ্চ ফ্রাই (French Fries)", price: 70 }] },
-            { id: 3, name: "স্ট্রিট পিজ্জা, পাস্তা ও বার্গার জোন", division: "ঢাকা বিভাগ", loc: "ধানমন্ডি ২৭, ঢাকা", special: "চিজি পিজ্জা, ওভেন ব্যাকড পাস্তা, জুসি বার্গার", buses: "ধানমন্ডি রিকশা, লেগুনা", mapUrl: "https://www.google.com/maps?q=Dhanmondi+27+Dhaka", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 25, isOpen: true, tags: "pizza pasta burger cheese-pizza dhanmondi dhanmondi-27 ধানমন্ডি পিজ্জা", menu: [{ item: "চিকেন চিজ পিজ্জা স্লাইস (Pizza)", price: 110 }, { item: "বিফ জুসি বার্গার (Beef Burger)", price: 150 }, { item: "চিজ পাস্তা (Pasta)", price: 160 }] },
-            { id: 4, name: "টিএসসি ঢাবি মজিদের সিক্রেট ঝালমুড়ি ও ডালপুরি", division: "ঢাকা বিভাগ", loc: "টিএসসি, ঢাকা বিশ্ববিদ্যালয়, ঢাকা", special: "তেঁতুল ঝালমুড়ি, ডালপুরি, চটপটি, বেলপুরি", buses: "মেট্রোরেল টিএসসি, ঢাবি লাল বাস", mapUrl: "https://www.google.com/maps?q=TSC+Dhaka+University", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 32, isOpen: true, tags: "jhalmuri fuchka chhotpoti puri tsc du dhaka-university টিএসসি ঝালমুড়ি", menu: [{ item: "টিএসসি স্পেশাল ঝালমুড়ি (Jhalmuri)", price: 40 }, { item: "ডালপুরি (Puri)", price: 20 }, { item: "স্পেশাল বেলপুরি (Belpuri)", price: 50 }] },
-            { id: 5, name: "উত্তরা ৩ নম্বর সেক্টর মোমো, শর্মা ও উইংস হাব", division: "ঢাকা বিভাগ", loc: "সেক্টর ৩, উত্তরা, ঢাকা", special: "স্টিম মোমো, চিকেন শর্মা, হানি গ্লেজ উইংস", buses: "উত্তরা মেট্রো, লোকাল বাস", mapUrl: "https://www.google.com/maps?q=Uttara+Sector+3+Dhaka", img: "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80", rating: 4.6, reviewsCount: 19, isOpen: true, tags: "momo shawarma wings chicken-wings uttara uttara-sector-3 উত্তরা শর্মা", menu: [{ item: "চিকেন স্টিম মোমো (Chicken Momo)", price: 130 }, { item: "চিকেন শর্মা (Chicken Shawarma)", price: 120 }, { item: "হানি গ্লেজ উইংস (Wings)", price: 160 }] },
-            { id: 6, name: "পুরান ঢাকা নাজিরাবাজার বিউটি লস্যি, ফালুদা ও চাপ", division: "ঢাকা বিভাগ", loc: "নাজিরাবাজার, পুরান ঢাকা", special: "বিউটি লস্যি, শাহি ফালুদা, গরুর চাপ, সুতি কাবাব", buses: "গুলিস্তান বাস, রিকশা", mapUrl: "https://www.google.com/maps?q=Nazirabazar+Dhaka", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 45, isOpen: true, tags: "lassi falooda chap beef-chap puran-dhaka nazirabazar kabab পুরান ঢাকা চাপ", menu: [{ item: "স্পেশাল বিউটি লস্যি (Lassi)", price: 80 }, { item: "শাহি ফালুদা (Falooda)", price: 120 }, { item: "গরুর চাপ + লুচি (Beef Chap)", price: 150 }] },
-            { id: 7, name: "গুলশান ডিসিসি মার্কেট চাট ও ফুচকা কর্নার", division: "ঢাকা বিভাগ", loc: "গুলশান ২, ঢাকা", special: "দই ফুচকা, পাপড়ি চাট, পানি پوری", buses: "গুলশান চক্র বাস, লেগুনা", mapUrl: "https://www.google.com/maps?q=Gulshan+2+Dhaka", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", rating: 4.5, reviewsCount: 12, isOpen: true, tags: "fuchka chaat dhi-fuchka gulshan gulshan-2 গুলশান ফুচকা", menu: [{ item: "স্পেশাল দই ফুচকা", price: 100 }, { item: "পাপড়ি চাট (Chaat)", price: 90 }] },
-            { id: 12, name: "মোহাম্মদপুর টাউনহল বিখ্যাত বাকরখানি ও চা", division: "ঢাকা বিভাগ", loc: "টাউনহল বাজার, মোহাম্মদপুর, ঢাকা", special: "শাহী বাকরখানি, গরুর মাংস ভুঁনা, মালাই চা", buses: "লেগুনা, রিকশা", mapUrl: "https://www.google.com/maps?q=Townhall+Mohammadpur+Dhaka", img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 20, isOpen: true, tags: "bakarkhani tea mohammadpur townhall মোহাম্মদপুর বাকরখানি", menu: [{ item: "বাকরখানি ও চা", price: 40 }, { item: "গরুর মাংস ভুঁনা", price: 120 }] },
-            { id: 13, name: "বসুন্ধরা গেট ফুচকা ও স্পাইসি ঝালমুড়ি", division: "ঢাকা বিভাগ", loc: "বসুন্ধরা মেইন গেম, ঢাকা", special: "ডিম চটপটি, স্পেশাল ঝালমুড়ি, কোল্ড কফি", buses: "ভিক্টর, অছিম পরিবহন", mapUrl: "https://www.google.com/maps?q=Bashundhara+Gate+Dhaka", img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80", rating: 4.6, reviewsCount: 15, isOpen: true, tags: "fuchka coffee bashundhara বসুন্ধরা ফুচকা", menu: [{ item: "ডিম চটপটি ফুচকা", price: 90 }, { item: "কোল্ড কফি", price: 70 }] },
-
-            // চট্টগ্রাম বিভাগ (Chittagong Division)
-            { id: 8, name: "সিআরবি সাতকড়া মোহিতো ও স্ট্রিট বার্গার", division: "চট্টগ্রাম বিভাগ", loc: "সিআরবি মোড়, চট্টগ্রাম", special: "সাতকড়া মোহিতো, বিফ বার্গার, চিকেন ফ্রাই", buses: "লোকাল বাস, সিএনজি", mapUrl: "https://www.google.com/maps?q=CRB+Chittagong", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 22, isOpen: true, tags: "mojito burger chittagong ctb ctg চট্টগ্রাম বার্গার", menu: [{ item: "সাতকড়া মোহিতো (Mojito)", price: 90 }, { item: "বিফ চিজ বার্গার", price: 140 }] },
-            { id: 9, name: "পতেঙ্গা সী-বিচ ফ্রাইড ফিশ ও ক্র্যাব ফ্রাই", division: "চট্টগ্রাম বিভাগ", loc: "পতেঙ্গা সৈকত, চট্টগ্রাম", special: "সাগরের তাজা মাছ ফ্রাই, কাঁকড়া ভাজা, শুঁটকি চাট", buses: "পতেঙ্গা বিচ বাস, সিএনজি", mapUrl: "https://www.google.com/maps?q=Patenga+Sea+Beach+Chittagong", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 30, isOpen: true, tags: "fish-fry crab patenga beach ctg পতেঙ্গা মাছ ফ্রাই", menu: [{ item: "সাগরের লাল মাছ ফ্রাই", price: 150 }, { item: "ক্র্যাব ফ্রাই (Crab)", price: 200 }] },
-            { id: 14, name: "জিইসি মোড় স্পাইসি কাবাব ও গ্রিল জোন", division: "চট্টগ্রাম বিভাগ", loc: "জিইসি মোড়, চট্টগ্রাম", special: "চিকেন শিক কাবাব, নান রুটি, স্পেশাল চাটনি", buses: "সিটি বাস, সিএনজি", mapUrl: "https://www.google.com/maps?q=GEC+Circle+Chittagong", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 27, isOpen: true, tags: "kabab grill gec chittagong জিইসি কাবাব", menu: [{ item: "চিকেন শিক কাবাব", price: 130 }, { item: "বাটার নান ও গ্রিল", price: 180 }] },
-
-            // সিলেট বিভাগ (Sylhet Division)
-            { id: 10, name: "আলী আমজাদের ঘড়ির সামনে বিখ্যাত সাতি খোড়ার চা", division: "সিলেট বিভাগ", loc: "ক্বীন ব্রিজ সংলগ্ন, সিলেট", special: "মাললাই চা, সাতকড়া চা, পাউরুটি জেলি", buses: "সিলেট টমটম, লেগুনা", mapUrl: "https://www.google.com/maps?q=Kean+Bridge+Sylhet", img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 40, isOpen: true, tags: "tea sylhet kean-bridge malai-tea সিলেট চা", menu: [{ item: "স্পেশাল মালাই চা (Tea)", price: 30 }, { item: "সাতকড়া চা", price: 40 }] },
-            { id: 15, name: "জিন্দাবাজার ফুচকা ও ঝালমুড়ি স্ট্রিট", division: "সিলেট বিভাগ", loc: "জিন্দাবাজার, সিলেট", special: "সিলেটি স্পেশাল ফুচকা, চটপটি", buses: "সিলেট রিকশা, টমটম", mapUrl: "https://www.google.com/maps?q=Zindabazar+Sylhet", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 18, isOpen: true, tags: "fuchka zindabazar sylhet জিন্দাবাজার ফুচকা", menu: [{ item: "সিলেটি স্পেশাল ফুচকা", price: 80 }, { item: "ডিম চটপটি", price: 70 }] },
-
-            // রাজশাহী বিভাগ (Rajshahi Division)
-            { id: 11, name: "পদ্মা পাড় ফুচকা ও আইসক্রিম কর্নার", division: "রাজশাহী বিভাগ", loc: "পদ্মা গার্ডেন, রাজশাহী", special: "নদীর ধারের স্পেশাল ফুচকা, কুলফি মালাই", buses: "রাজশাহী রিকশা, অটোরিক্সা", mapUrl: "https://www.google.com/maps?q=Padma+Garden+Rajshahi", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 16, isOpen: true, tags: "fuchka kulfi padma rajshahi রাজশাহী পদ্মা ফুচকা", menu: [{ item: "পদ্মা গার্ডেন স্পেশাল ফুচকা", price: 70 }, { item: "শাহি কুলফি মালাই", price: 50 }] },
-
-            // খুলনা বিভাগ (Khulna Division)
-            { id: 16, name: "রয়্যাল চত্বর চুইঝাল মিট ও স্ট্রিট নাস্তা", division: "খুলনা বিভাগ", loc: "রয়্যাল মোড়, খুলনা", special: "খুলনার বিখ্যাত চুইঝাল দিয়ে গরুর মাংস, পরোটা", buses: "খুলনা টাউন বাস, রিকশা", mapUrl: "https://www.google.com/maps?q=Royal+More+Khulna", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 35, isOpen: true, tags: "chuijhal beef khulna রয়্যাল চুইঝাল", menu: [{ item: "চুইঝাল দিয়ে গরুর মাংস + পরোটা", price: 220 }] },
-
-            // বরিশাল বিভাগ (Barisal Division)
-            { id: 17, name: "অশ্বিনী কুমার হল রোড ফুচকা ও ঝালমুড়ি", division: "বরিশাল বিভাগ", loc: "নাথুল্লাবাদ রোড, বরিশাল", special: "বরিশালের ঐতিহ্যবাহী স্পেশাল ফুচকা ও চটপটি", buses: "বরিশাল লোকাল বাস", mapUrl: "https://www.google.com/maps?q=Barisal+Sadar", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", rating: 4.6, reviewsCount: 14, isOpen: true, tags: "fuchka barisal বরিশাল ফুচকা", menu: [{ item: "বরিশাল স্পেশাল ফুচকা", price: 70 }] },
-
-            // রংপুর বিভাগ (Rangpur Division)
-            { id: 18, name: "জাহাজ কোম্পানির মোড় ফাস্টফুড ও মোমো", division: "রংপুর বিভাগ", loc: "জাহাজ কোম্পানির মোড়, রংপুর", special: "চিকেন মোমো, বার্গার, ফ্রেঞ্চ ফ্রাই", buses: "রংপুর অটো, রিকশা", mapUrl: "https://www.google.com/maps?q=Jahaz+Company+More+Rangpur", img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 19, isOpen: true, tags: "momo burger rangpur রংপুর মোমো", menu: [{ item: "চিকেন স্টিম মোমো", price: 110 }, { item: "ক্রিসপি বার্গার", price: 130 }] },
-
-            // ময়মনসিংহ বিভাগ (Mymensingh Division)
-            { id: 19, name: "ব্রহ্মপুত্র নদ পাড় চা ও পিঠা কর্নার", division: "ময়মনসিংহ বিভাগ", loc: "শম্ভুগঞ্জ ব্রিজ সংলগ্ন, ময়মনসিংহ", special: "নদীর ধারের স্পেশাল চা ও চিতই পিঠা", buses: "ময়মনসিংহ টাউন বাস", mapUrl: "https://www.google.com/maps?q=Brahmaputra+River+Mymensingh", img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 21, isOpen: true, tags: "tea pitha mymensingh ময়মনসিংহ চা পিঠা", menu: [{ item: "চিতই পিঠা ও হাঁসের মাংস", price: 100 }, { item: "স্পেশাল চা", price: 25 }] }
+            { id: 1, name: "লাভ রোড স্ট্রিট চিজি মোমো ও ফুচকা", division: "ঢাকা বিভাগ", loc: "লাভ রোড, মিরপুর ২, ঢাকা", openTime: "10:00", closeTime: "23:00", special: "চিজি স্মোকড মোমো, শাহী ফুচকা, বার্গার", buses: "আলিফ, বৈশাখী, বিকল্প, বিহঙ্গ", mapUrl: "https://www.google.com/maps?q=Mirpur+2+Love+Road+Dhaka", img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 18, tags: "momo momos chicken-momo fuchka burger mirpur mirpur-2 মিরপুর মোমো ফুচকা", menu: [{ item: "চিজি স্মোকড চিকেন মোমো (Chicken Momo)", price: 130 }, { item: "স্পেশাল টক-মিষ্টি ফুচকা", price: 80 }, { item: "চিজ বার্গার (Cheese Burger)", price: 120 }] },
+            { id: 2, name: "মামা মোমো, হটডগ ও ফ্রেঞ্চ ফ্রাই হাব", division: "ঢাকা বিভাগ", loc: "মিরপুর ১০ গোল চত্বর, ঢাকা", openTime: "11:00", closeTime: "22:00", special: "স্টিম মোমো, ফ্রাইড মোমো, হটডগ, ফ্রাই", buses: "মেট্রোরেল স্টেশন ১০, লোকাল বাস", mapUrl: "https://www.google.com/maps?q=Mirpur+10+Circle+Dhaka", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", rating: 4.6, reviewsCount: 14, tags: "momo momos hotdog french-fries fries mirpur mirpur-10 মিরপুর ১০ মোমো", menu: [{ item: "চিকেন স্টিম মোমো (Steam Momo)", price: 120 }, { item: "স্পাইসি হটডগ (Hotdog)", price: 110 }, { item: "ফ্রেঞ্চ ফ্রাই (French Fries)", price: 70 }] },
+            { id: 3, name: "স্ট্রিট পিজ্জা, পাস্তা ও বার্গার জোন", division: "ঢাকা বিভাগ", loc: "ধানমন্ডি ২৭, ঢাকা", openTime: "12:00", closeTime: "23:30", special: "চিজি পিজ্জা, ওভেন ব্যাকড পাস্তা, জুসি বার্গার", buses: "ধানমন্ডি রিকশা, লেগুনা", mapUrl: "https://www.google.com/maps?q=Dhanmondi+27+Dhaka", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 25, tags: "pizza pasta burger cheese-pizza dhanmondi dhanmondi-27 ধানমন্ডি পিজ্জা", menu: [{ item: "চিকেন চিজ পিজ্জা স্লাইস (Pizza)", price: 110 }, { item: "বিফ জুসি বার্গার (Beef Burger)", price: 150 }, { item: "চিজ পাস্তা (Pasta)", price: 160 }] },
+            { id: 4, name: "টিএসসি ঢাবি মজিদের সিক্রেট ঝালমুড়ি ও ডালপুরি", division: "ঢাকা বিভাগ", loc: "টিএসসি, ঢাকা বিশ্ববিদ্যালয়, ঢাকা", openTime: "09:00", closeTime: "21:00", special: "তেঁতুল ঝালমুড়ি, ডালপুরি, চটপটি, বেলপুরি", buses: "মেট্রোরেল টিএসসি, ঢাবি লাল বাস", mapUrl: "https://www.google.com/maps?q=TSC+Dhaka+University", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 32, tags: "jhalmuri fuchka chhotpoti puri tsc du dhaka-university টিএসসি ঝালমুড়ি", menu: [{ item: "টিএসসি স্পেশাল ঝালমুড়ি (Jhalmuri)", price: 40 }, { item: "ডালপুরি (Puri)", price: 20 }, { item: "স্পেশাল বেলপুরি (Belpuri)", price: 50 }] },
+            { id: 8, name: "সিআরবি সাতকড়া মোহিতো ও স্ট্রিট বার্গার", division: "চট্টগ্রাম বিভাগ", loc: "সিআরবি মোড়, চট্টগ্রাম", openTime: "10:00", closeTime: "23:00", special: "সাতকড়া মোহিতো, বিফ বার্গার, চিকেন ফ্রাই", buses: "লোকাল বাস, সিএনজি", mapUrl: "https://www.google.com/maps?q=CRB+Chittagong", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80", rating: 4.8, reviewsCount: 22, tags: "mojito burger chittagong ctb ctg চট্টগ্রাম বার্গার", menu: [{ item: "সাতকড়া মোহিতো (Mojito)", price: 90 }, { item: "বিফ চিজ বার্গার", price: 140 }] },
+            { id: 10, name: "আলী আমজাদের ঘড়ির সামনে বিখ্যাত সাতি খোড়ার চা", division: "সিলেট বিভাগ", loc: "ক্বীন ব্রিজ সংলগ্ন, সিলেট", openTime: "07:00", closeTime: "22:00", special: "মাললাই চা, সাতকড়া চা, পাউরুটি জেলি", buses: "সিলেট টমটম, লেগুনা", mapUrl: "https://www.google.com/maps?q=Kean+Bridge+Sylhet", img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80", rating: 4.9, reviewsCount: 40, tags: "tea sylhet kean-bridge malai-tea সিলেট চা", menu: [{ item: "স্পেশাল মালাই চা (Tea)", price: 30 }, { item: "সাতকড়া চা", price: 40 }] },
+            { id: 11, name: "পদ্মা পাড় ফুচকা ও আইসক্রিম কর্নার", division: "রাজশাহী বিভাগ", loc: "পদ্মা গার্ডেন, রাজশাহী", openTime: "11:00", closeTime: "22:00", special: "নদীর ধারের স্পেশাল ফুচকা, কুলফি মালাই", buses: "রাজশাহী রিকশা, অটোরিক্সা", mapUrl: "https://www.google.com/maps?q=Padma+Garden+Rajshahi", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80", rating: 4.7, reviewsCount: 16, tags: "fuchka kulfi padma rajshahi রাজশাহী পদ্মা ফুচকা", menu: [{ item: "পদ্মা গার্ডেন স্পেশাল ফুচকা", price: 70 }, { item: "শাহি কুলফি মালাই", price: 50 }] }
         ];
 
         let selectedDivisionName = "ঢাকা বিভাগ";
@@ -849,6 +829,24 @@
             updateNotificationBadge();
             updateSavedCount();
         };
+
+        // Real-Time Open/Closed Status Checker
+        function checkRealTimeStatus(openTime, closeTime) {
+            if(!openTime || !closeTime) return true;
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+
+            const [openH, openM] = openTime.split(':').map(Number);
+            const [closeH, closeM] = closeTime.split(':').map(Number);
+            const openTotal = openH * 60 + openM;
+            const closeTotal = closeH * 60 + closeM;
+
+            if (openTotal <= closeTotal) {
+                return currentTime >= openTotal && currentTime <= closeTotal;
+            } else {
+                return currentTime >= openTotal || currentTime <= closeTotal;
+            }
+        }
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
@@ -920,14 +918,17 @@
 
         function renderSingleCard(shop, container) {
             let isSaved = savedFavorites.includes(shop.id);
+            let isOpenRealTime = checkRealTimeStatus(shop.openTime, shop.closeTime);
+            let timeStr = (shop.openTime && shop.closeTime) ? `⏰ সময়: ${shop.openTime} - ${shop.closeTime}` : '';
+
             let menuHTML = shop.menu.map(m => `
                 <div class="menu-item"><span>${sanitizeInput(m.item)}</span> <span style="font-weight:bold; color:var(--primary);">৳ ${m.price}</span></div>
             `).join('');
 
             container.innerHTML += `
                 <div class="shop-card">
-                    <span class="status-badge ${shop.isOpen ? 'status-open' : 'status-closed'}">
-                        ${shop.isOpen ? '🟢 এখন খোলা' : '🔴 বন্ধ'}
+                    <span class="status-badge ${isOpenRealTime ? 'status-open' : 'status-closed'}">
+                        ${isOpenRealTime ? '🟢 এখন খোলা (Open)' : '🔴 এখন বন্ধ (Closed)'}
                     </span>
                     <div class="bookmark-icon-btn" onclick="toggleSaveBookmark(${shop.id})">
                         <i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
@@ -937,6 +938,7 @@
                         <span class="menu-badge">🔥 ${sanitizeInput(shop.special)}</span>
                         <h2 class="shop-title" style="margin-top:4px;">${sanitizeInput(shop.name)}</h2>
                         <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)}</div>
+                        ${timeStr ? `<div style="font-size:0.78rem; color:#e17055; margin-bottom:8px; font-weight:600;"><i class="fa-regular fa-clock"></i> ${timeStr}</div>` : ''}
                         
                         <div class="rating-box">
                             <div class="stars-interactive">
@@ -997,7 +999,7 @@
             }
         }
 
-        // Dual Language Universal Smart Search (Searches across all fields seamlessly)
+        // Dual Language Universal Smart Search
         function filterShops() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const budgetVal = document.getElementById('budgetFilter').value;
@@ -1024,7 +1026,7 @@
 
             if(filtered.length === 0) {
                 container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;">
-                    <h4>🔍 "${query}" দিয়ে কোনো দোকান খুঁজে পাওয়া যায়নি! অন্য কিছু লিখে সার্চ করুন।</h4>
+                    <h4>🔍 "${query}" দিয়ে কোনো দোকান খুঁজে পাওয়া যায়নি!</h4>
                 </div>`;
                 return;
             }
@@ -1074,13 +1076,14 @@
                 name: document.getElementById('newShopName').value,
                 division: document.getElementById('newShopDivision').value,
                 loc: document.getElementById('newShopLoc').value,
+                openTime: document.getElementById('newShopOpenTime').value,
+                closeTime: document.getElementById('newShopCloseTime').value,
                 special: document.getElementById('newShopSpecial').value,
                 buses: document.getElementById('newShopBuses').value,
                 mapUrl: document.getElementById('newShopMap').value,
                 img: document.getElementById('newShopImg').value,
                 rating: 5.0,
                 reviewsCount: 1,
-                isOpen: true,
                 tags: document.getElementById('newShopSpecial').value.toLowerCase() + " " + document.getElementById('newShopName').value.toLowerCase() + " " + document.getElementById('newShopLoc').value.toLowerCase(),
                 submittedBy: currentUser.name,
                 menu: menu
@@ -1090,21 +1093,6 @@
             localStorage.setItem('lukanoShad_pendingShops', JSON.stringify(pendingShops));
             updateNotificationBadge();
 
-            const emailParams = {
-                admin_email: "Junaidislamtaskin512@gmail.com",
-                shop_name: newShopObj.name,
-                submitted_by: newShopObj.submittedBy,
-                location: newShopObj.loc,
-                speciality: newShopObj.special
-            };
-
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", emailParams)
-            .then(function() {
-                console.log('Real-time notification sent!');
-            }, function(error) {
-                console.log('Email delivery pending...', error);
-            });
-            
             alert('✅ দোকানটি সাবমিট হয়েছে!\nএডমিনের জিমেইলে নোটিফিকেশন চলে গেছে।');
             e.target.reset();
             switchTab('explore');
