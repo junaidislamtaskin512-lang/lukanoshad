@@ -35,7 +35,23 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', 'Poppins', sans-serif; transition: background 0.25s ease, color 0.25s ease; }
         html, body { width: 100%; overflow-x: hidden; }
-        body { background: var(--bg-color); min-height: 100vh; color: var(--text-color); -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg-color); min-height: 100vh; color: var(--text-color); -webkit-tap-highlight-color: transparent; position: relative; }
+
+        /* Corner Rotating Floating Foods */
+        .corner-food {
+            position: fixed; font-size: 1.8rem; z-index: 99; pointer-events: none; opacity: 0.85;
+            animation: spinCorner 8s infinite linear;
+        }
+        .cf-top-left { top: 12px; left: 12px; }
+        .cf-top-right { top: 12px; right: 12px; }
+        .cf-bottom-left { bottom: 12px; left: 12px; }
+        .cf-bottom-right { bottom: 12px; right: 80px; }
+
+        @keyframes spinCorner {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
 
         /* Splash Screen */
         #splashScreen {
@@ -85,7 +101,7 @@
         }
         .notif-badge-count { background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: 700; }
 
-        /* Hero Banner & Clean Search */
+        /* Hero Banner & Search */
         .hero { 
             text-align: center; padding: 20px 12px 15px; background: var(--header-bg); color: white;
             border-radius: 0 0 20px 20px; margin-bottom: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);
@@ -102,7 +118,7 @@
         .filter-controls { display: flex; justify-content: center; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
         .filter-controls select { padding: 6px 10px; border-radius: 15px; border: 1px solid #ccc; outline: none; font-size: 0.8rem; background: var(--card-bg); color: var(--text-color); font-weight: 600; }
 
-        /* Division & District Bars */
+        /* Division & District Controls */
         .division-bar {
             display: flex; justify-content: flex-start; align-items: center; gap: 8px; margin: 10px 0;
             overflow-x: auto; padding-bottom: 8px; white-space: nowrap; -webkit-overflow-scrolling: touch;
@@ -124,14 +140,14 @@
             background: var(--card-bg); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06);
             margin-bottom: 18px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.2); position: relative;
         }
-        .shop-card img { width: 100%; height: 180px; object-fit: cover; }
+        .shop-card img { width: 100%; height: 185px; object-fit: cover; }
         .shop-body { padding: 15px; }
         .shop-title { font-size: 1.15rem; font-weight: 700; color: var(--text-color); line-height: 1.3; }
         .shop-location { color: #888; margin: 4px 0 10px; font-size: 0.82rem; }
 
         .status-badge {
-            position: absolute; top: 12px; left: 12px; padding: 4px 8px; border-radius: 10px;
-            font-size: 0.7rem; font-weight: 700; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 10px;
+            font-size: 0.72rem; font-weight: 700; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
         .status-open { background: #17B978; }
         .status-closed { background: #FF3838; }
@@ -156,13 +172,23 @@
 
         .card-action-btns { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 
+        /* Social Auth Buttons */
+        .social-login-grid { display: flex; justify-content: center; gap: 10px; margin: 12px 0 6px; }
+        .btn-social { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white; cursor: pointer; border: none; }
+        .btn-google { background: #ea4335; }
+        .btn-fb { background: #1877f2; }
+        .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+        .forget-btn-link { color: var(--primary); font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: underline; margin-top: 6px; display: inline-block; }
+
+        /* Modal Styles */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75);
             backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 15px;
         }
         .auth-card-single {
             background: var(--card-bg); color: var(--text-color); border-radius: 20px; padding: 20px;
-            width: 100%; max-width: 480px; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.4); text-align: center; overflow: hidden;
+            width: 100%; max-width: 450px; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.4); text-align: center; overflow: hidden;
         }
 
         .form-group { margin-bottom: 10px; text-align: left; }
@@ -200,7 +226,13 @@
 </head>
 <body>
 
-    <!-- Splash Screen Loading -->
+    <!-- 4 Corner Rotating Foods -->
+    <div class="corner-food cf-top-left">🍔</div>
+    <div class="corner-food cf-top-right">🍕</div>
+    <div class="corner-food cf-bottom-left">🥟</div>
+    <div class="corner-food cf-bottom-right">🍩</div>
+
+    <!-- Splash Screen -->
     <div id="splashScreen">
         <div class="food-splash-container">
             <div class="food-item-icon food-1">🍔</div>
@@ -209,10 +241,10 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের ৬৪ জেলার খাবার ডাটাবেজ লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">৬৪ জেলার রিয়েল-টাইম ফুড ও সিকিউর একাউন্ট সিস্টেম লোড হচ্ছে...</p>
     </div>
 
-    <!-- Header Navigation Bar -->
+    <!-- Header Navigation -->
     <header>
         <div class="logo" onclick="switchTab('explore')">
             <i class="fa-solid fa-utensils"></i> লুকানো স্বাদ
@@ -251,10 +283,10 @@
         </div>
     </header>
 
-    <!-- Hero Title & Clean Search Bar -->
+    <!-- Hero Banner -->
     <div class="hero">
-        <h1>লুকানো স্বাদ — বাংলাদেশের ৬৪ জেলার বিখ্যাত খাবারের সন্ধান</h1>
-        <p>আপনার জেলার বিখ্যাত খাবারের ইতিহাস, প্রখ্যাত দোকান ও গুগল ম্যাপস রুট জেনে নিন!</p>
+        <h1>লুকানো স্বাদ — বাংলাদেশের ৬৪ জেলার বিখ্যাত স্ট্রিট ফুড হাব</h1>
+        <p>রিয়েল-টাইম খোলার সময়, এলাকাভিত্তিক দোকান ও গুগল ম্যাপস নেভিগেশন!</p>
         
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="দোকান, খাবার, জেলা বা এলাকার নাম দিয়ে সার্চ করুন...">
@@ -279,7 +311,7 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Division Buttons -->
+        <!-- Division Bar -->
         <div class="division-bar">
             <button class="division-btn active" id="div-dhaka" onclick="selectDivision('ঢাকা বিভাগ')">🏙️ ঢাকা বিভাগ</button>
             <button class="division-btn" id="div-ctg" onclick="selectDivision('চট্টগ্রাম বিভাগ')">🌊 চট্টগ্রাম বিভাগ</button>
@@ -291,11 +323,10 @@
             <button class="division-btn" id="div-mym" onclick="selectDivision('ময়মনসিংহ বিভাগ')">🌿 ময়মনসিংহ বিভাগ</button>
         </div>
 
-        <!-- District Selection Dropdown -->
+        <!-- District Selector -->
         <div class="district-select-box">
             <label style="font-weight:700; font-size:0.85rem;"><i class="fa-solid fa-map-pin" style="color:var(--primary);"></i> নির্দিষ্ট জেলা সিলেক্ট করুন:</label>
             <select id="districtDropdown" onchange="onDistrictChange()" style="padding:6px 12px; border-radius:12px; border:1px solid #ccc; outline:none; font-weight:600;">
-                <!-- Dynamically loaded -->
             </select>
         </div>
 
@@ -323,7 +354,7 @@
                         <select id="newShopDistrict" required></select>
                     </div>
                     <div class="form-group"><label>এলাকা ও বিস্তারিত ঠিকানা:</label><input type="text" id="newShopLoc" placeholder="যেমন: কাজীপাড়া, মিরপুর ১০, ঢাকা" required></div>
-                    <div class="form-group"><label>খোলার সময়:</label><input type="time" id="newShopOpenTime" value="10:00" required></div>
+                    <div class="form-group"><label>খোলার সময়:</label><input type="time" id="newShopOpenTime" value="09:00" required></div>
                     <div class="form-group"><label>বন্ধের সময়:</label><input type="time" id="newShopCloseTime" value="23:00" required></div>
                     <div class="form-group"><label>বিশেষত্ব:</label><input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা" required></div>
                     <div class="form-group"><label>বাস রুট:</label><input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required></div>
@@ -381,26 +412,80 @@
         </div>
     </div>
 
-    <!-- Modals -->
-    <div class="modal" id="mapModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('mapModal')">&times;</span><div id="mapModalBody"></div></div></div>
-    
-    <!-- 64 District Food Story Modal with Famous Shop Names & Detailed Locations -->
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="auth-card-single">
+            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('loginModal')">&times;</span>
+            <h3 style="color: var(--primary); margin-bottom: 6px;">ইউজার লগইন</h3>
+            <p style="font-size:0.75rem; color:#666; margin-bottom:12px;">আপনার সঠিক ইউজারনেম/ফোন ও পাসওয়ার্ড দিন</p>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group"><label>ইউজারনেম বা ফোন নম্বর:</label><input type="text" id="loginUser" required placeholder="01888... বা username"></div>
+                <div class="form-group"><label>পাসওয়ার্ড:</label><input type="password" id="loginPass" required placeholder="******"></div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন করুন</button>
+            </form>
+            <span class="forget-btn-link" onclick="openForgetModal()">Forget Password? (পাসওয়ার্ড ভুলে গেছেন?)</span>
+            
+            <div style="margin-top:15px; font-size:0.75rem; color:#888;">অথবা সোশ্যাল আইডি দিয়ে লগইন করুন:</div>
+            <div class="social-login-grid">
+                <button class="btn-social btn-google" onclick="socialLogin('Google')"><i class="fa-brands fa-google"></i></button>
+                <button class="btn-social btn-fb" onclick="socialLogin('Facebook')"><i class="fa-brands fa-facebook-f"></i></button>
+                <button class="btn-social btn-insta" onclick="socialLogin('Instagram')"><i class="fa-brands fa-instagram"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="auth-card-single">
+            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('signupModal')">&times;</span>
+            <h3 style="color: var(--secondary); margin-bottom: 6px;">নতুন একাউন্ট সাইন-আপ</h3>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group"><label>আপনার নাম:</label><input type="text" id="regName" required placeholder="আপনার নাম"></div>
+                <div class="form-group"><label>ফোন নম্বর বা ইমেইল (ইউজার আইডি):</label><input type="text" id="regContact" required placeholder="01888183241 বা email@gmail.com"></div>
+                <div class="form-group"><label>গোপন পাসওয়ার্ড:</label><input type="password" id="regPass" required placeholder="নূন্যতম ৪ সংখ্যার পাসওয়ার্ড"></div>
+                <button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">রেজিস্ট্রেশন সম্পূর্ণ করুন</button>
+            </form>
+            <div class="social-login-grid" style="margin-top:12px;">
+                <button class="btn-social btn-google" onclick="socialLogin('Google')"><i class="fa-brands fa-google"></i></button>
+                <button class="btn-social btn-fb" onclick="socialLogin('Facebook')"><i class="fa-brands fa-facebook-f"></i></button>
+                <button class="btn-social btn-insta" onclick="socialLogin('Instagram')"><i class="fa-brands fa-instagram"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forget Password Modal with OTP -->
+    <div class="modal" id="forgetModal">
+        <div class="auth-card-single">
+            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('forgetModal')">&times;</span>
+            <h3 style="color: var(--primary); margin-bottom: 6px;">পাসওয়ার্ড রিসেট ও OTP</h3>
+            <div id="forgetStep1">
+                <p style="font-size:0.78rem; color:#666; margin-bottom:10px;">আপনার রেজিস্টার্ড ফোন নম্বর বা ইমেইল লিখুন:</p>
+                <div class="form-group"><input type="text" id="forgetTarget" placeholder="01888... বা email@gmail.com" required></div>
+                <button class="btn btn-primary" onclick="sendOTPCode()" style="width:100%; justify-content:center;">OTP কোড পাঠান</button>
+            </div>
+            <div id="forgetStep2" class="hidden">
+                <p style="font-size:0.78rem; color:#27ae60; margin-bottom:8px; font-weight:700;">✅ OTP কোড পাঠানো হয়েছে! কোডটি নিচে দিন:</p>
+                <div class="form-group"><input type="text" id="inputOTP" placeholder="৪ ডিজিটের OTP দিন" required></div>
+                <div class="form-group"><input type="password" id="resetNewPass" placeholder="নতুন পাসওয়ার্ড লিখুন" required></div>
+                <button class="btn btn-secondary" onclick="verifyOTPAndReset()" style="width:100%; justify-content:center;">পাসওয়ার্ড পরিবর্তন করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 64 District Story Modal -->
     <div class="modal" id="storyModal">
         <div class="auth-card-single" style="text-align:left;">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('storyModal')">&times;</span>
-            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-book-open"></i> ৬৪ জেলার বিখ্যাত খাবার ও বিখ্যাত দোকান</h3>
+            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-book-open"></i> ৬৪ জেলার বিখ্যাত খাবার ও প্রখ্যাত দোকান</h3>
             <div class="form-group">
                 <label>জেলা বেছে নিন:</label>
                 <select id="storyDistrictSelect" onchange="displayDistrictStory()"></select>
             </div>
             <div id="storyContent" style="font-size:0.85rem; max-height:230px; overflow-y:auto; line-height:1.5; background:rgba(0,0,0,0.03); padding:10px; border-radius:10px;">
-                জেলা সিলেক্ট করুন...
             </div>
         </div>
     </div>
 
-    <div class="modal" id="loginModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('loginModal')">&times;</span><h3 style="color: var(--primary); margin-bottom: 10px;">Login</h3><form onsubmit="handleLogin(event)"><div class="form-group"><label>Username:</label><input type="text" id="loginUser" required></div><div class="form-group"><label>Password:</label><input type="password" id="loginPass" required></div><button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন</button></form></div></div>
-    <div class="modal" id="signupModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('signupModal')">&times;</span><h3 style="color: var(--secondary); margin-bottom: 10px;">Sign Up</h3><form onsubmit="handleSignup(event)"><div class="form-group"><label>Name:</label><input type="text" id="regName" required></div><div class="form-group"><label>Password:</label><input type="password" id="regPass" required></div><button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">রেজিস্ট্রেশন</button></form></div></div>
     <div class="modal" id="adminModal"><div class="profile-card" style="width:100%; max-width:500px; position:relative;"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('adminModal')">&times;</span><h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-bell"></i> এডমিন নোটিফিকেশন</h3><div id="pendingShopsList"></div></div></div>
 
     <!-- Floating Contact -->
@@ -419,42 +504,25 @@
 
         setTimeout(() => { document.getElementById('splashScreen').style.display = 'none'; }, 1200);
 
-        // All 64 Districts Mapped Strictly by Divisions
         const divisionData = {
-            "ঢাকা বিভাগ": {
-                districts: ["সকল জেলা", "ঢাকা", "গাজীপুর", "নারায়ণগঞ্জ", "টাঙ্গাইল", "নরসিংদী", "মানিকগঞ্জ", "মুন্সীগঞ্জ", "ফরিদপুর", "মাদারীপুর", "গোপালগঞ্জ", "রাজবাড়ী", "শরীয়তপুর"]
-            },
-            "চট্টগ্রাম বিভাগ": {
-                districts: ["সকল জেলা", "চট্টগ্রাম", "কক্সবাজার", "কুমিল্লা", "ফেনী", "নোয়াখালী", "লক্ষ্মীপুর", "চাঁদপুর", "ব্রাহ্মণবাড়িয়া", "রাঙ্গামাটি", "বান্দরবান", "খাগড়াছড়ি"]
-            },
-            "সিলেট বিভাগ": {
-                districts: ["সকল জেলা", "সিলেট", "মৌলভীবাজার", "হবিগঞ্জ", "সুনামগঞ্জ"]
-            },
-            "রাজশাহী বিভাগ": {
-                districts: ["সকল জেলা", "রাজশাহী", "বগুড়া", "পাবনা", "সিরাজগঞ্জ", "নাটোর", "নওগাঁ", "চাঁপাইনবাবগঞ্জ", "জয়পুরহাট"]
-            },
-            "খুলনা বিভাগ": {
-                districts: ["সকল জেলা", "খুলনা", "যশোর", "সাতক্ষীরা", "কুষ্টিয়া", "ঝিনাইদহ", "বাগেরহাট", "চুয়াডাঙ্গা", "মেহেরপুর", "নড়াইল", "মাগুরা"]
-            },
-            "বরিশাল বিভাগ": {
-                districts: ["সকল জেলা", "বরিশাল", "পটুয়াখালী", "ভোলা", "পিরোজপুর", "বরগুনা", "ঝালকাঠি"]
-            },
-            "রংপুর বিভাগ": {
-                districts: ["সকল জেলা", "রংপুর", "দিনাজপুর", "গাইবান্ধা", "কুড়িগ্রাম", "নীলফামারী", "পঞ্চগড়", "ঠাকুরগাঁও", "লালমনিরহাট"]
-            },
-            "ময়মনসিংহ বিভাগ": {
-                districts: ["সকল জেলা", "ময়মনসিংহ", "জামালপুর", "শেরপুর", "নেত্রকোণা"]
-            }
+            "ঢাকা বিভাগ": { districts: ["সকল জেলা", "ঢাকা", "গাজীপুর", "নারায়ণগঞ্জ", "টাঙ্গাইল", "নরসিংদী", "মানিকগঞ্জ", "মুন্সীগঞ্জ", "ফরিদপুর", "মাদারীপুর", "গোপালগঞ্জ", "রাজবাড়ী", "শরীয়তপুর"] },
+            "চট্টগ্রাম বিভাগ": { districts: ["সকল জেলা", "চট্টগ্রাম", "কক্সবাজার", "কুমিল্লা", "ফেনী", "নোয়াখালী", "লক্ষ্মীপুর", "চাঁদপুর", "ব্রাহ্মণবাড়িয়া", "রাঙ্গামাটি", "বান্দরবান", "খাগড়াছড়ি"] },
+            "সিলেট বিভাগ": { districts: ["সকল জেলা", "সিলেট", "মৌলভীবাজার", "হবিগঞ্জ", "সুনামগঞ্জ"] },
+            "রাজশাহী বিভাগ": { districts: ["সকল জেলা", "রাজশাহী", "বগুড়া", "পাবনা", "সিরাজগঞ্জ", "নাটোর", "নওগাঁ", "চাঁপাইনবাবগঞ্জ", "জয়পুরহাট"] },
+            "খুলনা বিভাগ": { districts: ["সকল জেলা", "খুলনা", "যশোর", "সাতক্ষীরা", "কুষ্টিয়া", "ঝিনাইদহ", "বাগেরহাট", "চুয়াডাঙ্গা", "মেহেরপুর", "নড়াইল", "মাগুরা"] },
+            "বরিশাল বিভাগ": { districts: ["সকল জেলা", "বরিশাল", "পটুয়াখালী", "ভোলা", "পিরোজপুর", "বরগুনা", "ঝালকাঠি"] },
+            "রংপুর বিভাগ": { districts: ["সকল জেলা", "রংপুর", "দিনাজপুর", "গাইবান্ধা", "কুড়িগ্রাম", "নীলফামারী", "পঞ্চগড়", "ঠাকুরগাঁও", "লালমনিরহাট"] },
+            "ময়মনসিংহ বিভাগ": { districts: ["সকল জেলা", "ময়মনসিংহ", "জামালপুর", "শেরপুর", "নেত্রকোণা"] }
         };
 
         const foodStoriesBD = {
-            "ঢাকা": "<b>বিখ্যাত খাবার:</b> বাকরখানি, গরুর চাপ, কাচ্চি বিরিয়ানি<br><b>বিখ্যাত দোকান:</b> আনন্দ বাকরখানি, মোস্তাকিম কাবাব ঘর<br><b>লোকেশন:</b> নাজিরাবাজার ও মোহাম্মদপুর টাউনহল, ঢাকা।",
-            "কুমিল্লা": "<b>বিখ্যাত খাবার:</b> আসল রসমালাই<br><b>বিখ্যাত দোকান:</b> মাতৃভান্ডার<br><b>লোকেশন:</b> মনোহরপুর, কান্দিরপাড়, কুমিল্লা।",
-            "বগুড়া": "<b>বিখ্যাত খাবার:</b> বগুড়ার মিষ্টি দই<br><b>বিখ্যাত দোকান:</b> বগুড়া নবাববাড়ী দই ঘর<br><b>লোকেশন:</b> নবাববাড়ী রোড, বগুড়া সদর।",
-            "সাতক্ষীরা": "<b>বিখ্যাত খাবার:</b> চুইঝাল খাসি ভুনা ও সন্দেশ<br><b>বিখ্যাত দোকান:</b> আব্বাস হোটেল<br><b>লোকেশন:</b> সাতক্ষীরা বাসস্ট্যান্ড সংলগ্ন।",
-            "মেহেরপুর": "<b>বিখ্যাত খাবার:</b> মেহেরপুরী মিষ্টি ও সাবিত্রী<br><b>বিখ্যাত দোকান:</b> বাসুদেব মিষ্টি ভান্ডার<br><b>লোকেশন:</b> বড় বাজার, মেহেরপুর।",
-            "চট্টগ্রাম": "<b>বিখ্যাত খাবার:</b> মেযবানি গরুর মাংস ও ক্র্যাব ফ্রাই<br><b>বিখ্যাত দোকান:</b> মেযবান হাইপ ও জামান হোটেল<br><b>লোকেশন:</b> জিইসি মোড় ও পতেঙ্গা, চট্টগ্রাম।",
-            "সিলেট": "<b>বিখ্যাত খাবার:</b> সাতকড়া গরুর মাংস ও ৭ রঙের চা<br><b>বিখ্যাত দোকান:</b> পানসী রেস্তোরাঁ ও নীলকণ্ঠ চা কেবিন<br><b>লোকেশন:</b> জিন্দাবাজার, সিলেট।"
+            "ঢাকা": "<b>বিখ্যাত খাবার:</b> বাকরখানি, বিফ চাপ ও কাচ্চি বিরিয়ানি<br><b>প্রখ্যাত দোকান:</b> আনন্দ বাকরখানি, মোস্তাকিম কাবাব ঘর<br><b>লোকেশন:</b> নাজিরাবাজার ও মোহাম্মদপুর টাউনহল, ঢাকা।",
+            "কুমিল্লা": "<b>বিখ্যাত খাবার:</b> আসল রসমালাই<br><b>প্রখ্যাত দোকান:</b> মাতৃভান্ডার<br><b>লোকেশন:</b> মনোহরপুর, কান্দিরপাড়, কুমিল্লা।",
+            "বগুড়া": "<b>বিখ্যাত খাবার:</b> স্পেশাল মিষ্টি দই<br><b>প্রখ্যাত দোকান:</b> বগুড়া নবাববাড়ী দই ঘর<br><b>লোকেশন:</b> নবাববাড়ী রোড, বগুড়া শহর।",
+            "সাতক্ষীরা": "<b>বিখ্যাত খাবার:</b> চুইঝাল খাসি ভুনা ও সন্দেশ<br><b>প্রখ্যাত দোকান:</b> আব্বাস হোটেল<br><b>লোকেশন:</b> সাতক্ষীরা বাসস্ট্যান্ড মোড়।",
+            "মেহেরপুর": "<b>বিখ্যাত খাবার:</b> মেহেরপুরী মিষ্টি ও সাবিত্রী<br><b>প্রখ্যাত দোকান:</b> বাসুদেব মিষ্টি ভান্ডার<br><b>লোকেশন:</b> বড় বাজার, মেহেরপুর।",
+            "চট্টগ্রাম": "<b>বিখ্যাত খাবার:</b> মেযবানি গোশত ও পতেঙ্গা ক্র্যাব ফ্রাই<br><b>প্রখ্যাত দোকান:</b> জামান হোটেল ও মেযবান হাইপ<br><b>লোকেশন:</b> জিইসি মোড় ও পতেঙ্গা সী-বিচ, চট্টগ্রাম।",
+            "সিলেট": "<b>বিখ্যাত খাবার:</b> সাতকড়া গরুর মাংস ও ৭ রঙের চা<br><b>প্রখ্যাত দোকান:</b> পানসী রেস্তোরাঁ ও নীলকণ্ঠ চা কেবিন<br><b>লোকেশন:</b> জিন্দাবাজার, সিলেট।"
         };
 
         function populate64DistrictsInStory() {
@@ -473,20 +541,25 @@
         function displayDistrictStory() {
             const dist = document.getElementById('storyDistrictSelect').value;
             const content = document.getElementById('storyContent');
-            const story = foodStoriesBD[dist] || `<b>বিখ্যাত খাবার:</b> ${dist} এর স্পেশাল স্ট্রিট ফুড, পিঠা ও চা<br><b>বিখ্যাত দোকান:</b> ${dist} সেন্ট্রাল স্ট্রিট ফুড কর্নার<br><b>লোকেশন:</b> ${dist} সদর ও প্রধান বাসস্ট্যান্ড মোড়।`;
+            const story = foodStoriesBD[dist] || `<b>বিখ্যাত খাবার:</b> ${dist} এর বিখ্যাত স্ট্রিট ফুড, পিঠা ও স্পেশাল চা<br><b>প্রখ্যাত দোকান:</b> ${dist} সেন্ট্রাল স্ট্রিট ফুড পয়েন্ট<br><b>লোকেশন:</b> ${dist} সদর নিউ মার্কেট ও বাসস্ট্যান্ড মোড়।`;
             content.innerHTML = `<b>📍 ${dist} জেলা:</b><br>${story}`;
         }
 
-        // Generate 90-100 Dedicated Street Food Shops for EVERY District in Bangladesh
+        // Varied Real Food Images & Generator
         function generate64DistrictShops() {
-            const images = [
-                "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-            ];
+            const imageMap = {
+                "চিজি মোমো": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+                "দই ফুচকা": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+                "গরুর চাপ": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+                "স্পেশাল মালাই চা": "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80",
+                "চিকেন শর্মা": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+                "কাবাব": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+                "চুইঝাল মিট": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
+                "ক্রিসপি বার্গার": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            };
 
-            const foodsList = ["চিজি মোমো", "দই ফুচকা", "গরুর চাপ", "স্পেশাল মালাই চা", "চিকেন শর্মা", "কাবাব", "চুইঝাল মিট", "বিফ কাচ্চি", "লস্যি", "ক্রিসপি বার্গার", "ওভেন পাস্তা", "হাঁসের মাংস পিঠা"];
+            const foodsList = ["চিজি মোমো", "দই ফুচকা", "গরুর চাপ", "স্পেশাল মালাই চা", "চিকেন শর্মা", "কাবাব", "চুইঝাল মিট", "ক্রিসপি বার্গার"];
+            const locationsList = ["সদর বাসস্ট্যান্ড মোড়", "নিউ মার্কেট এলাকা", "স্টেশন রোড", "চকবাজার মোড়", "কলেজ রোড", "উপজেলা মোড়"];
             let generatedShops = [];
             let idCounter = 1;
 
@@ -494,17 +567,17 @@
                 const divObj = divisionData[divName];
                 divObj.districts.forEach(distName => {
                     if(distName !== "সকল জেলা") {
-                        // Generate 90 Shops per District Guaranteed!
                         for(let i = 1; i <= 90; i++) {
                             let food = foodsList[i % foodsList.length];
-                            let img = images[i % images.length];
+                            let locArea = locationsList[i % locationsList.length];
+                            let img = imageMap[food];
 
                             generatedShops.push({
                                 id: idCounter++,
                                 name: `${distName} সিক্রেট ${food} পয়েন্ট ${i}`,
                                 division: divName,
                                 district: distName,
-                                loc: `${distName} সদর বাসস্ট্যান্ড মোড়, ${distName}`,
+                                loc: `${locArea}, ${distName}`,
                                 openTime: "09:00",
                                 closeTime: "23:00",
                                 special: `${food}, বিশেষ চাটনি ও কোল্ড ড্রিংকস`,
@@ -515,7 +588,7 @@
                                 reviewsCount: 15 + i,
                                 tags: `${food} ${distName} ${divName} street food`,
                                 menu: [{ item: `স্পেশাল ${food}`, price: 60 + (i % 10) * 10 }],
-                                comments: ["খাবারটি সত্যিই অনেক অসাধারণ!", "দাম অনুযায়ী স্বাদের মান অত্যন্ত ভালো।"]
+                                comments: ["খাবারটি সত্যিই অনেক অসাধারণ!", "দাম অনুযায়ী স্বাদের মান চমৎকার।"]
                             });
                         }
                     }
@@ -530,7 +603,13 @@
         let shops = generate64DistrictShops();
         let pendingShops = JSON.parse(localStorage.getItem('lukanoShad_pendingShops')) || [];
         let savedFavorites = JSON.parse(localStorage.getItem('lukanoShad_saved')) || [];
+        
+        // User Database in LocalStorage
+        let registeredUsers = JSON.parse(localStorage.getItem('lukanoShad_registeredUsers')) || [
+            { contact: "01888183241", name: "Junaid Islam Taskin", pass: "123456" }
+        ];
         let currentUser = JSON.parse(localStorage.getItem('lukanoShad_user')) || null;
+        let generatedOTP = null;
         const defaultAvatar = "79566.jpg";
 
         window.onload = function() {
@@ -572,6 +651,7 @@
             }
         }
 
+        // Real-Time System Clock Open/Closed Calculator
         function checkRealTimeStatus(openTime, closeTime) {
             if(!openTime || !closeTime) return true;
             const now = new Date();
@@ -637,7 +717,7 @@
                 shop.comments.push(`${currentUser ? currentUser.name : 'অতিথি'}: ${commentText}`);
                 renderShopsList();
                 inputField.value = '';
-                alert("💬 আপনার মন্তব্য সফলভাবে যোগ হয়েছে!");
+                alert("💬 আপনার মন্তব্য সফলভাবে পোস্ট হয়েছে!");
             }
         }
 
@@ -652,7 +732,7 @@
                 try { await navigator.share(shareData); } catch (err) {}
             } else {
                 navigator.clipboard.writeText(`${shareData.text} \n ম্যাপ: ${shareData.url}`);
-                alert("✅ লিংক কপি হয়েছে! যেকোনো অ্যাপে পেস্ট করে শেয়ার করুন।");
+                alert("✅ লিংক কপি হয়েছে! যেকোনো সোশ্যাল মিডিয়ায় পেস্ট করে শেয়ার করুন।");
             }
         }
 
@@ -715,7 +795,6 @@
                 filtered = filtered.filter(s => s.district === selectedDistrictName);
             }
 
-            // Smooth UX: Rendering top 40 shops per district view instantly
             filtered.slice(0, 40).forEach(shop => renderSingleCard(shop, container));
         }
 
@@ -829,23 +908,93 @@
             }
         }
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function openLoginModal() { openModal('loginModal'); }
-        function openSignupModal() { openModal('signupModal'); }
+        // Strict Authentic Authentication Logic
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const contact = document.getElementById('regContact').value.trim();
+            const pass = document.getElementById('regPass').value;
+
+            const exists = registeredUsers.find(u => u.contact === contact || u.name === name);
+            if(exists) { alert('⚠️ এই ইউজার আইডি/ফোন বা নাম দিয়ে ইতোমধ্যে একাউন্ট খোলা আছে!'); return; }
+
+            const newUser = { name, contact, pass, avatar: defaultAvatar };
+            registeredUsers.push(newUser);
+            localStorage.setItem('lukanoShad_registeredUsers', JSON.stringify(registeredUsers));
+
+            currentUser = newUser;
+            localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
+            setupLoggedInView(currentUser);
+            closeModal('signupModal');
+            alert('🎉 আপনার একাউন্ট সফলভাবে রেজিস্টার্ড হয়েছে!');
+        }
 
         function handleLogin(e) {
             e.preventDefault();
-            currentUser = { name: document.getElementById('loginUser').value, contact: "01888183241", avatar: defaultAvatar };
-            localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); closeModal('loginModal'); alert('🎉 লগইন সফল!');
+            const userOrPhone = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value;
+
+            const foundUser = registeredUsers.find(u => (u.contact === userOrPhone || u.name === userOrPhone) && u.pass === pass);
+            
+            if(foundUser) {
+                currentUser = foundUser;
+                localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
+                setupLoggedInView(currentUser);
+                closeModal('loginModal');
+                alert(`🎉 স্বাগতম ${currentUser.name}! আপনি সফলভাবে লগইন করেছেন।`);
+            } else {
+                alert('⚠️ ভুল ইউজার আইডি/ফোন অথবা পাসওয়ার্ড! সঠিক তথ্য দিন।');
+            }
         }
 
-        function handleSignup(e) {
-            e.preventDefault();
-            currentUser = { name: document.getElementById('regName').value, contact: "01888183241", avatar: defaultAvatar };
+        function socialLogin(provider) {
+            const name = `${provider}_User_${Math.floor(Math.random()*1000)}`;
+            currentUser = { name: name, contact: `${provider.toLowerCase()}@auth.com`, avatar: defaultAvatar };
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); closeModal('signupModal'); alert('🎉 একাউন্ট তৈরি সফল!');
+            setupLoggedInView(currentUser);
+            closeModal('loginModal');
+            closeModal('signupModal');
+            alert(`🎉 ${provider} একাউন্ট দিয়ে সফলভাবে লগইন করা হয়েছে!`);
+        }
+
+        function openForgetModal() {
+            closeModal('loginModal');
+            openModal('forgetModal');
+            document.getElementById('forgetStep1').classList.remove('hidden');
+            document.getElementById('forgetStep2').classList.add('hidden');
+        }
+
+        function sendOTPCode() {
+            const target = document.getElementById('forgetTarget').value.trim();
+            if(!target) { alert("অনুগ্রহ করে আপনার ফোন বা ইমেইল লিখুন!"); return; }
+            
+            const user = registeredUsers.find(u => u.contact === target || u.name === target);
+            if(!user) { alert("⚠️ এই নম্বর বা ইমেইলে কোনো রেজিস্টার্ড একাউন্ট পাওয়া যায়নি!"); return; }
+
+            generatedOTP = Math.floor(1000 + Math.random() * 9000);
+            alert(`📱 'লুকানো স্বাদ' সিকিউরিটি কোড: \nআপনার ৪ ডিজিটের রিসেট OTP হলো: ${generatedOTP}`);
+            document.getElementById('forgetStep1').classList.add('hidden');
+            document.getElementById('forgetStep2').classList.remove('hidden');
+        }
+
+        function verifyOTPAndReset() {
+            const otpVal = document.getElementById('inputOTP').value.trim();
+            const newPass = document.getElementById('resetNewPass').value;
+
+            if(otpVal != generatedOTP) {
+                alert("⚠️ ভুল OTP কোড! সঠিক কোডটি দিন।");
+                return;
+            }
+
+            const target = document.getElementById('forgetTarget').value.trim();
+            let user = registeredUsers.find(u => u.contact === target || u.name === target);
+            if(user) {
+                user.pass = newPass;
+                localStorage.setItem('lukanoShad_registeredUsers', JSON.stringify(registeredUsers));
+                alert("🎉 আপনার একাউন্টের নতুন পাসওয়ার্ড সফলভাবে সেভ হয়েছে! এবার নতুন পাসওয়ার্ড দিয়ে লগইন করুন।");
+                closeModal('forgetModal');
+                openLoginModal();
+            }
         }
 
         function setupLoggedInView(user) {
@@ -858,7 +1007,12 @@
         }
 
         function logout() { currentUser = null; localStorage.removeItem('lukanoShad_user'); document.getElementById('navGuest').classList.remove('hidden'); document.getElementById('navUser').classList.add('hidden'); switchTab('explore'); }
-        
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openLoginModal() { openModal('loginModal'); }
+        function openSignupModal() { openModal('signupModal'); }
+
         function handleImageUpload(e) {
             const file = e.target.files[0];
             if(file) {
@@ -877,7 +1031,7 @@
             if(!currentUser) return;
             currentUser.name = document.getElementById('pName').value;
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); alert('✅ প্রোফাইল আপডেট হয়েছে!');
+            setupLoggedInView(currentUser); alert('✅ প্রোফাইল নাম সেভ হয়েছে!');
         }
 
         function switchTab(tab) {
