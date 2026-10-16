@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>লুকানো স্বাদ | Lukano Shad - Bangladesh Street Food Hub BD</title>
+    <title>লুকানো স্বাদ | Lukano Shad - Bangladesh 64 District Street Food Hub</title>
 
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,616 +30,172 @@
             --header-bg: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
         }
 
-        /* Color Theme Options */
-        body.theme-orange { 
-            --primary: #e67e22; 
-            --gradient-food: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); 
-        }
-        body.theme-green { 
-            --primary: #27ae60; 
-            --gradient-food: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
-        }
+        body.theme-orange { --primary: #e67e22; --gradient-food: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); }
+        body.theme-green { --primary: #27ae60; --gradient-food: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
-            transition: background 0.25s ease, color 0.25s ease;
-        }
-
-        html, body { 
-            width: 100%; 
-            overflow-x: hidden; 
-        }
-        
-        body { 
-            background: var(--bg-color); 
-            min-height: 100vh; 
-            color: var(--text-color); 
-            -webkit-tap-highlight-color: transparent; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', 'Poppins', sans-serif; transition: background 0.25s ease, color 0.25s ease; }
+        html, body { width: 100%; overflow-x: hidden; }
+        body { background: var(--bg-color); min-height: 100vh; color: var(--text-color); -webkit-tap-highlight-color: transparent; }
 
         /* Splash Screen */
         #splashScreen {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            background: var(--dark); 
-            z-index: 9999; 
-            display: flex;
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            color: white; 
-            padding: 20px; 
-            text-align: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--dark); z-index: 9999; display: flex;
+            flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px; text-align: center;
         }
-
-        .food-splash-container { 
-            position: relative; 
-            width: 150px; 
-            height: 150px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-
-        .food-item-icon { 
-            position: absolute; 
-            font-size: 2rem; 
-            animation: rotateFood 3.5s infinite linear; 
-        }
-
-        .food-1 { top: 0; } 
-        .food-2 { right: 0; } 
-        .food-3 { bottom: 0; } 
-        .food-4 { left: 0; }
-
-        @keyframes rotateFood { 
-            0% { transform: rotate(0deg) translate(60px) rotate(0deg); } 
-            100% { transform: rotate(360deg) translate(60px) rotate(-360deg); } 
-        }
+        .food-splash-container { position: relative; width: 150px; height: 150px; display: flex; justify-content: center; align-items: center; }
+        .food-item-icon { position: absolute; font-size: 2rem; animation: rotateFood 3.5s infinite linear; }
+        .food-1 { top: 0; } .food-2 { right: 0; } .food-3 { bottom: 0; } .food-4 { left: 0; }
+        @keyframes rotateFood { 0% { transform: rotate(0deg) translate(60px) rotate(0deg); } 100% { transform: rotate(360deg) translate(60px) rotate(-360deg); } }
 
         /* Header Navigation */
         header {
-            background: var(--card-bg); 
-            backdrop-filter: blur(12px); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
-            padding: 10px 4%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            flex-wrap: wrap; 
-            gap: 10px;
+            background: var(--card-bg); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 10px 4%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
-
         .logo {
-            font-size: 1.4rem; 
-            font-weight: 700; 
-            background: var(--gradient-food);
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            cursor: pointer;
+            font-size: 1.4rem; font-weight: 700; background: var(--gradient-food);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 8px; cursor: pointer;
         }
-
-        .nav-btns { 
-            display: flex; 
-            gap: 8px; 
-            align-items: center; 
-            flex-wrap: wrap; 
-        }
-
+        .nav-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
         .btn {
-            padding: 8px 14px; 
-            border-radius: 20px; 
-            border: none; 
-            cursor: pointer; 
-            font-weight: 600; 
-            font-size: 0.85rem;
-            display: inline-flex; 
-            align-items: center; 
-            gap: 6px; 
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08); 
-            text-decoration: none;
+            padding: 8px 14px; border-radius: 20px; border: none; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); text-decoration: none;
         }
-
-        .btn-primary { 
-            background: var(--gradient-food); 
-            color: white; 
-        }
-
-        .btn-secondary { 
-            background: var(--secondary); 
-            color: white; 
-        }
-
-        .btn-outline { 
-            background: transparent; 
-            border: 2px solid var(--primary); 
-            color: var(--primary); 
-        }
+        .btn-primary { background: var(--gradient-food); color: white; }
+        .btn-secondary { background: var(--secondary); color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
 
         .dark-toggle-btn {
-            background: var(--dark); 
-            color: #FF9F1A; 
-            border-radius: 50%; 
-            width: 36px; 
-            height: 36px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            font-size: 1.1rem;
+            background: var(--dark); color: #FF9F1A; border-radius: 50%; width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem;
         }
-
-        .theme-picker { 
-            display: flex; 
-            gap: 4px; 
-            align-items: center; 
-        }
-
-        .theme-dot { 
-            width: 18px; 
-            height: 18px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            border: 2px solid white; 
-        }
+        .theme-picker { display: flex; gap: 4px; align-items: center; }
+        .theme-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid white; }
 
         .user-nav-badge {
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            background: var(--card-bg); 
-            padding: 4px 12px 4px 4px;
-            border-radius: 25px; 
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08); 
-            cursor: pointer;
+            display: flex; align-items: center; gap: 8px; background: var(--card-bg); padding: 4px 12px 4px 4px;
+            border-radius: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); cursor: pointer;
         }
-
-        .user-nav-badge img { 
-            width: 32px; 
-            height: 32px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid var(--primary); 
-        }
+        .user-nav-badge img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
 
         .admin-notif-btn {
-            position: relative; 
-            background: var(--dark); 
-            color: white; 
-            padding: 8px 12px; 
-            border-radius: 20px;
-            cursor: pointer; 
-            font-weight: 600; 
-            font-size: 0.8rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px;
+            position: relative; background: var(--dark); color: white; padding: 8px 12px; border-radius: 20px;
+            cursor: pointer; font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 6px;
         }
-
-        .notif-badge-count { 
-            background: var(--primary); 
-            color: white; 
-            font-size: 0.7rem; 
-            padding: 2px 6px; 
-            border-radius: 50%; 
-            font-weight: 700; 
-        }
+        .notif-badge-count { background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: 700; }
 
         /* Hero Banner & Clean Search */
         .hero { 
-            text-align: center; 
-            padding: 20px 12px 15px; 
-            background: var(--header-bg); 
-            color: white;
-            border-radius: 0 0 20px 20px; 
-            margin-bottom: 15px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            text-align: center; padding: 20px 12px 15px; background: var(--header-bg); color: white;
+            border-radius: 0 0 20px 20px; margin-bottom: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
-
-        .hero h1 { 
-            font-size: 1.35rem; 
-            margin-bottom: 6px; 
-            font-weight: 700; 
-            color: #FF9F1A; 
-            line-height: 1.3; 
-        }
-
-        .hero p { 
-            font-size: 0.82rem; 
-            color: #dfe4ea; 
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
+        .hero h1 { font-size: 1.35rem; margin-bottom: 6px; font-weight: 700; color: #FF9F1A; line-height: 1.3; }
+        .hero p { font-size: 0.82rem; color: #dfe4ea; max-width: 800px; margin: 0 auto; }
 
         .search-box-wrapper {
-            max-width: 100%; 
-            margin: 12px auto 5px; 
-            display: flex; 
-            gap: 6px; 
-            background: white;
-            border-radius: 30px; 
-            padding: 4px 10px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            max-width: 100%; margin: 12px auto 5px; display: flex; gap: 6px; background: white;
+            border-radius: 30px; padding: 4px 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
+        .search-box-wrapper input { width: 100%; border: none; padding: 8px; outline: none; font-size: 0.9rem; color: var(--dark); }
 
-        .search-box-wrapper input { 
-            width: 100%; 
-            border: none; 
-            padding: 8px; 
-            outline: none; 
-            font-size: 0.9rem; 
-            color: var(--dark); 
-        }
+        .filter-controls { display: flex; justify-content: center; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+        .filter-controls select { padding: 6px 10px; border-radius: 15px; border: 1px solid #ccc; outline: none; font-size: 0.8rem; background: var(--card-bg); color: var(--text-color); font-weight: 600; }
 
-        .filter-controls { 
-            display: flex; 
-            justify-content: center; 
-            gap: 8px; 
-            margin: 10px 0; 
-            flex-wrap: wrap; 
-        }
-
-        .filter-controls select { 
-            padding: 6px 10px; 
-            border-radius: 15px; 
-            border: 1px solid #ccc; 
-            outline: none; 
-            font-size: 0.8rem; 
-            background: var(--card-bg); 
-            color: var(--text-color); 
-        }
-
-        /* Division Bar */
+        /* Division & District Bars */
         .division-bar {
-            display: flex; 
-            justify-content: flex-start; 
-            align-items: center; 
-            gap: 8px; 
-            margin: 12px 0;
-            overflow-x: auto; 
-            padding-bottom: 8px; 
-            white-space: nowrap; 
-            -webkit-overflow-scrolling: touch;
+            display: flex; justify-content: flex-start; align-items: center; gap: 8px; margin: 10px 0;
+            overflow-x: auto; padding-bottom: 8px; white-space: nowrap; -webkit-overflow-scrolling: touch;
         }
-
-        .division-bar::-webkit-scrollbar { 
-            display: none; 
-        }
-
+        .division-bar::-webkit-scrollbar { display: none; }
         .division-btn {
-            background: var(--card-bg); 
-            color: var(--text-color); 
-            padding: 6px 14px; 
-            border-radius: 20px;
-            border: 1.5px solid transparent; 
-            font-weight: 600; 
-            font-size: 0.82rem; 
-            cursor: pointer; 
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05); 
-            flex-shrink: 0;
+            background: var(--card-bg); color: var(--text-color); padding: 6px 14px; border-radius: 20px;
+            border: 1.5px solid transparent; font-weight: 600; font-size: 0.82rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.05); flex-shrink: 0;
         }
+        .division-btn.active { background: var(--gradient-food); color: white; border-color: var(--primary); }
 
-        .division-btn.active { 
-            background: var(--gradient-food); 
-            color: white; 
-            border-color: var(--primary); 
+        .district-select-box {
+            margin: 8px 0 15px; display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--card-bg); padding: 8px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         /* Container & Cards */
-        .container { 
-            max-width: 100%; 
-            padding: 10px; 
-        }
-
+        .container { max-width: 100%; padding: 10px; }
         .shop-card {
-            background: var(--card-bg); 
-            border-radius: 18px; 
-            overflow: hidden; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            margin-bottom: 18px; 
-            display: flex; 
-            flex-direction: column; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            position: relative;
+            background: var(--card-bg); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            margin-bottom: 18px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.2); position: relative;
         }
-
-        .shop-card img { 
-            width: 100%; 
-            height: 180px; 
-            object-fit: cover; 
-        }
-
-        .shop-body { 
-            padding: 15px; 
-        }
-
-        .shop-title { 
-            font-size: 1.15rem; 
-            font-weight: 700; 
-            color: var(--text-color); 
-            line-height: 1.3; 
-        }
-
-        .shop-location { 
-            color: #888; 
-            margin: 4px 0 10px; 
-            font-size: 0.82rem; 
-        }
+        .shop-card img { width: 100%; height: 180px; object-fit: cover; }
+        .shop-body { padding: 15px; }
+        .shop-title { font-size: 1.15rem; font-weight: 700; color: var(--text-color); line-height: 1.3; }
+        .shop-location { color: #888; margin: 4px 0 10px; font-size: 0.82rem; }
 
         .status-badge {
-            position: absolute; 
-            top: 12px; 
-            left: 12px; 
-            padding: 4px 8px; 
-            border-radius: 10px;
-            font-size: 0.7rem; 
-            font-weight: 700; 
-            color: white; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            position: absolute; top: 12px; left: 12px; padding: 4px 8px; border-radius: 10px;
+            font-size: 0.7rem; font-weight: 700; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
-
-        .status-open { 
-            background: #17B978; 
-        }
-
-        .status-closed { 
-            background: #FF3838; 
-        }
+        .status-open { background: #17B978; }
+        .status-closed { background: #FF3838; }
 
         .distance-tag {
-            background: #0984e3; 
-            color: white; 
-            padding: 2px 8px; 
-            border-radius: 10px; 
-            font-size: 0.72rem; 
-            font-weight: 600; 
-            display: inline-block; 
-            margin-top: 4px;
+            background: #0984e3; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; display: inline-block; margin-top: 4px;
         }
 
         .bookmark-icon-btn {
-            position: absolute; 
-            top: 12px; 
-            right: 12px; 
-            background: rgba(255,255,255,0.9); 
-            width: 32px; 
-            height: 32px;
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            color: #d63031; 
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #d63031; box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        .menu-badge { 
-            background: #ffeaa7; 
-            color: #d63031; 
-            padding: 4px 10px; 
-            border-radius: 10px; 
-            font-weight: 600; 
-            font-size: 0.75rem; 
-            display: inline-block; 
-        }
+        .menu-badge { background: #ffeaa7; color: #d63031; padding: 4px 10px; border-radius: 10px; font-weight: 600; font-size: 0.75rem; display: inline-block; }
+        .menu-list { margin-top: 10px; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 10px; }
+        .menu-item { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; }
 
-        .menu-list { 
-            margin-top: 10px; 
-            background: rgba(0,0,0,0.04); 
-            padding: 10px; 
-            border-radius: 10px; 
-        }
-
-        .menu-item { 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 0.82rem; 
-            margin-bottom: 4px; 
-        }
-
-        .rating-box { 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            margin: 8px 0; 
-        }
-
-        .stars-interactive i { 
-            color: #dcdde1; 
-            cursor: pointer; 
-            font-size: 1rem; 
-        }
-
-        .stars-interactive i.active { 
-            color: #FF9F1A; 
-        }
+        .rating-box { display: flex; align-items: center; gap: 6px; margin: 8px 0; }
+        .stars-interactive i { color: #dcdde1; cursor: pointer; font-size: 1rem; }
+        .stars-interactive i.active { color: #FF9F1A; }
 
         /* Review Section */
-        .review-section { 
-            margin-top: 10px; 
-            border-top: 1px dashed #ccc; 
-            padding-top: 8px; 
-        }
+        .review-section { margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 8px; }
+        .review-input-box { display: flex; gap: 6px; margin-top: 6px; }
+        .review-input-box input { flex: 1; padding: 6px 8px; border: 1px solid #ccc; border-radius: 8px; font-size: 0.78rem; outline: none; }
+        .comments-display { max-height: 80px; overflow-y: auto; font-size: 0.78rem; color: #555; margin-top: 6px; background: rgba(0,0,0,0.02); padding: 6px; border-radius: 6px; }
 
-        .review-input-box { 
-            display: flex; 
-            gap: 6px; 
-            margin-top: 6px; 
-        }
-
-        .review-input-box input { 
-            flex: 1; 
-            padding: 6px 8px; 
-            border: 1px solid #ccc; 
-            border-radius: 8px; 
-            font-size: 0.78rem; 
-            outline: none; 
-        }
-
-        .comments-display { 
-            max-height: 80px; 
-            overflow-y: auto; 
-            font-size: 0.78rem; 
-            color: #555; 
-            margin-top: 6px; 
-            background: rgba(0,0,0,0.02); 
-            padding: 6px; 
-            border-radius: 6px; 
-        }
-
-        .card-action-btns { 
-            display: flex; 
-            gap: 6px; 
-            margin-top: 10px; 
-            flex-wrap: wrap; 
-        }
+        .card-action-btns { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 
         /* Modal Styles */
         .modal {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px); 
-            display: none; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 1000; 
-            padding: 15px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 15px;
         }
-
         .auth-card-single {
-            background: var(--card-bg); 
-            color: var(--text-color); 
-            border-radius: 20px; 
-            padding: 20px;
-            width: 100%; 
-            max-width: 400px; 
-            position: relative; 
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4); 
-            text-align: center; 
-            overflow: hidden;
+            background: var(--card-bg); color: var(--text-color); border-radius: 20px; padding: 20px;
+            width: 100%; max-width: 450px; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.4); text-align: center; overflow: hidden;
         }
 
-        .form-group { 
-            margin-bottom: 10px; 
-            text-align: left; 
-        }
-
-        .form-group label { 
-            display: block; 
-            font-weight: 600; 
-            margin-bottom: 4px; 
-            font-size: 0.8rem; 
-        }
-
-        .form-group input, .form-group textarea, .form-group select { 
-            width: 100%; 
-            padding: 8px 10px; 
-            border: 2px solid #dfe4ea; 
-            border-radius: 8px; 
-            outline: none; 
-            font-size: 0.85rem; 
-        }
+        .form-group { margin-bottom: 10px; text-align: left; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px 10px; border: 2px solid #dfe4ea; border-radius: 8px; outline: none; font-size: 0.85rem; }
 
         /* Developer Card */
         .dev-card {
-            background: linear-gradient(135deg, #1E272E, #2F3542); 
-            color: white; 
-            border-radius: 18px;
-            padding: 20px 12px; 
-            margin: 25px 0 15px; 
-            text-align: center; 
-            position: relative;
+            background: linear-gradient(135deg, #1E272E, #2F3542); color: white; border-radius: 18px;
+            padding: 20px 12px; margin: 25px 0 15px; text-align: center; position: relative;
         }
-
-        .dev-orbit-wrapper { 
-            position: relative; 
-            width: 130px; 
-            height: 130px; 
-            margin: 0 auto 12px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-
-        .dev-img { 
-            width: 90px; 
-            height: 90px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 3px solid var(--primary); 
-            box-shadow: 0 0 20px rgba(255, 56, 56, 0.5); 
-            z-index: 5; 
-        }
-
-        .orbiting-food-ring { 
-            position: absolute; 
-            width: 120px; 
-            height: 120px; 
-            border-radius: 50%; 
-            border: 2px dashed rgba(255, 159, 26, 0.4); 
-            animation: orbitSpin 12s linear infinite; 
-        }
-
-        .orbit-food-item { 
-            position: absolute; 
-            font-size: 1.1rem; 
-        }
-
+        .dev-orbit-wrapper { position: relative; width: 130px; height: 130px; margin: 0 auto 12px; display: flex; justify-content: center; align-items: center; }
+        .dev-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(255, 56, 56, 0.5); z-index: 5; }
+        .orbiting-food-ring { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 2px dashed rgba(255, 159, 26, 0.4); animation: orbitSpin 12s linear infinite; }
+        .orbit-food-item { position: absolute; font-size: 1.1rem; }
         .of-top { top: -8px; left: 50%; transform: translateX(-50%); }
         .of-bottom { bottom: -8px; left: 50%; transform: translateX(-50%); }
         .of-left { left: -8px; top: 50%; transform: translateY(-50%); }
         .of-right { right: -8px; top: 50%; transform: translateY(-50%); }
-
-        @keyframes orbitSpin { 
-            from { transform: rotate(0deg); } 
-            to { transform: rotate(360deg); } 
-        }
+        @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* Floating Contact Buttons */
-        .floating-contact-panel { 
-            position: fixed; 
-            bottom: 15px; 
-            right: 15px; 
-            z-index: 999; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 8px; 
-        }
+        .floating-contact-panel { position: fixed; bottom: 15px; right: 15px; z-index: 999; display: flex; flex-direction: column; gap: 8px; }
+        .floating-contact-panel .btn { padding: 8px 12px; border-radius: 20px; font-size: 0.8rem; }
 
-        .floating-contact-panel .btn { 
-            padding: 8px 12px; 
-            border-radius: 20px; 
-            font-size: 0.8rem; 
-        }
-
-        .profile-card { 
-            background: var(--card-bg); 
-            padding: 18px; 
-            border-radius: 18px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06); 
-            max-width: 500px; 
-            margin: 0 auto; 
-        }
-
-        .hidden { 
-            display: none !important; 
-        }
+        .profile-card { background: var(--card-bg); padding: 18px; border-radius: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); max-width: 500px; margin: 0 auto; }
+        .hidden { display: none !important; }
 
         @media (max-width: 600px) {
             header { padding: 8px 3%; }
@@ -661,7 +217,7 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">৫০০+ স্ট্রিট ফুড ও স্পেশাল ফিচার লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের ৬৪ জেলার খাবার ও ম্যাপ লোড হচ্ছে...</p>
     </div>
 
     <!-- Header Navigation Bar -->
@@ -671,7 +227,6 @@
         </div>
         
         <div style="display:flex; gap:6px; align-items:center;">
-            <!-- Theme Selector -->
             <div class="theme-picker">
                 <div class="theme-dot" style="background:#FF3838;" onclick="setTheme('')"></div>
                 <div class="theme-dot" style="background:#e67e22;" onclick="setTheme('theme-orange')"></div>
@@ -706,20 +261,20 @@
 
     <!-- Hero Title & Clean Search Bar -->
     <div class="hero">
-        <h1>লুকানো স্বাদ — বাংলাদেশ স্ট্রিট ফুড হাব BD</h1>
-        <p>বাংলাদেশের বিখ্যাত গোপন খাবারের সঠিক ঠিকানা, ম্যাপ ও বাস রুট জেনে নিন!</p>
+        <h1>লুকানো স্বাদ — বাংলাদেশের ৬৪ জেলার স্ট্রিট ফুড হাব BD</h1>
+        <p>আপনার জেলার বিখ্যাত গোপন স্ট্রিট ফুড স্পট, গুগল ম্যাপ ও নিখুঁত দূরত্ব জেনে নিন!</p>
         
         <div class="search-box-wrapper">
-            <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="দোকান, খাবার বা এলাকার নাম দিয়ে সার্চ করুন...">
-            <button class="btn btn-primary" style="border-radius: 20px; padding:6px 12px;" onclick="filterShops()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="দোকান, খাবার, জেলা বা এলাকার নাম দিয়ে সার্চ করুন...">
+            <button class="btn btn-primary" style="border-radius: 20px; padding:6px 12px;" onclick="filterShops()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
 
         <div class="filter-controls">
-            <button class="btn btn-secondary" onclick="findNearestShops()" style="padding: 4px 10px; font-size:0.75rem;">
+            <button class="btn btn-secondary" onclick="findNearestShopsGPS()" style="padding: 5px 12px; font-size:0.78rem;">
                 📍 আশেপাশের খাবার (Near Me GPS)
             </button>
-            <button class="btn btn-outline" onclick="openModal('storyModal')" style="padding: 4px 10px; font-size:0.75rem; color:white; border-color:white;">
-                📖 ফুড স্টোরিজ (Stories)
+            <button class="btn btn-outline" onclick="openModal('storyModal')" style="padding: 5px 12px; font-size:0.78rem; color:white; border-color:white;">
+                📖 ৬৪ জেলার খাবারের ইতিহাস (Stories)
             </button>
             <select id="budgetFilter" onchange="filterShops()">
                 <option value="all">💰 সব বাজেট</option>
@@ -732,6 +287,7 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Division Buttons -->
         <div class="division-bar">
             <button class="division-btn active" id="div-dhaka" onclick="selectDivision('ঢাকা বিভাগ')">🏙️ ঢাকা বিভাগ</button>
             <button class="division-btn" id="div-ctg" onclick="selectDivision('চট্টগ্রাম বিভাগ')">🌊 চট্টগ্রাম বিভাগ</button>
@@ -743,6 +299,14 @@
             <button class="division-btn" id="div-mym" onclick="selectDivision('ময়মনসিংহ বিভাগ')">🌿 ময়মনসিংহ বিভাগ</button>
         </div>
 
+        <!-- District Selection Dropdown -->
+        <div class="district-select-box">
+            <label style="font-weight:700; font-size:0.85rem;"><i class="fa-solid fa-map-pin" style="color:var(--primary);"></i> নির্দিষ্ট জেলা সিলেক্ট করুন:</label>
+            <select id="districtDropdown" onchange="onDistrictChange()" style="padding:6px 12px; border-radius:12px; border:1px solid #ccc; outline:none; font-weight:600;">
+                <!-- Dynamically loaded -->
+            </select>
+        </div>
+
         <div id="sectionExplore">
             <div id="shopsContainer"></div>
         </div>
@@ -750,53 +314,29 @@
         <!-- Add Shop Section -->
         <div id="sectionAddShop" class="hidden">
             <div class="profile-card">
-                <h3 style="color: var(--primary); text-align: center; margin-bottom: 12px; font-size:1.1rem;">🏪 নতুন দোকানের তথ্য ও সময় যুক্ত করুন</h3>
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 12px; font-size:1.1rem;">🏪 নতুন দোকানের তথ্য, বিভাগ ও জেলা যুক্ত করুন</h3>
                 <form onsubmit="submitShopForApproval(event)">
-                    <div class="form-group">
-                        <label>দোকানের নাম:</label>
-                        <input type="text" id="newShopName" placeholder="যেমন: বিসমিল্লাহ কাবাব ঘর" required>
-                    </div>
+                    <div class="form-group"><label>দোকানের নাম:</label><input type="text" id="newShopName" placeholder="যেমন: বিসমিল্লাহ কাবাব ঘর" required></div>
                     <div class="form-group">
                         <label>বিভাগ:</label>
-                        <select id="newShopDivision" required>
-                            <option value="ঢাকা বিভাগ">ঢাকা বিভাগ</option>
-                            <option value="চট্টগ্রাম বিভাগ">চট্টগ্রাম বিভাগ</option>
-                            <option value="সিলেট বিভাগ">সিলেট বিভাগ</option>
-                            <option value="রাজশাহী বিভাগ">রাজশাহী বিভাগ</option>
-                            <option value="খুলনা বিভাগ">খুলনা বিভাগ</option>
-                            <option value="বরিশাল বিভাগ">বরিশাল বিভাগ</option>
-                            <option value="রংপুর বিভাগ">রংপুর বিভাগ</option>
-                            <option value="ময়মনসিংহ বিভাগ">ময়মনসিংহ বিভাগ</option>
+                        <select id="newShopDivision" onchange="updateAddShopDistricts()" required>
+                            <option value="ঢাকা বিভাগ">ঢাকা বিভাগ</option><option value="চট্টগ্রাম বিভাগ">চট্টগ্রাম বিভাগ</option>
+                            <option value="সিলেট বিভাগ">সিলেট বিভাগ</option><option value="রাজশাহী বিভাগ">রাজশাহী বিভাগ</option>
+                            <option value="খুলনা বিভাগ">খুলনা বিভাগ</option><option value="বরিশাল বিভাগ">বরিশাল বিভাগ</option>
+                            <option value="রংপুর বিভাগ">রংপুর বিভাগ</option><option value="ময়মনসিংহ বিভাগ">ময়মনসিংহ বিভাগ</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>এলাকা ও ঠিকানা:</label>
-                        <input type="text" id="newShopLoc" placeholder="যেমন: কাজীপাড়া, মিরপুর ১০, ঢাকা" required>
+                        <label>জেলা:</label>
+                        <select id="newShopDistrict" required></select>
                     </div>
-                    <div class="form-group">
-                        <label>খোলার সময়:</label>
-                        <input type="time" id="newShopOpenTime" value="10:00" required>
-                    </div>
-                    <div class="form-group">
-                        <label>বন্ধের সময়:</label>
-                        <input type="time" id="newShopCloseTime" value="23:00" required>
-                    </div>
-                    <div class="form-group">
-                        <label>বিশেষত্ব:</label>
-                        <input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা" required>
-                    </div>
-                    <div class="form-group">
-                        <label>বাস রুট:</label>
-                        <input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ম্যাপ লিংক:</label>
-                        <input type="url" id="newShopMap" placeholder="https://maps.google.com/..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>ছবির লিংক:</label>
-                        <input type="url" id="newShopImg" placeholder="https://..." required>
-                    </div>
+                    <div class="form-group"><label>এলাকা ও বিস্তারিত ঠিকানা:</label><input type="text" id="newShopLoc" placeholder="যেমন: কাজীপাড়া, মিরপুর ১০, ঢাকা" required></div>
+                    <div class="form-group"><label>খোলার সময়:</label><input type="time" id="newShopOpenTime" value="10:00" required></div>
+                    <div class="form-group"><label>বন্ধের সময়:</label><input type="time" id="newShopCloseTime" value="23:00" required></div>
+                    <div class="form-group"><label>বিশেষত্ব:</label><input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা" required></div>
+                    <div class="form-group"><label>বাস রুট:</label><input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required></div>
+                    <div class="form-group"><label>ম্যাপ লিংক:</label><input type="url" id="newShopMap" placeholder="https://maps.google.com/..." required></div>
+                    <div class="form-group"><label>ছবির লিংক:</label><input type="url" id="newShopImg" placeholder="https://..." required></div>
                     
                     <h4 style="margin: 10px 0 6px; font-size: 0.9rem;">📋 খাবারের আইটেম ও দাম</h4>
                     <div id="itemInputs">
@@ -824,10 +364,7 @@
                 <h3 id="pNameDisplay">User Name</h3>
                 <p id="pContactDisplay" style="color:#666; margin-bottom:12px; font-size:0.82rem;">01888183241</p>
                 <form onsubmit="saveProfileUpdate(event)" style="text-align: left;">
-                    <div class="form-group">
-                        <label>আপনার নাম:</label>
-                        <input type="text" id="pName" placeholder="আপনার নাম লিখুন">
-                    </div>
+                    <div class="form-group"><label>আপনার নাম:</label><input type="text" id="pName" placeholder="আপনার নাম লিখুন"></div>
                     <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">প্রোফাইল সেভ করুন</button>
                 </form>
             </div>
@@ -853,69 +390,26 @@
     </div>
 
     <!-- Modals -->
-    <div class="modal" id="mapModal">
-        <div class="auth-card-single">
-            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('mapModal')">&times;</span>
-            <div id="mapModalBody"></div>
-        </div>
-    </div>
+    <div class="modal" id="mapModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('mapModal')">&times;</span><div id="mapModalBody"></div></div></div>
     
-    <!-- Food Story Modal -->
+    <!-- 64 District Food Story Modal -->
     <div class="modal" id="storyModal">
         <div class="auth-card-single" style="text-align:left;">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('storyModal')">&times;</span>
-            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-book-open"></i> বিখ্যাত খাবারের ইতিহাস</h3>
-            <div style="font-size:0.82rem; max-height:250px; overflow-y:auto; line-height:1.5;">
-                <p><b>১. পুরান ঢাকার বাকরখানি:</b> মোগল আমল থেকেই বাকরখানি পুরান ঢাকার মানুষের ঐতিহ্যবাহী প্রিয় এক নাস্তা।</p><br>
-                <p><b>২. সিলেটি সাতকড়া চা:</b> লেবু ও বিশেষ সাতকড়া ফলের সুবাসে ভরা সিলেটের ঐতিহ্যবাহী পানীয়।</p><br>
-                <p><b>৩. খুলনা ও সাতক্ষীরার চুইঝাল:</b> মাটির পাত্রে চুইঝাল কাণ্ড দিয়ে রান্না করা গরুর মাংসের ঐতিহ্য অনন্য।</p>
+            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-book-open"></i> ৬৪ জেলার বিখ্যাত খাবারের ইতিহাস</h3>
+            <div class="form-group">
+                <label>জেলা বেছে নিন:</label>
+                <select id="storyDistrictSelect" onchange="displayDistrictStory()"></select>
+            </div>
+            <div id="storyContent" style="font-size:0.85rem; max-height:220px; overflow-y:auto; line-height:1.5; background:rgba(0,0,0,0.03); padding:10px; border-radius:10px;">
+                জেলা সিলেক্ট করুন...
             </div>
         </div>
     </div>
 
-    <div class="modal" id="loginModal">
-        <div class="auth-card-single">
-            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('loginModal')">&times;</span>
-            <h3 style="color: var(--primary); margin-bottom: 10px;">Login</h3>
-            <form onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" id="loginUser" required>
-                </div>
-                <div class="form-group">
-                    <label>Password:</label>
-                    <input type="password" id="loginPass" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="signupModal">
-        <div class="auth-card-single">
-            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('signupModal')">&times;</span>
-            <h3 style="color: var(--secondary); margin-bottom: 10px;">Sign Up</h3>
-            <form onsubmit="handleSignup(event)">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" id="regName" required>
-                </div>
-                <div class="form-group">
-                    <label>Password:</label>
-                    <input type="password" id="regPass" required>
-                </div>
-                <button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">রেজিস্ট্রেশন</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal" id="adminModal">
-        <div class="profile-card" style="width:100%; max-width:500px; position:relative;">
-            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-bell"></i> এডমিন নোটিফিকেশন</h3>
-            <div id="pendingShopsList"></div>
-        </div>
-    </div>
+    <div class="modal" id="loginModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('loginModal')">&times;</span><h3 style="color: var(--primary); margin-bottom: 10px;">Login</h3><form onsubmit="handleLogin(event)"><div class="form-group"><label>Username:</label><input type="text" id="loginUser" required></div><div class="form-group"><label>Password:</label><input type="password" id="loginPass" required></div><button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন</button></form></div></div>
+    <div class="modal" id="signupModal"><div class="auth-card-single"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('signupModal')">&times;</span><h3 style="color: var(--secondary); margin-bottom: 10px;">Sign Up</h3><form onsubmit="handleSignup(event)"><div class="form-group"><label>Name:</label><input type="text" id="regName" required></div><div class="form-group"><label>Password:</label><input type="password" id="regPass" required></div><button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">রেজিস্ট্রেশন</button></form></div></div>
+    <div class="modal" id="adminModal"><div class="profile-card" style="width:100%; max-width:500px; position:relative;"><span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('adminModal')">&times;</span><h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-bell"></i> এডমিন নোটিফিকেশন</h3><div id="pendingShopsList"></div></div></div>
 
     <!-- Floating Contact -->
     <div class="floating-contact-panel">
@@ -931,24 +425,81 @@
             });
         }
 
-        setTimeout(() => { 
-            document.getElementById('splashScreen').style.display = 'none'; 
-        }, 1200);
+        setTimeout(() => { document.getElementById('splashScreen').style.display = 'none'; }, 1200);
 
         let userLat = null, userLng = null;
 
-        function generateMassiveDivisionShops() {
-            const divisions = [
-                { name: "ঢাকা বিভাগ", key: "dhaka", lat: 23.8103, lng: 90.4125, locations: ["মিরপুর ১০", "মিরপুর ২", "ধানমন্ডি ২৭", "টিএসসি ঢাবি", "উত্তরা ৩", "পুরান ঢাকা নাজিরাবাজার", "গুলশান ২", "মোহাম্মদপুর টাউনহল", "বসুন্ধরা গেট", "খিলগাঁও তালতলা"], foods: ["চিজি মোমো", "ঝালমুড়ি", "দই ফুচকা", "গরুর চাপ", "বিফ বার্গার", "ওভেন পাস্তা", "মালাই চা", "চিকেন শর্মা", "কাবাব", "ফ্রাইড চিকেন"] },
-                { name: "চট্টগ্রাম বিভাগ", key: "ctg", lat: 22.3569, lng: 91.7832, locations: ["সিআরবি মোড়", "পতেঙ্গা সী-বিচ", "জিইসি মোড়", "আগ্রাবাদ", "হালিশহর", "খুলশী", "ঝাউতলা", "লালখান বাজার", "চকবাজার", "পাহাড়তলী"], foods: ["সাতকড়া মোহিতো", "ক্র্যাব ফ্রাই", "লাল মাছ ফ্রাই", "বিফ কাচ্চি", "মেযবানি গোশত", "চিকেন গ্রিল", "স্পাইসি ফুচকা", "লস্যি", "চিকেন রোস্ট", "শর্মা"] },
-                { name: "সিলেট বিভাগ", key: "syl", lat: 24.8949, lng: 91.8687, locations: ["ক্বীন ব্রিজ", "জিন্দাবাজার", "আম্বরখানা", "শাহজালাল দরগাহ রোড", "উপশহর", "টিলাগর", "বন্দরবাজার", "নয়া সড়ক", "সুবিদ্বাজার", "কুমারপাড়া"], foods: ["মাললাই চা", "সাতকড়া চা", "সিলেটি ফুচকা", "হাঁসের মাংস", "চিতই পিঠা", "বিফ বিরিয়ানি", "চিকেন মোমো", "লস্যি", "কাবাব", "চটপটি"] },
-                { name: "রাজশাহী বিভাগ", key: "raj", lat: 24.3745, lng: 88.6042, locations: ["পদ্মা গার্ডেন", "সাহেব বাজার", "কাজলা", "বিনোদপুর", "লক্ষ্মীপুর", "নিউ মার্কেট", "সিএন্ডবি মোড়", "কোর্ট স্টেশন", "উপশহর", "তালাইমারী"], foods: ["কুলফি মালাই", "পদ্মা ফুচকা", "রাজশাহী মিষ্টান্ন", "ঝাল পুরি", "চিকেন চাপ", "মালাই চা", "চিকেন ফ্রাই", "বার্গার", "পাস্তা", "বেলপুরি"] },
-                { name: "খুলনা বিভাগ", key: "khu", lat: 22.8456, lng: 89.5403, locations: ["রয়্যাল মোড়", "শিববাড়ী মোড়", "দৌলতপুর", "বয়রা", "খালিশপুর", "খানজাহান আলী রোড", "সোনাডাঙ্গা", "রূপসা ঘাট", "ময়লাপোতা", "গল্লামারী"], foods: ["চুইঝাল গরুর মাংস", "চুইঝাল খাসি", "স্পেশাল পরোটা", "স্ট্রিট মোমো", "ফুচকা", "চিকেন গ্রিল", "মালাই চা", "লস্যি", "বার্গার", "চটপটি"] },
-                { name: "বরিশাল বিভাগ", key: "bar", lat: 22.7010, lng: 90.3535, locations: ["নাথুল্লাবাদ", "অশ্বিনী কুমার হল", "সদর রোড", "লঞ্চঘাট", "চৌমাথা", "সিএন্ডবি রোড", "রূপাতলী", "বান্দ রোড", "জেলখানা মোড়", "মেডিকেল কলেজ মোড়"], foods: ["বরিশাল ফুচকা", "ডিম চটপটি", "নারকেল চা", "চিকেন শর্মা", "বিফ চাপ", "পিঠা", "লস্যি", "ফ্রাইড রাইস", "বার্গার", "বেলপুরি"] },
-                { name: "রংপুর বিভাগ", key: "ran", lat: 25.7439, lng: 89.2752, locations: ["জাহাজ কোম্পানির মোড়", "কারমাইকেল কলেজ গেট", "ধাপ মোড়", "গ্র্যান্ড হোটেল মোড়", "মেডিকেল মোড়", "লালবাগ", "পার্ক মোড়", "সাতমাথা", "পীরগঞ্জ রোড", "মডার্ন মোড়"], foods: ["স্টিম মোমো", "ক্রিসপি বার্গার", "রংপুরী ফুচকা", "মালাই চা", "বিফ কাবাব", "পাস্তা", "চিকেন শর্মা", "চটপটি", "ঝালমুড়ি", "লস্যি"] },
-                { name: "ময়মনসিংহ বিভাগ", key: "mym", lat: 24.7471, lng: 90.4203, locations: ["ব্রহ্মপুত্র নদ পাড়", "গঙ্গাদাস গুহ রোড", "টাউন হল মোড়", "চরপাড়া", "পণ্ডিতপাড়া", "নয়া বাজার", "মেডিকেল কলেজ গেট", "শম্ভুগঞ্জ ব্রিজ", "আজাদ স্কয়ার", "গার্লস স্কুল মোড়"], foods: ["চিতই পিঠা ও হাঁসের মাংস", "মায়মনসিংহের মালাই চা", "স্পেশাল ফুচকা", "বিফ চাপ", "চিকেন মোমো", "ঝাল চটপটি", "বার্গার", "পাস্তা", "লস্যি", "বেলপুরি"] }
-            ];
+        // Complete 64 District Data Mapping by Divisions
+        const divisionData = {
+            "ঢাকা বিভাগ": {
+                districts: ["সকল জেলা", "ঢাকা", "গাজীপুর", "নারায়ণগঞ্জ", "টাঙ্গাইল", "নরসিংদী", "মানিকগঞ্জ", "মুন্সীগঞ্জ", "ফরিদপুর", "মাদারীপুর", "গোপালগঞ্জ", "রাজবাড়ী", "শরীয়তপুর"],
+                lat: 23.8103, lng: 90.4125
+            },
+            "চট্টগ্রাম বিভাগ": {
+                districts: ["সকল জেলা", "চট্টগ্রাম", "কক্সবাজার", "কুমিল্লা", "ফেনী", "নোয়াখালী", "লক্ষ্মীপুর", "চাঁদপুর", "ব্রাহ্মণবাড়িয়া", "রাঙ্গামাটি", "বান্দরবান", "খাগড়াছড়ি"],
+                lat: 22.3569, lng: 91.7832
+            },
+            "সিলেট বিভাগ": {
+                districts: ["সকল জেলা", "সিলেট", "মৌলভীবাজার", "হবিগঞ্জ", "সুনামগঞ্জ"],
+                lat: 24.8949, lng: 91.8687
+            },
+            "রাজশাহী বিভাগ": {
+                districts: ["সকল জেলা", "রাজশাহী", "বগুড়া", "পাবনা", "সিরাজগঞ্জ", "নাটোর", "নওগাঁ", "চাঁপাইনবাবগঞ্জ", "জয়পুরহাট"],
+                lat: 24.3745, lng: 88.6042
+            },
+            "খুলনা বিভাগ": {
+                districts: ["সকল জেলা", "খুলনা", "যশোর", "সাতক্ষীরা", "কুষ্টিয়া", "ঝিনাইদহ", "বাগেরহাট", "চুয়াডাঙ্গা", "মেহেরপুর", "নড়াইল", "মাগুরা"],
+                lat: 22.8456, lng: 89.5403
+            },
+            "বরিশাল বিভাগ": {
+                districts: ["সকল জেলা", "বরিশাল", "পটুয়াখালী", "ভোলা", "পিরোজপুর", "বরগুনা", "ঝালকাঠি"],
+                lat: 22.7010, lng: 90.3535
+            },
+            "রংপুর বিভাগ": {
+                districts: ["সকল জেলা", "রংপুর", "দিনাজপুর", "গাইবান্ধা", "কুড়িগ্রাম", "নীলফামারী", "পঞ্চগড়", "ঠাকুরগাঁও", "লালমনিরহাট"],
+                lat: 25.7439, lng: 89.2752
+            },
+            "ময়মনসিংহ বিভাগ": {
+                districts: ["সকল জেলা", "ময়মনসিংহ", "জামালপুর", "শেরপুর", "নেত্রকোণা"],
+                lat: 24.7471, lng: 90.4203
+            }
+        };
 
+        // Famous Food Histories for 64 Districts Sample Highlights
+        const foodStoriesBD = {
+            "ঢাকা": "পুরান ঢাকার বাকরখানি, বিসমিল্লাহর চাপ ও মোস্তাকিমের কাবাব অত্যন্ত ঐতিহ্যবাহী।",
+            "চট্টগ্রাম": "মেযবানি গরুর মাংস, পতেঙ্গা সী-বিচের ক্র্যাব ফ্রাই ও ঝাল কাচ্চি বিরিয়ানি এখানকার মূল আকর্ষণ।",
+            "বগুড়া": "বগুড়ার নবাববাড়ীর স্পেশাল মিষ্টি দই ও গোহালের দই সারাবিশ্বে সুপরিচিত।",
+            "কুমিল্লা": "কুমিল্লার আসল মাতৃভান্ডারের রসমালাই শতাব্দীর প্রাচীন ও ঐতিহ্যবাহী।",
+            "সিলেট": "সিলেটের সাতকড়া দিয়ে রান্না করা গরুর মাংস ও মাললাই চায়ের স্বাদ অসাধারণ।",
+            "খুলনা": "খুলনার চুইঝাল দিয়ে খাসি ও গরুর মাংসের ঝাল ভুনা বাংলাদেশ বিখ্যাত।",
+            "সাতক্ষীরা": "সাতক্ষীরার চুইঝাল ও আসল সন্দেশ অত্যন্ত জনপ্রিয়।",
+            "দিনাজপুর": "দিনাজপুরের কাটারিভোগ চালের ক্ষীর ও পাটিসাপটা পিঠা অনন্য।",
+            "রাজশাহী": "রাজশাহীর পদ্মার তাজা কুলফি মালাই ও কলাইয়ের রুটি বেগুন ভর্তা খুব জনপ্রিয়।"
+        };
+
+        function populate64DistrictsInStory() {
+            const select = document.getElementById('storyDistrictSelect');
+            select.innerHTML = '';
+            Object.keys(divisionData).forEach(div => {
+                divisionData[div].districts.forEach(dist => {
+                    if(dist !== "সকল জেলা") {
+                        select.innerHTML += `<option value="${dist}">${dist} (${div})</option>`;
+                    }
+                });
+            });
+            displayDistrictStory();
+        }
+
+        function displayDistrictStory() {
+            const dist = document.getElementById('storyDistrictSelect').value;
+            const content = document.getElementById('storyContent');
+            const story = foodStoriesBD[dist] || `${dist} জেলার স্ট্রিট ফুডের সংস্কৃতি ও ঐতিহ্য অনন্য। এখানকার স্থানীয় চা, পিঠা ও স্পাইসি ঝালমুড়ি অত্যন্ত সুস্বাদু।`;
+            content.innerHTML = `<b>📍 ${dist} জেলা:</b><br>${story}`;
+        }
+
+        // Automatic 80-100 Street Food Shops Generator for 64 Districts
+        function generate64DistrictShops() {
             const images = [
                 "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
                 "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
@@ -956,43 +507,51 @@
                 "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
             ];
 
+            const foodsList = ["চিজি মোমো", "দই ফুচকা", "গরুর চাপ", "স্পেশাল মালাই চা", "চিকেন শর্মা", "কাবাব", "চুইঝাল মিট", "বিফ কাচ্চি", "লস্যি", "ক্রিসপি বার্গার"];
             let generatedShops = [];
             let idCounter = 1;
 
-            divisions.forEach(div => {
-                for(let i = 1; i <= 65; i++) {
-                    let loc = div.locations[i % div.locations.length];
-                    let food = div.foods[i % div.foods.length];
-                    let img = images[i % images.length];
+            Object.keys(divisionData).forEach(divName => {
+                const divObj = divisionData[divName];
+                divObj.districts.forEach(distName => {
+                    if(distName !== "সকল জেলা") {
+                        for(let i = 1; i <= 80; i++) {
+                            let food = foodsList[i % foodsList.length];
+                            let img = images[i % images.length];
 
-                    generatedShops.push({
-                        id: idCounter++,
-                        name: `${loc} সিক্রেট ${food} ও ফাস্টফুড স্পট ${i}`,
-                        division: div.name,
-                        loc: `${loc}, ${div.name.replace(' বিভাগ', '')}`,
-                        lat: div.lat + (Math.random() - 0.5) * 0.05,
-                        lng: div.lng + (Math.random() - 0.5) * 0.05,
-                        openTime: "09:00",
-                        closeTime: "23:00",
-                        special: `${food}, বিশেষ চাটনি, কোল্ড ড্রিংকস`,
-                        buses: "লোকাল বাস, সিএনজি, অটো রিকশা",
-                        mapUrl: `https://www.google.com/maps?q=${encodeURIComponent(loc + " " + div.name)}`,
-                        img: img,
-                        rating: (4.3 + (i % 7) * 0.1).toFixed(1),
-                        reviewsCount: 12 + i,
-                        tags: `${food} ${loc} ${div.key} ${div.name} street food`,
-                        menu: [{ item: `স্পেশাল ${food}`, price: 70 + (i % 8) * 10 }],
-                        comments: ["খাবারটি সত্যিই অনেক সুস্বাদু ছিল!", "পরিবেশ ও স্বাদ বেশ ভালো লেগেছে।"]
-                    });
-                }
+                            generatedShops.push({
+                                id: idCounter++,
+                                name: `${distName} সিক্রেট ${food} পয়েন্ট ${i}`,
+                                division: divName,
+                                district: distName,
+                                loc: `${distName} সদর মোড়, ${distName}`,
+                                lat: divObj.lat + (Math.random() - 0.5) * 0.08,
+                                lng: divObj.lng + (Math.random() - 0.5) * 0.08,
+                                openTime: "09:00",
+                                closeTime: "23:00",
+                                special: `${food}, স্পেশাল চাটনি`,
+                                buses: "লোকাল বাস, ইজি বাইক, সিএনজি",
+                                mapUrl: `https://www.google.com/maps?q=${encodeURIComponent(distName + " " + food)}`,
+                                img: img,
+                                rating: (4.2 + (i % 8) * 0.1).toFixed(1),
+                                reviewsCount: 10 + i,
+                                tags: `${food} ${distName} ${divName} street food`,
+                                menu: [{ item: `স্পেশাল ${food}`, price: 60 + (i % 10) * 10 }],
+                                comments: ["খাবার বেশ সুস্বাদু!", "দাম অনুযায়ী বেশ ভালো স্বাদ।"]
+                            });
+                        }
+                    }
+                });
             });
             return generatedShops;
         }
 
         let selectedDivisionName = "ঢাকা বিভাগ";
+        let selectedDistrictName = "সকল জেলা";
+
         let shops = JSON.parse(localStorage.getItem('lukanoShad_allShops'));
-        if(!shops || shops.length < 100) {
-            shops = generateMassiveDivisionShops();
+        if(!shops || shops.length < 500) {
+            shops = generate64DistrictShops();
             localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
         }
 
@@ -1003,10 +562,28 @@
 
         window.onload = function() {
             if(currentUser) setupLoggedInView(currentUser);
+            updateDistrictDropdown();
             renderShopsList();
             updateNotificationBadge();
             updateSavedCount();
+            populate64DistrictsInStory();
+            updateAddShopDistricts();
         };
+
+        function updateDistrictDropdown() {
+            const dropdown = document.getElementById('districtDropdown');
+            dropdown.innerHTML = '';
+            const districts = divisionData[selectedDivisionName].districts;
+            districts.forEach(d => {
+                dropdown.innerHTML += `<option value="${d}">${d}</option>`;
+            });
+            selectedDistrictName = "সকল জেলা";
+        }
+
+        function onDistrictChange() {
+            selectedDistrictName = document.getElementById('districtDropdown').value;
+            renderShopsList();
+        }
 
         function calculateDistance(lat1, lon1, lat2, lon2) {
             if(!lat1 || !lon1 || !lat2 || !lon2) return null;
@@ -1035,52 +612,44 @@
             document.getElementById('darkIcon').className = document.body.classList.contains('dark-mode') ? "fa-solid fa-sun" : "fa-solid fa-moon";
         }
 
-        function setTheme(themeName) {
-            document.body.className = themeName;
-        }
+        function setTheme(themeName) { document.body.className = themeName; }
 
         function toggleSaveBookmark(shopId) {
             const index = savedFavorites.indexOf(shopId);
-            if(index === -1) { 
-                savedFavorites.push(shopId); 
-                alert("❤️ দোকানটি সেভ করা হয়েছে!"); 
-            } else { 
-                savedFavorites.splice(index, 1); 
-                alert("🗑️ রিমুভ করা হয়েছে!"); 
-            }
+            if(index === -1) { savedFavorites.push(shopId); alert("❤️ দোকানটি সেভ করা হয়েছে!"); }
+            else { savedFavorites.splice(index, 1); alert("🗑️ রিমুভ করা হয়েছে!"); }
             localStorage.setItem('lukanoShad_saved', JSON.stringify(savedFavorites));
             updateSavedCount();
             renderShopsList();
         }
 
-        function updateSavedCount() { 
-            document.getElementById('savedCount').innerText = savedFavorites.length; 
-        }
+        function updateSavedCount() { document.getElementById('savedCount').innerText = savedFavorites.length; }
 
         function showSavedFavorites() {
             const container = document.getElementById('shopsContainer');
             const savedList = shops.filter(s => savedFavorites.includes(s.id));
-            if(savedList.length === 0) { 
-                alert("আপনার সেভড লিস্ট খালি!"); 
-                return; 
-            }
+            if(savedList.length === 0) { alert("আপনার সেভড লিস্ট খালি!"); return; }
             container.innerHTML = `<h3 style="margin-bottom:12px; color:var(--primary); font-size:1rem;">❤️ আপনার সেভ করা দোকানসমূহ:</h3>`;
             savedList.forEach(shop => renderSingleCard(shop, container));
         }
 
-        function findNearestShops() {
+        // Live Fixed GPS Near Me Search System
+        function findNearestShopsGPS() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((pos) => {
                     userLat = pos.coords.latitude;
                     userLng = pos.coords.longitude;
-                    alert("📍 আপনার বর্তমান লোকেশন অন করা হয়েছে! এখন সকল দোকানের দূরত্ব দেখা যাবে।");
+                    alert("📍 আপনার লাইভ জিপিএস লোকেশন নেওয়া হয়েছে! আশেপাশের দোকানগুলো ক্রমানুসারে সাজানো হলো।");
+                    
+                    shops.forEach(s => {
+                        s.currentDist = parseFloat(calculateDistance(userLat, userLng, s.lat, s.lng));
+                    });
+                    shops.sort((a, b) => (a.currentDist || 9999) - (b.currentDist || 9999));
                     renderShopsList();
-                }, () => { 
-                    alert("⚠️ লোকেশন পারমিশন দিন!"); 
-                });
-            } else { 
-                alert("লোকেশন সাপোর্ট করে না।"); 
-            }
+                }, (err) => {
+                    alert("⚠️ আপনার জিপিএস লোকেশন অন করুন এবং ব্রাউজারে পারমিশন দিন!");
+                }, { enableHighAccuracy: true });
+            } else { alert("আপনার ফোনে জিপিএস সাপোর্ট করছে না।"); }
         }
 
         function selectDivision(divName) {
@@ -1094,6 +663,7 @@
             if(divName === 'বরিশাল বিভাগ') document.getElementById('div-bar').classList.add('active');
             if(divName === 'রংপুর বিভাগ') document.getElementById('div-ran').classList.add('active');
             if(divName === 'ময়মনসিংহ বিভাগ') document.getElementById('div-mym').classList.add('active');
+            updateDistrictDropdown();
             renderShopsList();
         }
 
@@ -1114,7 +684,6 @@
             }
         }
 
-        // Native Direct Web Share System (Opens WhatsApp, Messenger, Facebook, etc.)
         async function shareNativeShop(shopName, shopLoc, mapUrl) {
             const shareData = {
                 title: shopName,
@@ -1123,14 +692,10 @@
             };
 
             if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    console.log("Share canceled", err);
-                }
+                try { await navigator.share(shareData); } catch (err) {}
             } else {
                 navigator.clipboard.writeText(`${shareData.text} \n ম্যাপ: ${shareData.url}`);
-                alert("✅ লিংকটি কপি হয়েছে! যেকোনো সোশ্যাল মিডিয়ায় পেস্ট করে শেয়ার করুন।");
+                alert("✅ লিংক কপি হয়েছে! যেকোনো অ্যাপে পেস্ট করে শেয়ার করুন।");
             }
         }
 
@@ -1153,7 +718,7 @@
                         <span class="menu-badge">🔥 ${sanitizeInput(shop.special)}</span>
                         ${distBadge}
                         <h2 class="shop-title" style="margin-top:4px;">${sanitizeInput(shop.name)}</h2>
-                        <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)}</div>
+                        <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)} (${shop.district || ''})</div>
                         ${timeStr ? `<div style="font-size:0.78rem; color:#e17055; margin-bottom:8px; font-weight:600;"><i class="fa-regular fa-clock"></i> ${timeStr}</div>` : ''}
                         
                         <div class="rating-box">
@@ -1191,12 +756,19 @@
         function renderShopsList() {
             const container = document.getElementById('shopsContainer');
             container.innerHTML = '';
-            const filteredByDiv = shops.filter(s => s.division === selectedDivisionName);
-            if(filteredByDiv.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 কোনো দোকান পাওয়া যায়নি!</h4></div>`;
+            
+            let filtered = shops.filter(s => s.division === selectedDivisionName);
+            if(selectedDistrictName !== "সকল জেলা") {
+                filtered = filtered.filter(s => s.district === selectedDistrictName);
+            }
+
+            if(filtered.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 এই জেলায় কোনো দোকান পাওয়া যায়নি!</h4></div>`;
                 return;
             }
-            filteredByDiv.forEach(shop => renderSingleCard(shop, container));
+
+            // Limit display to 30 shops per render for smooth UI performance
+            filtered.slice(0, 30).forEach(shop => renderSingleCard(shop, container));
         }
 
         function rateShop(shopId, ratingValue) {
@@ -1219,18 +791,18 @@
             const filtered = shops.filter(s => {
                 const nameMatch = s.name.toLowerCase().includes(query);
                 const locMatch = s.loc.toLowerCase().includes(query);
+                const distMatch = s.district ? s.district.toLowerCase().includes(query) : false;
                 const specialMatch = s.special.toLowerCase().includes(query);
-                const tagMatch = s.tags ? s.tags.toLowerCase().includes(query) : false;
                 const menuMatch = s.menu.some(m => m.item.toLowerCase().includes(query));
                 let passBudget = budgetVal === 'all' || s.menu.some(m => m.price <= parseInt(budgetVal));
-                return (query === "" || nameMatch || locMatch || specialMatch || tagMatch || menuMatch) && passBudget;
+                return (query === "" || nameMatch || locMatch || distMatch || specialMatch || menuMatch) && passBudget;
             });
 
             if(filtered.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 "${query}" দিয়ে কিছু পাওয়া যায়নি!</h4></div>`;
+                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 "${query}" দিয়ে কোনো দোকান বা খাবার পাওয়া যায়নি!</h4></div>`;
                 return;
             }
-            filtered.forEach(shop => renderSingleCard(shop, container));
+            filtered.slice(0, 30).forEach(shop => renderSingleCard(shop, container));
         }
 
         function showMapDetails(id) {
@@ -1240,11 +812,20 @@
                 <h3 style="color:var(--primary); margin-bottom:4px;">📍 ${sanitizeInput(shop.name)}</h3>
                 <p style="font-size:0.82rem; color:#666; margin-bottom:10px;"><i class="fa-solid fa-location-pin"></i> ${sanitizeInput(shop.loc)}</p>
                 <div style="background:rgba(0,0,0,0.05); padding:10px; border-radius:10px; border-left:4px solid var(--accent); margin-bottom:12px; text-align:left;">
-                    <strong>🚌 বাস রুট:</strong><br><span style="font-size:0.82rem;">${sanitizeInput(shop.buses)}</span>
+                    <strong>🚌 বাস ও যাতায়াত রুট:</strong><br><span style="font-size:0.82rem;">${sanitizeInput(shop.buses)}</span>
                 </div>
-                <a href="${shop.mapUrl}" target="_blank" class="btn btn-primary" style="text-decoration:none; justify-content:center; width:100%;"><i class="fa-solid fa-map-location-dot"></i> Google Maps এ খুলুন</a>
+                <a href="${shop.mapUrl}" target="_blank" class="btn btn-primary" style="text-decoration:none; justify-content:center; width:100%;"><i class="fa-solid fa-map-location-dot"></i> Google Maps এ ডিরেক্ট নেভিগেট করুন</a>
             `;
             openModal('mapModal');
+        }
+
+        function updateAddShopDistricts() {
+            const divName = document.getElementById('newShopDivision').value;
+            const distSelect = document.getElementById('newShopDistrict');
+            distSelect.innerHTML = '';
+            divisionData[divName].districts.forEach(d => {
+                if(d !== "সকল জেলা") distSelect.innerHTML += `<option value="${d}">${d}</option>`;
+            });
         }
 
         function submitShopForApproval(e) {
@@ -1259,6 +840,7 @@
                 id: Date.now(),
                 name: document.getElementById('newShopName').value,
                 division: document.getElementById('newShopDivision').value,
+                district: document.getElementById('newShopDistrict').value,
                 loc: document.getElementById('newShopLoc').value,
                 openTime: document.getElementById('newShopOpenTime').value,
                 closeTime: document.getElementById('newShopCloseTime').value,
@@ -1274,29 +856,20 @@
             pendingShops.push(newObj);
             localStorage.setItem('lukanoShad_pendingShops', JSON.stringify(pendingShops));
             updateNotificationBadge();
-            alert('✅ দোকানটি সাবমিট হয়েছে!');
+            alert('✅ দোকানটি এডমিন এপ্রুভালের জন্য সাবমিট হয়েছে!');
             e.target.reset();
             switchTab('explore');
         }
 
-        function updateNotificationBadge() { 
-            document.getElementById('notifCount').innerText = pendingShops.length; 
-        }
-
-        function openAdminModal() { 
-            openModal('adminModal'); 
-            renderPendingShops(); 
-        }
+        function updateNotificationBadge() { document.getElementById('notifCount').innerText = pendingShops.length; }
+        function openAdminModal() { openModal('adminModal'); renderPendingShops(); }
         
         function renderPendingShops() {
             const list = document.getElementById('pendingShopsList');
-            if(pendingShops.length === 0) { 
-                list.innerHTML = `<p style="text-align:center; color:#888; padding:10px;">কোনো অপেক্ষমান দোকান নেই।</p>`; 
-                return; 
-            }
+            if(pendingShops.length === 0) { list.innerHTML = `<p style="text-align:center; color:#888; padding:10px;">কোনো অপেক্ষমান দোকান নেই।</p>`; return; }
             list.innerHTML = pendingShops.map((shop, i) => `
                 <div style="background:rgba(0,0,0,0.05); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                    <span><b>${sanitizeInput(shop.name)}</b> (${shop.division})</span>
+                    <span><b>${sanitizeInput(shop.name)}</b> (${shop.district}, ${shop.division})</span>
                     <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="approveShop(${i})">এপ্রুভ</button>
                 </div>
             `).join('');
@@ -1307,10 +880,8 @@
             shops.unshift(approved);
             localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
             localStorage.setItem('lukanoShad_pendingShops', JSON.stringify(pendingShops));
-            updateNotificationBadge(); 
-            renderPendingShops(); 
-            renderShopsList();
-            alert('🎉 দোকানটি এপ্রুভ করা হয়েছে!');
+            updateNotificationBadge(); renderPendingShops(); renderShopsList();
+            alert('🎉 দোকানটি সফলভাবে এপ্রুভ ও পাবলিশ করা হয়েছে!');
         }
 
         function removeShopDirect(shopId) {
@@ -1321,38 +892,23 @@
             }
         }
 
-        function openModal(id) { 
-            document.getElementById(id).style.display = 'flex'; 
-        }
-
-        function closeModal(id) { 
-            document.getElementById(id).style.display = 'none'; 
-        }
-
-        function openLoginModal() { 
-            openModal('loginModal'); 
-        }
-
-        function openSignupModal() { 
-            openModal('signupModal'); 
-        }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openLoginModal() { openModal('loginModal'); }
+        function openSignupModal() { openModal('signupModal'); }
 
         function handleLogin(e) {
             e.preventDefault();
             currentUser = { name: document.getElementById('loginUser').value, contact: "01888183241", avatar: defaultAvatar };
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); 
-            closeModal('loginModal'); 
-            alert('🎉 লগইন সফল!');
+            setupLoggedInView(currentUser); closeModal('loginModal'); alert('🎉 লগইন সফল!');
         }
 
         function handleSignup(e) {
             e.preventDefault();
             currentUser = { name: document.getElementById('regName').value, contact: "01888183241", avatar: defaultAvatar };
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); 
-            closeModal('signupModal'); 
-            alert('🎉 একাউন্ট তৈরি সফল!');
+            setupLoggedInView(currentUser); closeModal('signupModal'); alert('🎉 একাউন্ট তৈরি সফল!');
         }
 
         function setupLoggedInView(user) {
@@ -1364,13 +920,7 @@
             document.getElementById('pName').value = user.name;
         }
 
-        function logout() { 
-            currentUser = null; 
-            localStorage.removeItem('lukanoShad_user'); 
-            document.getElementById('navGuest').classList.remove('hidden'); 
-            document.getElementById('navUser').classList.add('hidden'); 
-            switchTab('explore'); 
-        }
+        function logout() { currentUser = null; localStorage.removeItem('lukanoShad_user'); document.getElementById('navGuest').classList.remove('hidden'); document.getElementById('navUser').classList.add('hidden'); switchTab('explore'); }
         
         function handleImageUpload(e) {
             const file = e.target.files[0];
@@ -1379,10 +929,7 @@
                 reader.onload = function(evt) {
                     document.getElementById('userProfileImg').src = evt.target.result;
                     document.getElementById('headerUserAvatar').src = evt.target.result;
-                    if(currentUser) { 
-                        currentUser.avatar = evt.target.result; 
-                        localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser)); 
-                    }
+                    if(currentUser) { currentUser.avatar = evt.target.result; localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser)); }
                 }
                 reader.readAsDataURL(file);
             }
@@ -1393,8 +940,7 @@
             if(!currentUser) return;
             currentUser.name = document.getElementById('pName').value;
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser); 
-            alert('✅ আপডেট হয়েছে!');
+            setupLoggedInView(currentUser); alert('✅ প্রোফাইল আপডেট হয়েছে!');
         }
 
         function switchTab(tab) {
@@ -1402,22 +948,14 @@
             document.getElementById('sectionAddShop').classList.add('hidden');
             document.getElementById('sectionProfile').classList.add('hidden');
             if(tab === 'explore') document.getElementById('sectionExplore').classList.remove('hidden');
-            if(tab === 'addShop') { 
-                if(!currentUser) { openLoginModal(); return; } 
-                document.getElementById('sectionAddShop').classList.remove('hidden'); 
-            }
-            if(tab === 'profile') { 
-                if(!currentUser) { openLoginModal(); return; } 
-                document.getElementById('sectionProfile').classList.remove('hidden'); 
-            }
+            if(tab === 'addShop') { if(!currentUser) { openLoginModal(); return; } document.getElementById('sectionAddShop').classList.remove('hidden'); }
+            if(tab === 'profile') { if(!currentUser) { openLoginModal(); return; } document.getElementById('sectionProfile').classList.remove('hidden'); }
         }
 
         function addMoreItemInput() {
             const container = document.getElementById('itemInputs');
             const div = document.createElement('div');
-            div.className = 'form-group'; 
-            div.style.display = 'flex'; 
-            div.style.gap = '6px';
+            div.className = 'form-group'; div.style.display = 'flex'; div.style.gap = '6px';
             div.innerHTML = `<input type="text" class="i-name" placeholder="খাবারের নাম" required><input type="number" class="i-price" placeholder="দাম (৳)" style="width:90px;" required>`;
             container.appendChild(div);
         }
