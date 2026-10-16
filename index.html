@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- EmailJS Engine -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
-        })();
-    </script>
-    
     <style>
         :root {
             --primary: #FF3838;
@@ -38,6 +30,16 @@
             --header-bg: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
         }
 
+        /* Color Theme Options */
+        body.theme-orange { 
+            --primary: #e67e22; 
+            --gradient-food: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); 
+        }
+        body.theme-green { 
+            --primary: #27ae60; 
+            --gradient-food: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -46,427 +48,599 @@
             transition: background 0.25s ease, color 0.25s ease;
         }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
+        html, body { 
+            width: 100%; 
+            overflow-x: hidden; 
+        }
+        
+        body { 
+            background: var(--bg-color); 
+            min-height: 100vh; 
+            color: var(--text-color); 
+            -webkit-tap-highlight-color: transparent; 
         }
 
-        body {
-            background: var(--bg-color);
-            min-height: 100vh;
-            color: var(--text-color);
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Splash Screen Loading */
+        /* Splash Screen */
         #splashScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
             height: 100%;
-            background: var(--dark);
-            z-index: 9999;
+            background: var(--dark); 
+            z-index: 9999; 
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            padding: 20px;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            padding: 20px; 
             text-align: center;
         }
 
-        .food-splash-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .food-splash-container { 
+            position: relative; 
+            width: 150px; 
+            height: 150px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
 
-        .food-item-icon {
-            position: absolute;
-            font-size: 2rem;
-            animation: rotateFood 3.5s infinite linear;
+        .food-item-icon { 
+            position: absolute; 
+            font-size: 2rem; 
+            animation: rotateFood 3.5s infinite linear; 
         }
 
-        .food-1 { top: 0; }
-        .food-2 { right: 0; }
-        .food-3 { bottom: 0; }
+        .food-1 { top: 0; } 
+        .food-2 { right: 0; } 
+        .food-3 { bottom: 0; } 
         .food-4 { left: 0; }
 
-        @keyframes rotateFood {
-            0% { transform: rotate(0deg) translate(60px) rotate(0deg); }
-            100% { transform: rotate(360deg) translate(60px) rotate(-360deg); }
+        @keyframes rotateFood { 
+            0% { transform: rotate(0deg) translate(60px) rotate(0deg); } 
+            100% { transform: rotate(360deg) translate(60px) rotate(-360deg); } 
         }
 
-        /* Header Navigation Styles */
+        /* Header Navigation */
         header {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
+            background: var(--card-bg); 
+            backdrop-filter: blur(12px); 
+            position: sticky; 
+            top: 0; 
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            padding: 10px 4%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            padding: 10px 4%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
             gap: 10px;
         }
 
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.4rem; 
+            font-weight: 700; 
             background: var(--gradient-food);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
             cursor: pointer;
         }
 
-        .nav-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .nav-btns { 
+            display: flex; 
+            gap: 8px; 
+            align-items: center; 
+            flex-wrap: wrap; 
+        }
 
         .btn {
-            padding: 8px 14px;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
+            padding: 8px 14px; 
+            border-radius: 20px; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: 600; 
             font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: inline-flex; 
+            align-items: center; 
+            gap: 6px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08); 
             text-decoration: none;
         }
 
-        .btn-primary { background: var(--gradient-food); color: white; }
-        .btn-secondary { background: var(--secondary); color: white; }
-        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-primary { 
+            background: var(--gradient-food); 
+            color: white; 
+        }
+
+        .btn-secondary { 
+            background: var(--secondary); 
+            color: white; 
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid var(--primary); 
+            color: var(--primary); 
+        }
 
         .dark-toggle-btn {
-            background: var(--dark);
-            color: #FF9F1A;
-            border-radius: 50%;
-            width: 36px;
+            background: var(--dark); 
+            color: #FF9F1A; 
+            border-radius: 50%; 
+            width: 36px; 
             height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
             font-size: 1.1rem;
         }
 
+        .theme-picker { 
+            display: flex; 
+            gap: 4px; 
+            align-items: center; 
+        }
+
+        .theme-dot { 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            border: 2px solid white; 
+        }
+
         .user-nav-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--card-bg);
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: var(--card-bg); 
             padding: 4px 12px 4px 4px;
-            border-radius: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-radius: 25px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08); 
             cursor: pointer;
         }
 
-        .user-nav-badge img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
+        .user-nav-badge img { 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid var(--primary); 
         }
 
         .admin-notif-btn {
-            position: relative;
-            background: var(--dark);
-            color: white;
-            padding: 8px 12px;
+            position: relative; 
+            background: var(--dark); 
+            color: white; 
+            padding: 8px 12px; 
             border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 0.8rem; 
+            display: flex; 
+            align-items: center; 
             gap: 6px;
         }
 
-        .notif-badge-count {
-            background: var(--primary);
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 50%;
-            font-weight: 700;
+        .notif-badge-count { 
+            background: var(--primary); 
+            color: white; 
+            font-size: 0.7rem; 
+            padding: 2px 6px; 
+            border-radius: 50%; 
+            font-weight: 700; 
         }
 
         /* Hero Banner & Clean Search */
         .hero { 
             text-align: center; 
             padding: 20px 12px 15px; 
-            background: var(--header-bg);
+            background: var(--header-bg); 
             color: white;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 15px;
+            border-radius: 0 0 20px 20px; 
+            margin-bottom: 15px; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
-        
-        .hero h1 { font-size: 1.35rem; margin-bottom: 6px; font-weight: 700; color: #FF9F1A; line-height: 1.3; }
-        .hero p { font-size: 0.82rem; color: #dfe4ea; max-width: 800px; margin: 0 auto; }
+
+        .hero h1 { 
+            font-size: 1.35rem; 
+            margin-bottom: 6px; 
+            font-weight: 700; 
+            color: #FF9F1A; 
+            line-height: 1.3; 
+        }
+
+        .hero p { 
+            font-size: 0.82rem; 
+            color: #dfe4ea; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
 
         .search-box-wrapper {
-            max-width: 100%;
-            margin: 12px auto 5px;
-            display: flex;
-            gap: 6px;
+            max-width: 100%; 
+            margin: 12px auto 5px; 
+            display: flex; 
+            gap: 6px; 
             background: white;
-            border-radius: 30px;
-            padding: 4px 10px;
+            border-radius: 30px; 
+            padding: 4px 10px; 
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
-        .search-box-wrapper input {
-            width: 100%;
-            border: none;
-            padding: 8px;
-            outline: none;
-            font-size: 0.9rem;
-            color: var(--dark);
+        .search-box-wrapper input { 
+            width: 100%; 
+            border: none; 
+            padding: 8px; 
+            outline: none; 
+            font-size: 0.9rem; 
+            color: var(--dark); 
         }
 
-        /* Budget & Quick Filter Bar */
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px 0;
-            flex-wrap: wrap;
+        .filter-controls { 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            margin: 10px 0; 
+            flex-wrap: wrap; 
         }
 
-        .filter-controls select {
-            padding: 6px 10px;
-            border-radius: 15px;
-            border: 1px solid #ccc;
-            outline: none;
-            font-size: 0.8rem;
-            background: var(--card-bg);
-            color: var(--text-color);
+        .filter-controls select { 
+            padding: 6px 10px; 
+            border-radius: 15px; 
+            border: 1px solid #ccc; 
+            outline: none; 
+            font-size: 0.8rem; 
+            background: var(--card-bg); 
+            color: var(--text-color); 
         }
 
         /* Division Bar */
         .division-bar {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 8px;
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+            gap: 8px; 
             margin: 12px 0;
-            overflow-x: auto;
-            padding-bottom: 8px;
-            white-space: nowrap;
+            overflow-x: auto; 
+            padding-bottom: 8px; 
+            white-space: nowrap; 
             -webkit-overflow-scrolling: touch;
         }
 
-        .division-bar::-webkit-scrollbar { display: none; }
+        .division-bar::-webkit-scrollbar { 
+            display: none; 
+        }
 
         .division-btn {
-            background: var(--card-bg);
-            color: var(--text-color);
-            padding: 6px 14px;
+            background: var(--card-bg); 
+            color: var(--text-color); 
+            padding: 6px 14px; 
             border-radius: 20px;
-            border: 1.5px solid transparent;
-            font-weight: 600;
-            font-size: 0.82rem;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border: 1.5px solid transparent; 
+            font-weight: 600; 
+            font-size: 0.82rem; 
+            cursor: pointer; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05); 
             flex-shrink: 0;
         }
 
-        .division-btn.active {
-            background: var(--gradient-food);
-            color: white;
-            border-color: var(--primary);
+        .division-btn.active { 
+            background: var(--gradient-food); 
+            color: white; 
+            border-color: var(--primary); 
         }
 
         /* Container & Cards */
-        .container { max-width: 100%; padding: 10px; }
-        
+        .container { 
+            max-width: 100%; 
+            padding: 10px; 
+        }
+
         .shop-card {
-            background: var(--card-bg);
-            border-radius: 18px;
-            overflow: hidden;
+            background: var(--card-bg); 
+            border-radius: 18px; 
+            overflow: hidden; 
             box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 18px; 
+            display: flex; 
+            flex-direction: column; 
+            border: 1px solid rgba(255,255,255,0.2); 
             position: relative;
         }
 
-        .shop-card img { width: 100%; height: 180px; object-fit: cover; }
-        .shop-body { padding: 15px; }
-        .shop-title { font-size: 1.15rem; font-weight: 700; color: var(--text-color); line-height: 1.3; }
-        .shop-location { color: #888; margin: 4px 0 10px; font-size: 0.82rem; }
+        .shop-card img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+        }
+
+        .shop-body { 
+            padding: 15px; 
+        }
+
+        .shop-title { 
+            font-size: 1.15rem; 
+            font-weight: 700; 
+            color: var(--text-color); 
+            line-height: 1.3; 
+        }
+
+        .shop-location { 
+            color: #888; 
+            margin: 4px 0 10px; 
+            font-size: 0.82rem; 
+        }
 
         .status-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            padding: 4px 8px;
+            position: absolute; 
+            top: 12px; 
+            left: 12px; 
+            padding: 4px 8px; 
             border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: white;
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            color: white; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
-        .status-open { background: #17B978; }
-        .status-closed { background: #FF3838; }
+
+        .status-open { 
+            background: #17B978; 
+        }
+
+        .status-closed { 
+            background: #FF3838; 
+        }
+
+        .distance-tag {
+            background: #0984e3; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 10px; 
+            font-size: 0.72rem; 
+            font-weight: 600; 
+            display: inline-block; 
+            margin-top: 4px;
+        }
 
         .bookmark-icon-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255,255,255,0.9);
-            width: 32px;
+            position: absolute; 
+            top: 12px; 
+            right: 12px; 
+            background: rgba(255,255,255,0.9); 
+            width: 32px; 
             height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #d63031;
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            color: #d63031; 
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        .menu-badge { background: #ffeaa7; color: #d63031; padding: 4px 10px; border-radius: 10px; font-weight: 600; font-size: 0.75rem; display: inline-block; }
-        .menu-list { margin-top: 10px; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 10px; }
-        .menu-item { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; }
+        .menu-badge { 
+            background: #ffeaa7; 
+            color: #d63031; 
+            padding: 4px 10px; 
+            border-radius: 10px; 
+            font-weight: 600; 
+            font-size: 0.75rem; 
+            display: inline-block; 
+        }
 
-        .rating-box { display: flex; align-items: center; gap: 6px; margin: 8px 0; }
-        .stars-interactive i { color: #dcdde1; cursor: pointer; font-size: 1rem; }
-        .stars-interactive i.active { color: #FF9F1A; }
+        .menu-list { 
+            margin-top: 10px; 
+            background: rgba(0,0,0,0.04); 
+            padding: 10px; 
+            border-radius: 10px; 
+        }
 
-        .card-action-btns { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+        .menu-item { 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.82rem; 
+            margin-bottom: 4px; 
+        }
+
+        .rating-box { 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            margin: 8px 0; 
+        }
+
+        .stars-interactive i { 
+            color: #dcdde1; 
+            cursor: pointer; 
+            font-size: 1rem; 
+        }
+
+        .stars-interactive i.active { 
+            color: #FF9F1A; 
+        }
+
+        /* Review Section */
+        .review-section { 
+            margin-top: 10px; 
+            border-top: 1px dashed #ccc; 
+            padding-top: 8px; 
+        }
+
+        .review-input-box { 
+            display: flex; 
+            gap: 6px; 
+            margin-top: 6px; 
+        }
+
+        .review-input-box input { 
+            flex: 1; 
+            padding: 6px 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            font-size: 0.78rem; 
+            outline: none; 
+        }
+
+        .comments-display { 
+            max-height: 80px; 
+            overflow-y: auto; 
+            font-size: 0.78rem; 
+            color: #555; 
+            margin-top: 6px; 
+            background: rgba(0,0,0,0.02); 
+            padding: 6px; 
+            border-radius: 6px; 
+        }
+
+        .card-action-btns { 
+            display: flex; 
+            gap: 6px; 
+            margin-top: 10px; 
+            flex-wrap: wrap; 
+        }
 
         /* Modal Styles */
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
             background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            backdrop-filter: blur(6px); 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
             padding: 15px;
         }
 
         .auth-card-single {
-            background: var(--card-bg);
-            color: var(--text-color);
-            border-radius: 20px;
+            background: var(--card-bg); 
+            color: var(--text-color); 
+            border-radius: 20px; 
             padding: 20px;
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-            text-align: center;
+            width: 100%; 
+            max-width: 400px; 
+            position: relative; 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4); 
+            text-align: center; 
             overflow: hidden;
         }
 
-        .auth-food-banner {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            animation: bounceIcons 2s infinite ease-in-out;
+        .form-group { 
+            margin-bottom: 10px; 
+            text-align: left; 
         }
 
-        @keyframes bounceIcons {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .form-group label { 
+            display: block; 
+            font-weight: 600; 
+            margin-bottom: 4px; 
+            font-size: 0.8rem; 
         }
 
-        .form-group { margin-bottom: 10px; text-align: left; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.8rem; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px 10px; border: 2px solid #dfe4ea; border-radius: 8px; outline: none; font-size: 0.85rem; }
+        .form-group input, .form-group textarea, .form-group select { 
+            width: 100%; 
+            padding: 8px 10px; 
+            border: 2px solid #dfe4ea; 
+            border-radius: 8px; 
+            outline: none; 
+            font-size: 0.85rem; 
+        }
 
         /* Developer Card */
         .dev-card {
-            background: linear-gradient(135deg, #1E272E, #2F3542);
-            color: white;
+            background: linear-gradient(135deg, #1E272E, #2F3542); 
+            color: white; 
             border-radius: 18px;
-            padding: 20px 12px;
-            margin: 25px 0 15px;
-            text-align: center;
+            padding: 20px 12px; 
+            margin: 25px 0 15px; 
+            text-align: center; 
             position: relative;
         }
 
-        .dev-orbit-wrapper {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .dev-orbit-wrapper { 
+            position: relative; 
+            width: 130px; 
+            height: 130px; 
+            margin: 0 auto 12px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
 
-        .dev-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 20px rgba(255, 56, 56, 0.5);
-            z-index: 5;
+        .dev-img { 
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 3px solid var(--primary); 
+            box-shadow: 0 0 20px rgba(255, 56, 56, 0.5); 
+            z-index: 5; 
         }
 
-        .orbiting-food-ring {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 2px dashed rgba(255, 159, 26, 0.4);
-            animation: orbitSpin 12s linear infinite;
+        .orbiting-food-ring { 
+            position: absolute; 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            border: 2px dashed rgba(255, 159, 26, 0.4); 
+            animation: orbitSpin 12s linear infinite; 
         }
 
-        .orbit-food-item { position: absolute; font-size: 1.1rem; }
+        .orbit-food-item { 
+            position: absolute; 
+            font-size: 1.1rem; 
+        }
+
         .of-top { top: -8px; left: 50%; transform: translateX(-50%); }
         .of-bottom { bottom: -8px; left: 50%; transform: translateX(-50%); }
         .of-left { left: -8px; top: 50%; transform: translateY(-50%); }
         .of-right { right: -8px; top: 50%; transform: translateY(-50%); }
 
-        @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes orbitSpin { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
 
         /* Floating Contact Buttons */
-        .floating-contact-panel {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        .floating-contact-panel { 
+            position: fixed; 
+            bottom: 15px; 
+            right: 15px; 
+            z-index: 999; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
         }
 
-        .floating-contact-panel .btn {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .floating-contact-panel .btn { 
+            padding: 8px 12px; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
         }
 
-        .profile-card { background: var(--card-bg); padding: 18px; border-radius: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); max-width: 500px; margin: 0 auto; }
-        .hidden { display: none !important; }
+        .profile-card { 
+            background: var(--card-bg); 
+            padding: 18px; 
+            border-radius: 18px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06); 
+            max-width: 500px; 
+            margin: 0 auto; 
+        }
 
-        /* Full Mobile Responsiveness */
+        .hidden { 
+            display: none !important; 
+        }
+
         @media (max-width: 600px) {
             header { padding: 8px 3%; }
             .hero h1 { font-size: 1.2rem; }
@@ -478,7 +652,7 @@
 </head>
 <body>
 
-    <!-- Splash Loading Screen -->
+    <!-- Splash Screen Loading -->
     <div id="splashScreen">
         <div class="food-splash-container">
             <div class="food-item-icon food-1">🍔</div>
@@ -487,7 +661,7 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">৫০০+ স্ট্রিট ফুড লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">৫০০+ স্ট্রিট ফুড ও স্পেশাল ফিচার লোড হচ্ছে...</p>
     </div>
 
     <!-- Header Navigation Bar -->
@@ -496,8 +670,14 @@
             <i class="fa-solid fa-utensils"></i> লুকানো স্বাদ
         </div>
         
-        <!-- Dark Mode & Saved Favorites Button -->
         <div style="display:flex; gap:6px; align-items:center;">
+            <!-- Theme Selector -->
+            <div class="theme-picker">
+                <div class="theme-dot" style="background:#FF3838;" onclick="setTheme('')"></div>
+                <div class="theme-dot" style="background:#e67e22;" onclick="setTheme('theme-orange')"></div>
+                <div class="theme-dot" style="background:#27ae60;" onclick="setTheme('theme-green')"></div>
+            </div>
+
             <div class="dark-toggle-btn" onclick="toggleDarkMode()" title="ডার্ক মোড টগল">
                 <i class="fa-solid fa-moon" id="darkIcon"></i>
             </div>
@@ -506,24 +686,16 @@
             </button>
         </div>
 
-        <!-- Guest View Buttons -->
         <div class="nav-btns" id="navGuest">
-            <button class="btn btn-primary" onclick="openLoginModal()">
-                <i class="fa-solid fa-right-to-bracket"></i> Login
-            </button>
-            <button class="btn btn-outline" onclick="openSignupModal()">
-                <i class="fa-solid fa-user-plus"></i> Sign Up
-            </button>
+            <button class="btn btn-primary" onclick="openLoginModal()"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+            <button class="btn btn-outline" onclick="openSignupModal()"><i class="fa-solid fa-user-plus"></i> Sign Up</button>
         </div>
 
-        <!-- Logged-in View -->
         <div class="nav-btns hidden" id="navUser">
             <div class="admin-notif-btn" onclick="openAdminModal()">
                 <i class="fa-solid fa-bell"></i> নোটিফ <span class="notif-badge-count" id="notifCount">0</span>
             </div>
-            <button class="btn btn-secondary" onclick="switchTab('addShop')">
-                <i class="fa-solid fa-plus"></i> যোগ
-            </button>
+            <button class="btn btn-secondary" onclick="switchTab('addShop')"><i class="fa-solid fa-plus"></i> যোগ</button>
             <div class="user-nav-badge" onclick="switchTab('profile')">
                 <img src="79566.jpg" id="headerUserAvatar" alt="Profile" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
                 <span id="headerUserName" style="font-weight:700; font-size:0.8rem;">User</span>
@@ -537,16 +709,17 @@
         <h1>লুকানো স্বাদ — বাংলাদেশ স্ট্রিট ফুড হাব BD</h1>
         <p>বাংলাদেশের বিখ্যাত গোপন খাবারের সঠিক ঠিকানা, ম্যাপ ও বাস রুট জেনে নিন!</p>
         
-        <!-- Clean Universal Search Bar -->
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="দোকান, খাবার বা এলাকার নাম দিয়ে সার্চ করুন...">
             <button class="btn btn-primary" style="border-radius: 20px; padding:6px 12px;" onclick="filterShops()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
-        <!-- Filter Controls -->
         <div class="filter-controls">
             <button class="btn btn-secondary" onclick="findNearestShops()" style="padding: 4px 10px; font-size:0.75rem;">
-                📍 আশেপাশের খাবার (Near Me)
+                📍 আশেপাশের খাবার (Near Me GPS)
+            </button>
+            <button class="btn btn-outline" onclick="openModal('storyModal')" style="padding: 4px 10px; font-size:0.75rem; color:white; border-color:white;">
+                📖 ফুড স্টোরিজ (Stories)
             </button>
             <select id="budgetFilter" onchange="filterShops()">
                 <option value="all">💰 সব বাজেট</option>
@@ -557,10 +730,8 @@
         </div>
     </div>
 
-    <!-- Main App Container -->
+    <!-- Main Container -->
     <div class="container">
-
-        <!-- Division Scrollable Bar -->
         <div class="division-bar">
             <button class="division-btn active" id="div-dhaka" onclick="selectDivision('ঢাকা বিভাগ')">🏙️ ঢাকা বিভাগ</button>
             <button class="division-btn" id="div-ctg" onclick="selectDivision('চট্টগ্রাম বিভাগ')">🌊 চট্টগ্রাম বিভাগ</button>
@@ -572,14 +743,11 @@
             <button class="division-btn" id="div-mym" onclick="selectDivision('ময়মনসিংহ বিভাগ')">🌿 ময়মনসিংহ বিভাগ</button>
         </div>
 
-        <!-- SECTION 1: EXPLORE SHOPS -->
         <div id="sectionExplore">
-            <div id="shopsContainer">
-                <!-- Dynamic Shops Loaded via JS -->
-            </div>
+            <div id="shopsContainer"></div>
         </div>
 
-        <!-- SECTION 2: ADD NEW SHOP WITH REAL-TIME TIMING -->
+        <!-- Add Shop Section -->
         <div id="sectionAddShop" class="hidden">
             <div class="profile-card">
                 <h3 style="color: var(--primary); text-align: center; margin-bottom: 12px; font-size:1.1rem;">🏪 নতুন দোকানের তথ্য ও সময় যুক্ত করুন</h3>
@@ -589,7 +757,7 @@
                         <input type="text" id="newShopName" placeholder="যেমন: বিসমিল্লাহ কাবাব ঘর" required>
                     </div>
                     <div class="form-group">
-                        <label>বিভাগ নির্বাচন করুন:</label>
+                        <label>বিভাগ:</label>
                         <select id="newShopDivision" required>
                             <option value="ঢাকা বিভাগ">ঢাকা বিভাগ</option>
                             <option value="চট্টগ্রাম বিভাগ">চট্টগ্রাম বিভাগ</option>
@@ -602,31 +770,31 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>এলাকা ও সুনির্দিষ্ট ঠিকানা:</label>
+                        <label>এলাকা ও ঠিকানা:</label>
                         <input type="text" id="newShopLoc" placeholder="যেমন: কাজীপাড়া, মিরপুর ১০, ঢাকা" required>
                     </div>
                     <div class="form-group">
-                        <label>খোলার সময় (Open Time):</label>
+                        <label>খোলার সময়:</label>
                         <input type="time" id="newShopOpenTime" value="10:00" required>
                     </div>
                     <div class="form-group">
-                        <label>বন্ধের সময় (Close Time):</label>
+                        <label>বন্ধের সময়:</label>
                         <input type="time" id="newShopCloseTime" value="23:00" required>
                     </div>
                     <div class="form-group">
-                        <label>বিশেষত্ব (Speciality):</label>
-                        <input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা, চাপ, শর্মা" required>
+                        <label>বিশেষত্ব:</label>
+                        <input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা" required>
                     </div>
                     <div class="form-group">
-                        <label>আশেপাশের বাস ও গাড়ির রুট (Bus Routes):</label>
+                        <label>বাস রুট:</label>
                         <input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required>
                     </div>
                     <div class="form-group">
-                        <label>গুগল ম্যাপ লিংক (Google Maps):</label>
+                        <label>ম্যাপ লিংক:</label>
                         <input type="url" id="newShopMap" placeholder="https://maps.google.com/..." required>
                     </div>
                     <div class="form-group">
-                        <label>ছবি (Image URL):</label>
+                        <label>ছবির লিংক:</label>
                         <input type="url" id="newShopImg" placeholder="https://..." required>
                     </div>
                     
@@ -643,7 +811,7 @@
             </div>
         </div>
 
-        <!-- SECTION 3: USER PROFILE -->
+        <!-- Profile Section -->
         <div id="sectionProfile" class="hidden">
             <div class="profile-card" style="text-align: center;">
                 <div style="position:relative; width:90px; height:90px; margin:0 auto 10px;">
@@ -653,25 +821,19 @@
                     </label>
                     <input type="file" id="profileImgInput" accept="image/*" onchange="handleImageUpload(event)" style="display:none;">
                 </div>
-
                 <h3 id="pNameDisplay">User Name</h3>
                 <p id="pContactDisplay" style="color:#666; margin-bottom:12px; font-size:0.82rem;">01888183241</p>
-                
                 <form onsubmit="saveProfileUpdate(event)" style="text-align: left;">
                     <div class="form-group">
                         <label>আপনার নাম:</label>
                         <input type="text" id="pName" placeholder="আপনার নাম লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label>মোবাইল / জিমেইল:</label>
-                        <input type="text" id="pContact" placeholder="ফোন বা জিমেইল">
                     </div>
                     <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">প্রোফাইল সেভ করুন</button>
                 </form>
             </div>
         </div>
 
-        <!-- Developer Admin Section Card -->
+        <!-- Developer Admin Card -->
         <div class="dev-card">
             <div class="dev-orbit-wrapper">
                 <div class="orbiting-food-ring">
@@ -680,121 +842,88 @@
                     <span class="orbit-food-item of-left">🥟</span>
                     <span class="orbit-food-item of-right">🍜</span>
                 </div>
-                <!-- ADMIN PROFILE IMAGE -->
                 <img src="79566.jpg" alt="Junaid Islam Taskin" class="dev-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
             </div>
-            
             <h4 style="color: #FF9F1A; font-size: 1rem; margin-bottom: 2px;">ওয়েবসাইট নির্মাতা ও সিস্টেম এডমিন</h4>
             <h2 style="font-size: 1.35rem; color: white;">Junaid Islam Taskin</h2>
             <p style="color: #a4b0be; max-width: 500px; margin: 6px auto 0; font-size: 0.82rem;">
                 "লুকানো স্বাদ" প্ল্যাটফর্মের প্রতিষ্ঠাতা। ইমেইল: Junaidislamtaskin512@gmail.com
             </p>
         </div>
-
     </div>
 
-    <!-- MAP & BUS ROUTE POPUP MODAL -->
+    <!-- Modals -->
     <div class="modal" id="mapModal">
         <div class="auth-card-single">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('mapModal')">&times;</span>
-            <div id="mapModalBody">
-                <!-- Loaded dynamically -->
+            <div id="mapModalBody"></div>
+        </div>
+    </div>
+    
+    <!-- Food Story Modal -->
+    <div class="modal" id="storyModal">
+        <div class="auth-card-single" style="text-align:left;">
+            <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('storyModal')">&times;</span>
+            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-book-open"></i> বিখ্যাত খাবারের ইতিহাস</h3>
+            <div style="font-size:0.82rem; max-height:250px; overflow-y:auto; line-height:1.5;">
+                <p><b>১. পুরান ঢাকার বাকরখানি:</b> মোগল আমল থেকেই বাকরখানি পুরান ঢাকার মানুষের ঐতিহ্যবাহী প্রিয় এক নাস্তা।</p><br>
+                <p><b>২. সিলেটি সাতকড়া চা:</b> লেবু ও বিশেষ সাতকড়া ফলের সুবাসে ভরা সিলেটের ঐতিহ্যবাহী পানীয়।</p><br>
+                <p><b>৩. খুলনা ও সাতক্ষীরার চুইঝাল:</b> মাটির পাত্রে চুইঝাল কাণ্ড দিয়ে রান্না করা গরুর মাংসের ঐতিহ্য অনন্য।</p>
             </div>
         </div>
     </div>
 
-    <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="auth-card-single">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('loginModal')">&times;</span>
-            
-            <div class="auth-food-banner">
-                <span>🍔</span><span>🍕</span><span>🥟</span><span>🍟</span>
-            </div>
-
-            <h3 style="color: var(--primary); margin-bottom: 10px; font-size: 1.15rem;">
-                <i class="fa-solid fa-right-to-bracket"></i> Login Account
-            </h3>
-
+            <h3 style="color: var(--primary); margin-bottom: 10px;">Login</h3>
             <form onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label>Username / Email:</label>
-                    <input type="text" id="loginUser" placeholder="Enter Username/Mobile" required>
+                    <label>Username:</label>
+                    <input type="text" id="loginUser" required>
                 </div>
                 <div class="form-group">
                     <label>Password:</label>
-                    <input type="password" id="loginPass" placeholder="******" required>
+                    <input type="password" id="loginPass" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 6px;">
-                    Login (লগইন করুন)
-                </button>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন</button>
             </form>
         </div>
     </div>
 
-    <!-- Signup Modal -->
     <div class="modal" id="signupModal">
         <div class="auth-card-single">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('signupModal')">&times;</span>
-            
-            <div class="auth-food-banner">
-                <span>🍜</span><span>🌭</span><span>☕</span><span>🥗</span>
-            </div>
-
-            <h3 style="color: var(--secondary); margin-bottom: 10px; font-size: 1.15rem;">
-                <i class="fa-solid fa-user-plus"></i> Create New Account
-            </h3>
-
+            <h3 style="color: var(--secondary); margin-bottom: 10px;">Sign Up</h3>
             <form onsubmit="handleSignup(event)">
                 <div class="form-group">
-                    <label>Full Name:</label>
-                    <input type="text" id="regName" placeholder="e.g. Taskin Ahmed" required>
+                    <label>Name:</label>
+                    <input type="text" id="regName" required>
                 </div>
                 <div class="form-group">
-                    <label>Email or Mobile:</label>
-                    <input type="text" id="regContact" placeholder="018... or email@gmail.com" required>
+                    <label>Password:</label>
+                    <input type="password" id="regPass" required>
                 </div>
-                <div class="form-group">
-                    <label>Set Password:</label>
-                    <input type="password" id="regPass" placeholder="******" required>
-                </div>
-                <button type="submit" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 6px;">
-                    Sign Up (একাউন্ট তৈরি করুন)
-                </button>
+                <button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">রেজিস্ট্রেশন</button>
             </form>
         </div>
     </div>
 
-    <!-- Admin Notification Panel -->
     <div class="modal" id="adminModal">
         <div class="profile-card" style="width:100%; max-width:500px; position:relative;">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('adminModal')">&times;</span>
-            <h3 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;"><i class="fa-solid fa-bell"></i> এডমিন নোটিফিকেশন</h3>
-            <div id="pendingShopsList" style="max-height: 250px; overflow-y: auto;">
-                <p style="text-align:center; color:#888; padding:10px; font-size:0.82rem;">বর্তমানে কোনো নতুন দোকান অনুমোদনের অপেক্ষায় নেই।</p>
-            </div>
+            <h3 style="color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-bell"></i> এডমিন নোটিফিকেশন</h3>
+            <div id="pendingShopsList"></div>
         </div>
     </div>
 
-    <!-- Floating Contact WhatsApp & Phone Buttons -->
+    <!-- Floating Contact -->
     <div class="floating-contact-panel">
-        <a href="https://wa.me/8801888183241?text=হ্যালো%20এডমিন,%20আমি%20'লুকানো%20স্বাদ'%20ওয়েবসাইট%20থেকে%20যোগাযোগ%20করছি!" 
-           target="_blank" 
-           class="btn" 
-           style="background: #25D366; color: white; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-weight: 700;">
-            <i class="fa-brands fa-whatsapp" style="font-size: 1rem;"></i>
-            <span>WhatsApp</span>
-        </a>
-
-        <a href="tel:01888183241" 
-           class="btn" 
-           style="background: #FF3838; color: white; box-shadow: 0 4px 15px rgba(255,56,56,0.4); font-weight: 700;">
-            <i class="fa-solid fa-phone" style="font-size: 0.9rem;"></i>
-            <span>Call</span>
-        </a>
+        <a href="https://wa.me/8801888183241" target="_blank" class="btn" style="background: #25D366; color: white; font-weight:700;"><i class="fa-brands fa-whatsapp"></i> <span>WhatsApp</span></a>
+        <a href="tel:01888183241" class="btn" style="background: #FF3838; color: white; font-weight:700;"><i class="fa-solid fa-phone"></i> <span>Call</span></a>
     </div>
 
-    <!-- JavaScript Core Application Logic with Massive Auto-Populator System -->
+    <!-- JavaScript Core Logic -->
     <script>
         function sanitizeInput(str) {
             return String(str).replace(/[&<>"']/g, function(m) {
@@ -802,76 +931,66 @@
             });
         }
 
-        setTimeout(() => {
-            document.getElementById('splashScreen').style.display = 'none';
+        setTimeout(() => { 
+            document.getElementById('splashScreen').style.display = 'none'; 
         }, 1200);
 
-        // Dynamic Massive Street Food Database Auto-Generator (60-70 Shops per Division)
+        let userLat = null, userLng = null;
+
         function generateMassiveDivisionShops() {
             const divisions = [
-                { name: "ঢাকা বিভাগ", key: "dhaka", locations: ["মিরপুর ১০", "মিরপুর ২", "ধানমন্ডি ২৭", "টিএসসি ঢাবি", "উত্তরা ৩", "পুরান ঢাকা নাজিরাবাজার", "গুলশান ২", "মোহাম্মদপুর টাউনহল", "বসুন্ধরা গেট", "খিলগাঁও তালতলা"], foods: ["চিজি মোমো", "ঝালমুড়ি", "দই ফুচকা", "গরুর চাপ", "বিফ বার্গার", "ওভেন পাস্তা", "মালাই চা", "চিকেন শর্মা", "কাবাব", "ফ্রাইড চিকেন"] },
-                { name: "চট্টগ্রাম বিভাগ", key: "ctg", locations: ["সিআরবি মোড়", "পতেঙ্গা সী-বিচ", "জিইসি মোড়", "আগ্রাবাদ", "হালিশহর", "খুলশী", "ঝাউতলা", "লালখান বাজার", "চকবাজার", "পাহাড়তলী"], foods: ["সাতকড়া মোহিতো", "ক্র্যাব ফ্রাই", "লাল মাছ ফ্রাই", "বিফ কাচ্চি", "মেযবানি গোশত", "চিকেন গ্রিল", "স্পাইসি ফুচকা", "লস্যি", "চিকেন রোস্ট", "শর্মা"] },
-                { name: "সিলেট বিভাগ", key: "syl", locations: ["ক্বীন ব্রিজ", "জিন্দাবাজার", "আম্বরখানা", "শাহজালাল দরগাহ রোড", "উপশহর", "টিলাগর", "বন্দরবাজার", "নয়া সড়ক", "সুবিদ্বাজার", "কুমারপাড়া"], foods: ["মাললাই চা", "সাতকড়া চা", "সিলেটি ফুচকা", "হাঁসের মাংস", "চিতই পিঠা", "বিফ বিরিয়ানি", "চিকেন মোমো", "লস্যি", "কাবাব", "চটপটি"] },
-                { name: "রাজশাহী বিভাগ", key: "raj", locations: ["পদ্মা গার্ডেন", "সাহেব বাজার", "কাজলা", "বিনোদপুর", "লক্ষ্মীপুর", "নিউ মার্কেট", "সিএন্ডবি মোড়", "কোর্ট স্টেশন", "উপশহর", "তালাইমারী"], foods: ["কুলফি মালাই", "পদ্মা ফুচকা", "রাজশাহী মিষ্টান্ন", "ঝাল পুরি", "চিকেন চাপ", "মালাই চা", "চিকেন ফ্রাই", "বার্গার", "পাস্তা", "বেলপুরি"] },
-                { name: "খুলনা বিভাগ", key: "khu", locations: ["রয়্যাল মোড়", "শিববাড়ী মোড়", "দৌলতপুর", "বয়রা", "খালিশপুর", "খানজাহান আলী রোড", "সোনাডাঙ্গা", "রূপসা ঘাট", "ময়লাপোতা", "গল্লামারী"], foods: ["চুইঝাল গরুর মাংস", "চুইঝাল খাসি", "স্পেশাল পরোটা", "স্ট্রিট মোমো", "ফুচকা", "চিকেন গ্রিল", "মালাই চা", "লস্যি", "বার্গার", "চটপটি"] },
-                { name: "বরিশাল বিভাগ", key: "bar", locations: ["নাথুল্লাবাদ", "অশ্বিনী কুমার হল", "সদর রোড", "লঞ্চঘাট", "চৌমাথা", "সিএন্ডবি রোড", "রূপাতলী", "বান্দ রোড", "জেলখানা মোড়", "মেডিকেল কলেজ মোড়"], foods: ["বরিশাল ফুচকা", "ডিম চটপটি", "নারকেল চা", "চিকেন শর্মা", "বিফ চাপ", "পিঠা", "লস্যি", "ফ্রাইড রাইস", "বার্গার", "বেলপুরি"] },
-                { name: "রংপুর বিভাগ", key: "ran", locations: ["জাহাজ কোম্পানির মোড়", "কারমাইকেল কলেজ গেট", "ধাপ মোড়", "গ্র্যান্ড হোটেল মোড়", "মেডিকেল মোড়", "লালবাগ", "পার্ক মোড়", "সাতমাথা", "পীরগঞ্জ রোড", "মডার্ন মোড়"], foods: ["স্টিম মোমো", "ক্রিসপি বার্গার", "রংপুরী ফুচকা", "মালাই চা", "বিফ কাবাব", "পাস্তা", "চিকেন শর্মা", "চটপটি", "ঝালমুড়ি", "লস্যি"] },
-                { name: "ময়মনসিংহ বিভাগ", key: "mym", locations: ["ব্রহ্মপুত্র নদ পাড়", "গঙ্গাদাস গুহ রোড", "টাউন হল মোড়", "চরপাড়া", "পণ্ডিতপাড়া", "নয়া বাজার", "মেডিকেল কলেজ গেট", "শম্ভুগঞ্জ ব্রিজ", "আজাদ স্কয়ার", "গার্লস স্কুল মোড়"], foods: ["চিতই পিঠা ও হাঁসের মাংস", "মায়মনসিংহের মালাই চা", "স্পেশাল ফুচকা", "বিফ চাপ", "চিকেন মোমো", "ঝাল চটপটি", "বার্গার", "পাস্তা", "লস্যি", "বেলপুরি"] }
+                { name: "ঢাকা বিভাগ", key: "dhaka", lat: 23.8103, lng: 90.4125, locations: ["মিরপুর ১০", "মিরপুর ২", "ধানমন্ডি ২৭", "টিএসসি ঢাবি", "উত্তরা ৩", "পুরান ঢাকা নাজিরাবাজার", "গুলশান ২", "মোহাম্মদপুর টাউনহল", "বসুন্ধরা গেট", "খিলগাঁও তালতলা"], foods: ["চিজি মোমো", "ঝালমুড়ি", "দই ফুচকা", "গরুর চাপ", "বিফ বার্গার", "ওভেন পাস্তা", "মালাই চা", "চিকেন শর্মা", "কাবাব", "ফ্রাইড চিকেন"] },
+                { name: "চট্টগ্রাম বিভাগ", key: "ctg", lat: 22.3569, lng: 91.7832, locations: ["সিআরবি মোড়", "পতেঙ্গা সী-বিচ", "জিইসি মোড়", "আগ্রাবাদ", "হালিশহর", "খুলশী", "ঝাউতলা", "লালখান বাজার", "চকবাজার", "পাহাড়তলী"], foods: ["সাতকড়া মোহিতো", "ক্র্যাব ফ্রাই", "লাল মাছ ফ্রাই", "বিফ কাচ্চি", "মেযবানি গোশত", "চিকেন গ্রিল", "স্পাইসি ফুচকা", "লস্যি", "চিকেন রোস্ট", "শর্মা"] },
+                { name: "সিলেট বিভাগ", key: "syl", lat: 24.8949, lng: 91.8687, locations: ["ক্বীন ব্রিজ", "জিন্দাবাজার", "আম্বরখানা", "শাহজালাল দরগাহ রোড", "উপশহর", "টিলাগর", "বন্দরবাজার", "নয়া সড়ক", "সুবিদ্বাজার", "কুমারপাড়া"], foods: ["মাললাই চা", "সাতকড়া চা", "সিলেটি ফুচকা", "হাঁসের মাংস", "চিতই পিঠা", "বিফ বিরিয়ানি", "চিকেন মোমো", "লস্যি", "কাবাব", "চটপটি"] },
+                { name: "রাজশাহী বিভাগ", key: "raj", lat: 24.3745, lng: 88.6042, locations: ["পদ্মা গার্ডেন", "সাহেব বাজার", "কাজলা", "বিনোদপুর", "লক্ষ্মীপুর", "নিউ মার্কেট", "সিএন্ডবি মোড়", "কোর্ট স্টেশন", "উপশহর", "তালাইমারী"], foods: ["কুলফি মালাই", "পদ্মা ফুচকা", "রাজশাহী মিষ্টান্ন", "ঝাল পুরি", "চিকেন চাপ", "মালাই চা", "চিকেন ফ্রাই", "বার্গার", "পাস্তা", "বেলপুরি"] },
+                { name: "খুলনা বিভাগ", key: "khu", lat: 22.8456, lng: 89.5403, locations: ["রয়্যাল মোড়", "শিববাড়ী মোড়", "দৌলতপুর", "বয়রা", "খালিশপুর", "খানজাহান আলী রোড", "সোনাডাঙ্গা", "রূপসা ঘাট", "ময়লাপোতা", "গল্লামারী"], foods: ["চুইঝাল গরুর মাংস", "চুইঝাল খাসি", "স্পেশাল পরোটা", "স্ট্রিট মোমো", "ফুচকা", "চিকেন গ্রিল", "মালাই চা", "লস্যি", "বার্গার", "চটপটি"] },
+                { name: "বরিশাল বিভাগ", key: "bar", lat: 22.7010, lng: 90.3535, locations: ["নাথুল্লাবাদ", "অশ্বিনী কুমার হল", "সদর রোড", "লঞ্চঘাট", "চৌমাথা", "সিএন্ডবি রোড", "রূপাতলী", "বান্দ রোড", "জেলখানা মোড়", "মেডিকেল কলেজ মোড়"], foods: ["বরিশাল ফুচকা", "ডিম চটপটি", "নারকেল চা", "চিকেন শর্মা", "বিফ চাপ", "পিঠা", "লস্যি", "ফ্রাইড রাইস", "বার্গার", "বেলপুরি"] },
+                { name: "রংপুর বিভাগ", key: "ran", lat: 25.7439, lng: 89.2752, locations: ["জাহাজ কোম্পানির মোড়", "কারমাইকেল কলেজ গেট", "ধাপ মোড়", "গ্র্যান্ড হোটেল মোড়", "মেডিকেল মোড়", "লালবাগ", "পার্ক মোড়", "সাতমাথা", "পীরগঞ্জ রোড", "মডার্ন মোড়"], foods: ["স্টিম মোমো", "ক্রিসপি বার্গার", "রংপুরী ফুচকা", "মালাই চা", "বিফ কাবাব", "পাস্তা", "চিকেন শর্মা", "চটপটি", "ঝালমুড়ি", "লস্যি"] },
+                { name: "ময়মনসিংহ বিভাগ", key: "mym", lat: 24.7471, lng: 90.4203, locations: ["ব্রহ্মপুত্র নদ পাড়", "গঙ্গাদাস গুহ রোড", "টাউন হল মোড়", "চরপাড়া", "পণ্ডিতপাড়া", "নয়া বাজার", "মেডিকেল কলেজ গেট", "শম্ভুগঞ্জ ব্রিজ", "আজাদ স্কয়ার", "গার্লস স্কুল মোড়"], foods: ["চিতই পিঠা ও হাঁসের মাংস", "মায়মনসিংহের মালাই চা", "স্পেশাল ফুচকা", "বিফ চাপ", "চিকেন মোমো", "ঝাল চটপটি", "বার্গার", "পাস্তা", "লস্যি", "বেলপুরি"] }
             ];
 
             const images = [
                 "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
                 "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
                 "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
+                "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
             ];
 
             let generatedShops = [];
             let idCounter = 1;
 
             divisions.forEach(div => {
-                // Generates 65 distinct shops per division (65 * 8 = 520 Total Shops)
                 for(let i = 1; i <= 65; i++) {
                     let loc = div.locations[i % div.locations.length];
                     let food = div.foods[i % div.foods.length];
                     let img = images[i % images.length];
-
-                    let openH = (8 + (i % 5)).toString().padStart(2, '0');
-                    let closeH = (21 + (i % 3)).toString().padStart(2, '0');
 
                     generatedShops.push({
                         id: idCounter++,
                         name: `${loc} সিক্রেট ${food} ও ফাস্টফুড স্পট ${i}`,
                         division: div.name,
                         loc: `${loc}, ${div.name.replace(' বিভাগ', '')}`,
-                        openTime: `${openH}:00`,
-                        closeTime: `${closeH}:00`,
+                        lat: div.lat + (Math.random() - 0.5) * 0.05,
+                        lng: div.lng + (Math.random() - 0.5) * 0.05,
+                        openTime: "09:00",
+                        closeTime: "23:00",
                         special: `${food}, বিশেষ চাটনি, কোল্ড ড্রিংকস`,
                         buses: "লোকাল বাস, সিএনজি, অটো রিকশা",
                         mapUrl: `https://www.google.com/maps?q=${encodeURIComponent(loc + " " + div.name)}`,
                         img: img,
-                        rating: (4.2 + (i % 8) * 0.1).toFixed(1),
-                        reviewsCount: 10 + i * 2,
-                        tags: `${food} ${loc} ${div.key} ${div.name} street food spot`,
-                        menu: [
-                            { item: `স্পেশাল ${food}`, price: 60 + (i % 10) * 10 },
-                            { item: "স্পেশাল চাটনি/ড্রিংকস", price: 30 }
-                        ]
+                        rating: (4.3 + (i % 7) * 0.1).toFixed(1),
+                        reviewsCount: 12 + i,
+                        tags: `${food} ${loc} ${div.key} ${div.name} street food`,
+                        menu: [{ item: `স্পেশাল ${food}`, price: 70 + (i % 8) * 10 }],
+                        comments: ["খাবারটি সত্যিই অনেক সুস্বাদু ছিল!", "পরিবেশ ও স্বাদ বেশ ভালো লেগেছে।"]
                     });
                 }
             });
-
             return generatedShops;
         }
 
         let selectedDivisionName = "ঢাকা বিভাগ";
         let shops = JSON.parse(localStorage.getItem('lukanoShad_allShops'));
-        
-        // Populate if empty or old database
         if(!shops || shops.length < 100) {
             shops = generateMassiveDivisionShops();
             localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
@@ -889,58 +1008,61 @@
             updateSavedCount();
         };
 
-        // Real-Time Open/Closed Status Checker
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            if(!lat1 || !lon1 || !lat2 || !lon2) return null;
+            const R = 6371; 
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return (R * c).toFixed(1);
+        }
+
         function checkRealTimeStatus(openTime, closeTime) {
             if(!openTime || !closeTime) return true;
             const now = new Date();
             const currentTime = now.getHours() * 60 + now.getMinutes();
-
             const [openH, openM] = openTime.split(':').map(Number);
             const [closeH, closeM] = closeTime.split(':').map(Number);
             const openTotal = openH * 60 + openM;
             const closeTotal = closeH * 60 + closeM;
-
-            if (openTotal <= closeTotal) {
-                return currentTime >= openTotal && currentTime <= closeTotal;
-            } else {
-                return currentTime >= openTotal || currentTime <= closeTotal;
-            }
+            if (openTotal <= closeTotal) return currentTime >= openTotal && currentTime <= closeTotal;
+            return currentTime >= openTotal || currentTime <= closeTotal;
         }
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            const icon = document.getElementById('darkIcon');
-            if(document.body.classList.contains('dark-mode')) {
-                icon.className = "fa-solid fa-sun";
-            } else {
-                icon.className = "fa-solid fa-moon";
-            }
+            document.getElementById('darkIcon').className = document.body.classList.contains('dark-mode') ? "fa-solid fa-sun" : "fa-solid fa-moon";
+        }
+
+        function setTheme(themeName) {
+            document.body.className = themeName;
         }
 
         function toggleSaveBookmark(shopId) {
             const index = savedFavorites.indexOf(shopId);
-            if(index === -1) {
-                savedFavorites.push(shopId);
-                alert("❤️ দোকানটি সেভ করা হয়েছে!");
-            } else {
-                savedFavorites.splice(index, 1);
-                alert("🗑️ সেভড লিস্ট থেকে রিমুভ করা হয়েছে!");
+            if(index === -1) { 
+                savedFavorites.push(shopId); 
+                alert("❤️ দোকানটি সেভ করা হয়েছে!"); 
+            } else { 
+                savedFavorites.splice(index, 1); 
+                alert("🗑️ রিমুভ করা হয়েছে!"); 
             }
             localStorage.setItem('lukanoShad_saved', JSON.stringify(savedFavorites));
             updateSavedCount();
             renderShopsList();
         }
 
-        function updateSavedCount() {
-            document.getElementById('savedCount').innerText = savedFavorites.length;
+        function updateSavedCount() { 
+            document.getElementById('savedCount').innerText = savedFavorites.length; 
         }
 
         function showSavedFavorites() {
             const container = document.getElementById('shopsContainer');
             const savedList = shops.filter(s => savedFavorites.includes(s.id));
-            if(savedList.length === 0) {
-                alert("আপনার সেভড লিস্টে এখনো কোনো দোকান যুক্ত করেননি!");
-                return;
+            if(savedList.length === 0) { 
+                alert("আপনার সেভড লিস্ট খালি!"); 
+                return; 
             }
             container.innerHTML = `<h3 style="margin-bottom:12px; color:var(--primary); font-size:1rem;">❤️ আপনার সেভ করা দোকানসমূহ:</h3>`;
             savedList.forEach(shop => renderSingleCard(shop, container));
@@ -948,21 +1070,22 @@
 
         function findNearestShops() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(() => {
-                    alert("📍 আপনার বর্তমান লোকেশন অনুযায়ী আশেপাশের দোকান ফিল্টার করা হয়েছে!");
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    userLat = pos.coords.latitude;
+                    userLng = pos.coords.longitude;
+                    alert("📍 আপনার বর্তমান লোকেশন অন করা হয়েছে! এখন সকল দোকানের দূরত্ব দেখা যাবে।");
                     renderShopsList();
-                }, () => {
-                    alert("⚠️ লোকেশন পারমিশন অন করুন!");
+                }, () => { 
+                    alert("⚠️ লোকেশন পারমিশন দিন!"); 
                 });
-            } else {
-                alert("আপনার ব্রাউজারে লোকেশন সাপোর্ট করে না।");
+            } else { 
+                alert("লোকেশন সাপোর্ট করে না।"); 
             }
         }
 
         function selectDivision(divName) {
             selectedDivisionName = divName;
             document.querySelectorAll('.division-btn').forEach(btn => btn.classList.remove('active'));
-            
             if(divName === 'ঢাকা বিভাগ') document.getElementById('div-dhaka').classList.add('active');
             if(divName === 'চট্টগ্রাম বিভাগ') document.getElementById('div-ctg').classList.add('active');
             if(divName === 'সিলেট বিভাগ') document.getElementById('div-syl').classList.add('active');
@@ -971,30 +1094,64 @@
             if(divName === 'বরিশাল বিভাগ') document.getElementById('div-bar').classList.add('active');
             if(divName === 'রংপুর বিভাগ') document.getElementById('div-ran').classList.add('active');
             if(divName === 'ময়মনসিংহ বিভাগ') document.getElementById('div-mym').classList.add('active');
-
             renderShopsList();
+        }
+
+        function addCommentToShop(shopId, event) {
+            event.preventDefault();
+            const inputField = document.getElementById(`commentInput_${shopId}`);
+            const commentText = inputField.value.trim();
+            if(!commentText) return;
+
+            let shop = shops.find(s => s.id === shopId);
+            if(shop) {
+                if(!shop.comments) shop.comments = [];
+                shop.comments.push(`${currentUser ? currentUser.name : 'অতিথি'}: ${commentText}`);
+                localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
+                renderShopsList();
+                inputField.value = '';
+                alert("💬 আপনার মন্তব্য সফলভাবে যোগ হয়েছে!");
+            }
+        }
+
+        // Native Direct Web Share System (Opens WhatsApp, Messenger, Facebook, etc.)
+        async function shareNativeShop(shopName, shopLoc, mapUrl) {
+            const shareData = {
+                title: shopName,
+                text: `🍔 'লুকানো স্বাদ' এ দেখুন বিখ্যাত স্ট্রিট ফুড স্পট: ${shopName} (${shopLoc})!`,
+                url: mapUrl || window.location.href,
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log("Share canceled", err);
+                }
+            } else {
+                navigator.clipboard.writeText(`${shareData.text} \n ম্যাপ: ${shareData.url}`);
+                alert("✅ লিংকটি কপি হয়েছে! যেকোনো সোশ্যাল মিডিয়ায় পেস্ট করে শেয়ার করুন।");
+            }
         }
 
         function renderSingleCard(shop, container) {
             let isSaved = savedFavorites.includes(shop.id);
             let isOpenRealTime = checkRealTimeStatus(shop.openTime, shop.closeTime);
             let timeStr = (shop.openTime && shop.closeTime) ? `⏰ সময়: ${shop.openTime} - ${shop.closeTime}` : '';
+            let menuHTML = shop.menu.map(m => `<div class="menu-item"><span>${sanitizeInput(m.item)}</span> <span style="font-weight:bold; color:var(--primary);">৳ ${m.price}</span></div>`).join('');
+            let commentsHTML = shop.comments && shop.comments.length > 0 ? shop.comments.map(c => `<div style="margin-bottom:2px;">• ${sanitizeInput(c)}</div>`).join('') : '<span style="color:#888;">কোনো মন্তব্য নেই। প্রথম মন্তব্য করুন!</span>';
 
-            let menuHTML = shop.menu.map(m => `
-                <div class="menu-item"><span>${sanitizeInput(m.item)}</span> <span style="font-weight:bold; color:var(--primary);">৳ ${m.price}</span></div>
-            `).join('');
+            let distKm = (userLat && userLng) ? calculateDistance(userLat, userLng, shop.lat, shop.lng) : null;
+            let distBadge = distKm ? `<span class="distance-tag">📍 দূরত্ব: ${distKm} কিমি</span>` : '';
 
             container.innerHTML += `
                 <div class="shop-card">
-                    <span class="status-badge ${isOpenRealTime ? 'status-open' : 'status-closed'}">
-                        ${isOpenRealTime ? '🟢 এখন খোলা (Open)' : '🔴 এখন বন্ধ (Closed)'}
-                    </span>
-                    <div class="bookmark-icon-btn" onclick="toggleSaveBookmark(${shop.id})">
-                        <i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-                    </div>
+                    <span class="status-badge ${isOpenRealTime ? 'status-open' : 'status-closed'}">${isOpenRealTime ? '🟢 এখন খোলা' : '🔴 এখন বন্ধ'}</span>
+                    <div class="bookmark-icon-btn" onclick="toggleSaveBookmark(${shop.id})"><i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-heart"></i></div>
                     <img src="${shop.img}" alt="${sanitizeInput(shop.name)}">
                     <div class="shop-body">
                         <span class="menu-badge">🔥 ${sanitizeInput(shop.special)}</span>
+                        ${distBadge}
                         <h2 class="shop-title" style="margin-top:4px;">${sanitizeInput(shop.name)}</h2>
                         <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)}</div>
                         ${timeStr ? `<div style="font-size:0.78rem; color:#e17055; margin-bottom:8px; font-weight:600;"><i class="fa-regular fa-clock"></i> ${timeStr}</div>` : ''}
@@ -1010,21 +1167,21 @@
                             <span style="font-weight:700; font-size:0.8rem;">${shop.rating || 5.0} (${shop.reviewsCount || 1})</span>
                         </div>
 
-                        <div class="menu-list">
-                            <strong>📋 খাবারের মেনু:</strong>
-                            ${menuHTML}
+                        <div class="menu-list"><strong>📋 খাবারের মেনু:</strong>${menuHTML}</div>
+                        
+                        <div class="review-section">
+                            <strong style="font-size:0.8rem;">💬 ইউজার রিভিউ ও মতামত:</strong>
+                            <div class="comments-display">${commentsHTML}</div>
+                            <form class="review-input-box" onsubmit="addCommentToShop(${shop.id}, event)">
+                                <input type="text" id="commentInput_${shop.id}" placeholder="আপনার মন্তব্য লিখুন..." required>
+                                <button type="submit" class="btn btn-primary" style="padding:4px 10px; font-size:0.75rem;">পোস্ট</button>
+                            </form>
                         </div>
                         
-                        <div class="card-action-btns">
-                            <button class="btn btn-outline" style="flex:1; justify-content:center; padding:8px;" onclick="showMapDetails(${shop.id})">
-                                🗺️ ম্যাপ ও বাস
-                            </button>
-                            <button class="btn btn-primary" style="flex:1; justify-content:center; padding:8px; background:linear-gradient(45deg, #00b894, #00cec9);" onclick="shareOrCopyShop('${sanitizeInput(shop.name)}', '${sanitizeInput(shop.loc)}')">
-                                <i class="fa-solid fa-share-nodes"></i> শেয়ার
-                            </button>
-                            <button class="btn btn-outline" style="border-color:#d63031; color:#d63031; padding:8px;" onclick="removeShopDirect(${shop.id})">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                        <div class="card-action-btns" style="margin-top:12px;">
+                            <button class="btn btn-outline" style="flex:1; justify-content:center; padding:8px;" onclick="showMapDetails(${shop.id})">🗺️ ম্যাপ ও বাস</button>
+                            <button class="btn btn-primary" style="flex:1; justify-content:center; padding:8px; background:linear-gradient(45deg, #00b894, #00cec9);" onclick="shareNativeShop('${sanitizeInput(shop.name)}', '${sanitizeInput(shop.loc)}', '${shop.mapUrl}')"><i class="fa-solid fa-share-nodes"></i> শেয়ার করুন</button>
+                            <button class="btn btn-outline" style="border-color:#d63031; color:#d63031; padding:8px;" onclick="removeShopDirect(${shop.id})"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1034,16 +1191,11 @@
         function renderShopsList() {
             const container = document.getElementById('shopsContainer');
             container.innerHTML = '';
-
             const filteredByDiv = shops.filter(s => s.division === selectedDivisionName);
-
             if(filteredByDiv.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;">
-                    <h4>🔍 ${selectedDivisionName}-এ কোনো দোকান পাওয়া যায়নি!</h4>
-                </div>`;
+                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 কোনো দোকান পাওয়া যায়নি!</h4></div>`;
                 return;
             }
-
             filteredByDiv.forEach(shop => renderSingleCard(shop, container));
         }
 
@@ -1054,16 +1206,14 @@
                 target.rating = (((target.rating || 5.0) * (target.reviewsCount - 1) + ratingValue) / target.reviewsCount).toFixed(1);
                 localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
                 renderShopsList();
-                alert(`🌟 আপনার ${ratingValue}-স্টার রিভিউ প্রদান সম্পন্ন হয়েছে!`);
+                alert(`🌟 আপনার ${ratingValue}-স্টার রেটিং যোগ হয়েছে!`);
             }
         }
 
-        // Dual Language Universal Smart Search
         function filterShops() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const budgetVal = document.getElementById('budgetFilter').value;
             const container = document.getElementById('shopsContainer');
-            
             container.innerHTML = '';
 
             const filtered = shops.filter(s => {
@@ -1072,65 +1222,40 @@
                 const specialMatch = s.special.toLowerCase().includes(query);
                 const tagMatch = s.tags ? s.tags.toLowerCase().includes(query) : false;
                 const menuMatch = s.menu.some(m => m.item.toLowerCase().includes(query));
-                const divisionMatch = s.division.toLowerCase().includes(query);
-
-                let passBudget = true;
-                if(budgetVal !== 'all') {
-                    const maxBudget = parseInt(budgetVal);
-                    passBudget = s.menu.some(m => m.price <= maxBudget);
-                }
-
-                return (query === "" || nameMatch || locMatch || specialMatch || tagMatch || menuMatch || divisionMatch) && passBudget;
+                let passBudget = budgetVal === 'all' || s.menu.some(m => m.price <= parseInt(budgetVal));
+                return (query === "" || nameMatch || locMatch || specialMatch || tagMatch || menuMatch) && passBudget;
             });
 
             if(filtered.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;">
-                    <h4>🔍 "${query}" দিয়ে কোনো দোকান খুঁজে পাওয়া যায়নি!</h4>
-                </div>`;
+                container.innerHTML = `<div style="text-align:center; padding:20px; background:var(--card-bg); border-radius:12px;"><h4>🔍 "${query}" দিয়ে কিছু পাওয়া যায়নি!</h4></div>`;
                 return;
             }
-
             filtered.forEach(shop => renderSingleCard(shop, container));
         }
 
         function showMapDetails(id) {
             const shop = shops.find(s => s.id === id);
             if(!shop) return;
-
-            const modalBody = document.getElementById('mapModalBody');
-            modalBody.innerHTML = `
-                <h3 style="color:var(--primary); margin-bottom:4px; font-size:1.1rem;">📍 ${sanitizeInput(shop.name)}</h3>
+            document.getElementById('mapModalBody').innerHTML = `
+                <h3 style="color:var(--primary); margin-bottom:4px;">📍 ${sanitizeInput(shop.name)}</h3>
                 <p style="font-size:0.82rem; color:#666; margin-bottom:10px;"><i class="fa-solid fa-location-pin"></i> ${sanitizeInput(shop.loc)}</p>
-                
                 <div style="background:rgba(0,0,0,0.05); padding:10px; border-radius:10px; border-left:4px solid var(--accent); margin-bottom:12px; text-align:left;">
-                    <strong style="font-size:0.85rem;">🚌 চলাচলের বাস ও গাড়ির রুট:</strong><br>
-                    <span style="font-size:0.82rem; color:#333; margin-top:2px; display:block;">${sanitizeInput(shop.buses)}</span>
+                    <strong>🚌 বাস রুট:</strong><br><span style="font-size:0.82rem;">${sanitizeInput(shop.buses)}</span>
                 </div>
-
-                <a href="${shop.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none; justify-content:center; width:100%; font-size:0.9rem; padding:10px;">
-                    <i class="fa-solid fa-map-location-dot"></i> Google Maps এ খুলুন
-                </a>
+                <a href="${shop.mapUrl}" target="_blank" class="btn btn-primary" style="text-decoration:none; justify-content:center; width:100%;"><i class="fa-solid fa-map-location-dot"></i> Google Maps এ খুলুন</a>
             `;
-
             openModal('mapModal');
         }
 
         function submitShopForApproval(e) {
             e.preventDefault();
-            if(!currentUser) {
-                openLoginModal();
-                return;
-            }
-
-            const names = document.querySelectorAll('.i-name');
-            const prices = document.querySelectorAll('.i-price');
+            if(!currentUser) { openLoginModal(); return; }
             let menu = [];
-
-            names.forEach((elem, index) => {
-                menu.push({ item: elem.value, price: parseInt(prices[index].value) });
+            document.querySelectorAll('.i-name').forEach((elem, index) => {
+                menu.push({ item: elem.value, price: parseInt(document.querySelectorAll('.i-price')[index].value) });
             });
 
-            const newShopObj = {
+            const newObj = {
                 id: Date.now(),
                 name: document.getElementById('newShopName').value,
                 division: document.getElementById('newShopDivision').value,
@@ -1141,48 +1266,38 @@
                 buses: document.getElementById('newShopBuses').value,
                 mapUrl: document.getElementById('newShopMap').value,
                 img: document.getElementById('newShopImg').value,
-                rating: 5.0,
-                reviewsCount: 1,
-                tags: document.getElementById('newShopSpecial').value.toLowerCase() + " " + document.getElementById('newShopName').value.toLowerCase() + " " + document.getElementById('newShopLoc').value.toLowerCase(),
-                submittedBy: currentUser.name,
-                menu: menu
+                rating: 5.0, reviewsCount: 1,
+                tags: document.getElementById('newShopSpecial').value.toLowerCase() + " " + document.getElementById('newShopName').value.toLowerCase(),
+                menu: menu, comments: ["দোকানটি নতুন যোগ হয়েছে!"]
             };
 
-            pendingShops.push(newShopObj);
+            pendingShops.push(newObj);
             localStorage.setItem('lukanoShad_pendingShops', JSON.stringify(pendingShops));
             updateNotificationBadge();
-
-            alert('✅ দোকানটি সাবমিট হয়েছে!\nএডমিনের জিমেইলে নোটিফিকেশন চলে গেছে।');
+            alert('✅ দোকানটি সাবমিট হয়েছে!');
             e.target.reset();
             switchTab('explore');
         }
 
-        function updateNotificationBadge() {
-            document.getElementById('notifCount').innerText = pendingShops.length;
+        function updateNotificationBadge() { 
+            document.getElementById('notifCount').innerText = pendingShops.length; 
         }
 
-        function openAdminModal() {
-            openModal('adminModal');
-            renderPendingShops();
+        function openAdminModal() { 
+            openModal('adminModal'); 
+            renderPendingShops(); 
         }
-
+        
         function renderPendingShops() {
             const list = document.getElementById('pendingShopsList');
-            if(pendingShops.length === 0) {
-                list.innerHTML = `<p style="text-align:center; color:#888; padding:10px; font-size:0.82rem;">বর্তমানে কোনো নতুন দোকান অনুমোদনের অপেক্ষায় নেই।</p>`;
-                return;
+            if(pendingShops.length === 0) { 
+                list.innerHTML = `<p style="text-align:center; color:#888; padding:10px;">কোনো অপেক্ষমান দোকান নেই।</p>`; 
+                return; 
             }
-
-            list.innerHTML = pendingShops.map((shop, index) => `
-                <div style="background:rgba(0,0,0,0.05); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; gap:8px;">
-                    <img src="${shop.img}" style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
-                    <div style="flex:1;">
-                        <h4 style="margin-bottom:2px; font-size:0.85rem;">${sanitizeInput(shop.name)}</h4>
-                        <p style="font-size:0.72rem; color:#666; margin:0;">${sanitizeInput(shop.division)} | ${sanitizeInput(shop.loc)}</p>
-                    </div>
-                    <button class="btn btn-secondary" style="padding:5px 8px; font-size:0.72rem;" onclick="approveShop(${index})">
-                        ✅ এপ্রুভ
-                    </button>
+            list.innerHTML = pendingShops.map((shop, i) => `
+                <div style="background:rgba(0,0,0,0.05); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                    <span><b>${sanitizeInput(shop.name)}</b> (${shop.division})</span>
+                    <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="approveShop(${i})">এপ্রুভ</button>
                 </div>
             `).join('');
         }
@@ -1190,49 +1305,54 @@
         function approveShop(index) {
             const approved = pendingShops.splice(index, 1)[0];
             shops.unshift(approved);
-            
             localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
             localStorage.setItem('lukanoShad_pendingShops', JSON.stringify(pendingShops));
-            
-            updateNotificationBadge();
-            renderPendingShops();
+            updateNotificationBadge(); 
+            renderPendingShops(); 
             renderShopsList();
-            
-            alert(`🎉 "${approved.name}" দোকানটি এপ্রুভ করা হয়েছে!`);
+            alert('🎉 দোকানটি এপ্রুভ করা হয়েছে!');
         }
 
         function removeShopDirect(shopId) {
-            if(confirm("আপনি কি নিশ্চিতভাবে এই দোকানটি রিমুভ করতে চান?")) {
+            if(confirm("রিমুভ করতে চান?")) {
                 shops = shops.filter(s => s.id !== shopId);
                 localStorage.setItem('lukanoShad_allShops', JSON.stringify(shops));
                 renderShopsList();
-                alert("🗑️ দোকানটি রিমুভ করা হয়েছে।");
             }
         }
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function openLoginModal() { openModal('loginModal'); }
-        function openSignupModal() { openModal('signupModal'); }
+        function openModal(id) { 
+            document.getElementById(id).style.display = 'flex'; 
+        }
+
+        function closeModal(id) { 
+            document.getElementById(id).style.display = 'none'; 
+        }
+
+        function openLoginModal() { 
+            openModal('loginModal'); 
+        }
+
+        function openSignupModal() { 
+            openModal('signupModal'); 
+        }
 
         function handleLogin(e) {
             e.preventDefault();
-            const u = document.getElementById('loginUser').value;
-            currentUser = { name: u || "User", contact: "01888183241", avatar: defaultAvatar };
+            currentUser = { name: document.getElementById('loginUser').value, contact: "01888183241", avatar: defaultAvatar };
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser);
-            closeModal('loginModal');
-            alert('🎉 সফলভাবে লগইন হয়েছে!');
+            setupLoggedInView(currentUser); 
+            closeModal('loginModal'); 
+            alert('🎉 লগইন সফল!');
         }
 
         function handleSignup(e) {
             e.preventDefault();
-            const name = document.getElementById('regName').value;
-            currentUser = { name: name, contact: "01888183241", avatar: defaultAvatar };
+            currentUser = { name: document.getElementById('regName').value, contact: "01888183241", avatar: defaultAvatar };
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser);
-            closeModal('signupModal');
-            alert('🎉 একাউন্ট তৈরি সম্পন্ন হয়েছে!');
+            setupLoggedInView(currentUser); 
+            closeModal('signupModal'); 
+            alert('🎉 একাউন্ট তৈরি সফল!');
         }
 
         function setupLoggedInView(user) {
@@ -1242,28 +1362,26 @@
             document.getElementById('headerUserAvatar').src = user.avatar || defaultAvatar;
             document.getElementById('pNameDisplay').innerText = user.name;
             document.getElementById('pName').value = user.name;
-            document.getElementById('userProfileImg').src = user.avatar || defaultAvatar;
         }
 
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('lukanoShad_user');
-            document.getElementById('navGuest').classList.remove('hidden');
-            document.getElementById('navUser').classList.add('hidden');
-            switchTab('explore');
+        function logout() { 
+            currentUser = null; 
+            localStorage.removeItem('lukanoShad_user'); 
+            document.getElementById('navGuest').classList.remove('hidden'); 
+            document.getElementById('navUser').classList.add('hidden'); 
+            switchTab('explore'); 
         }
-
+        
         function handleImageUpload(e) {
             const file = e.target.files[0];
             if(file) {
                 const reader = new FileReader();
                 reader.onload = function(evt) {
-                    const imgUrl = evt.target.result;
-                    document.getElementById('userProfileImg').src = imgUrl;
-                    document.getElementById('headerUserAvatar').src = imgUrl;
-                    if(currentUser) {
-                        currentUser.avatar = imgUrl;
-                        localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
+                    document.getElementById('userProfileImg').src = evt.target.result;
+                    document.getElementById('headerUserAvatar').src = evt.target.result;
+                    if(currentUser) { 
+                        currentUser.avatar = evt.target.result; 
+                        localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser)); 
                     }
                 }
                 reader.readAsDataURL(file);
@@ -1275,47 +1393,33 @@
             if(!currentUser) return;
             currentUser.name = document.getElementById('pName').value;
             localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser);
-            alert('✅ প্রোফাইল সেভ হয়েছে!');
+            setupLoggedInView(currentUser); 
+            alert('✅ আপডেট হয়েছে!');
         }
 
         function switchTab(tab) {
             document.getElementById('sectionExplore').classList.add('hidden');
             document.getElementById('sectionAddShop').classList.add('hidden');
             document.getElementById('sectionProfile').classList.add('hidden');
-
             if(tab === 'explore') document.getElementById('sectionExplore').classList.remove('hidden');
-            if(tab === 'addShop') {
-                if(!currentUser) {
-                    openLoginModal();
-                    return;
-                }
-                document.getElementById('sectionAddShop').classList.remove('hidden');
+            if(tab === 'addShop') { 
+                if(!currentUser) { openLoginModal(); return; } 
+                document.getElementById('sectionAddShop').classList.remove('hidden'); 
             }
-            if(tab === 'profile') {
-                if(!currentUser) {
-                    openLoginModal();
-                    return;
-                }
-                document.getElementById('sectionProfile').classList.remove('hidden');
+            if(tab === 'profile') { 
+                if(!currentUser) { openLoginModal(); return; } 
+                document.getElementById('sectionProfile').classList.remove('hidden'); 
             }
         }
 
         function addMoreItemInput() {
             const container = document.getElementById('itemInputs');
             const div = document.createElement('div');
-            div.className = 'form-group';
-            div.style.display = 'flex';
+            div.className = 'form-group'; 
+            div.style.display = 'flex'; 
             div.style.gap = '6px';
-            div.innerHTML = `
-                <input type="text" class="i-name" placeholder="খাবারের নাম" required>
-                <input type="number" class="i-price" placeholder="দাম (৳)" style="width:90px;" required>
-            `;
+            div.innerHTML = `<input type="text" class="i-name" placeholder="খাবারের নাম" required><input type="number" class="i-price" placeholder="দাম (৳)" style="width:90px;" required>`;
             container.appendChild(div);
-        }
-
-        function shareOrCopyShop(shopName, shopLoc) {
-            alert(`✅ ${shopName} (${shopLoc}) এর তথ্য কপি করা হয়েছে!`);
         }
     </script>
 </body>
