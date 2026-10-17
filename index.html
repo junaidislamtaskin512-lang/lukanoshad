@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>লুকানো স্বাদ | Lukano Shad - Real Bangladesh Street & Fast Food Hub</title>
+    <title>লুকানো স্বাদ | Lukano Shad - Real GPS Navigation & Food Hub</title>
 
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -137,7 +137,7 @@
             padding: 6px 12px; border-radius: 12px; border: 1px solid #ccc; outline: none; font-weight: 600; font-size: 0.82rem;
         }
 
-        /* Shop Cards */
+        /* Container & Shop Cards */
         .container { max-width: 100%; padding: 10px; }
         .shop-card {
             background: var(--card-bg); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06);
@@ -244,7 +244,7 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের রিয়েল ফাস্টফুড ও স্ট্রিট ফুড হাব লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের রিয়েল জিপিএস নেভিগেশন ও ফুড হাব লোড হচ্ছে...</p>
     </div>
 
     <!-- Header Navigation -->
@@ -289,7 +289,7 @@
     <!-- Hero Banner -->
     <div class="hero">
         <h1>লুকানো স্বাদ — বাংলাদেশের রিয়েল ফাস্টফুড ও স্ট্রিট ফুড গাইড</h1>
-        <p>আপনার নিজ থানা ও উপজেলার আসল বিখ্যাত ফাস্টফুড ও স্ট্রিট ফুড শপের সঠিক লোকেশন ও রিয়েল-টাইম তথ্য!</p>
+        <p>আপনার নিজ থানা ও উপজেলার আসল বিখ্যাত ফাস্টফুড ও স্ট্রিট ফুড শপের সঠিক লোকেশন ও লাইভ জিপিএস রুট!</p>
         
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="বাংলা বা ইংরেজিতে সার্চ করুন...">
@@ -615,7 +615,6 @@
             content.innerHTML = `<b>📍 ${dist} জেলা:</b><br>${story}`;
         }
 
-        // Varied Unique Food Database Generator with Bilingual Names & Real Pictures
         function generateAllUpazilaShops() {
             const foodCatalog = [
                 { bnName: "চিজি মোমো ও ফ্রাই স্পট", enName: "Cheesy Momo & Fried Corner", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন মোমো", price: 120 },
@@ -637,10 +636,13 @@
                     const upazilaList = districtsObj[distName];
                     upazilaList.forEach(upzName => {
                         if(upzName !== "সকল উপজেলা/থানা") {
-                            // Generating 90+ Unique Shops for each Thana/Upazila with Specific Location details
                             for(let i = 1; i <= 90; i++) {
                                 let catalogItem = foodCatalog[i % foodCatalog.length];
                                 
+                                // Direct Google Maps Directions Navigation URL Mapping
+                                let destinationQuery = encodeURIComponent(`${catalogItem.bnName}, ${upzName}, ${distName}`);
+                                let directDirUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}`;
+
                                 generatedShops.push({
                                     id: idCounter++,
                                     name: `${upzName} ${catalogItem.bnName} (${catalogItem.enName}) - ${i}`,
@@ -652,7 +654,7 @@
                                     closeTime: "23:00",
                                     special: `${catalogItem.item}, স্পেশাল সস ও কোল্ড ড্রিংকস`,
                                     buses: "লোকাল বাস, সিএনজি, ইজি বাইক",
-                                    mapUrl: `https://www.google.com/maps/search/${encodeURIComponent(catalogItem.bnName + " " + upzName + " " + distName)}`,
+                                    mapUrl: directDirUrl,
                                     img: catalogItem.img,
                                     rating: (4.2 + (i % 8) * 0.1).toFixed(1),
                                     reviewsCount: 12 + i,
@@ -864,7 +866,7 @@
                         </div>
                         
                         <div class="card-action-btns" style="margin-top:12px;">
-                            <button class="btn btn-outline" style="flex:1; justify-content:center; padding:8px;" onclick="showMapDetails(${shop.id})">🗺️ গুগল ম্যাপস</button>
+                            <button class="btn btn-outline" style="flex:1; justify-content:center; padding:8px; background:#e8f5e9; color:#2e7d32; border-color:#2e7d32;" onclick="showMapDetails(${shop.id})">🗺️ ডিরেকশন (GPS Route)</button>
                             <button class="btn btn-primary" style="flex:1; justify-content:center; padding:8px; background:linear-gradient(45deg, #00b894, #00cec9);" onclick="shareNativeShop('${sanitizeInput(shop.name)}', '${sanitizeInput(shop.loc)}', '${shop.mapUrl}')"><i class="fa-solid fa-share-nodes"></i> শেয়ার করুন</button>
                             <button class="btn btn-outline" style="border-color:#d63031; color:#d63031; padding:8px;" onclick="removeShopDirect(${shop.id})"><i class="fa-solid fa-trash"></i></button>
                         </div>
@@ -898,7 +900,6 @@
             }
         }
 
-        // Clean Bilingual Search Engine (Supports both English and Bangla text)
         function filterShops() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const budgetVal = document.getElementById('budgetFilter').value;
