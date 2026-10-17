@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>লুকানো স্বাদ | Lukano Shad - Bangladesh Street Food Locator</title>
+    <title>লুকানো স্বাদ | Lukano Shad - Ultra GPS Food & Route Locator</title>
 
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -147,7 +147,7 @@
         .shop-card img { width: 100%; height: 185px; object-fit: cover; }
         .shop-body { padding: 15px; }
         .shop-title { font-size: 1.15rem; font-weight: 700; color: var(--text-color); line-height: 1.3; }
-        .shop-location { color: #888; margin: 4px 0 10px; font-size: 0.82rem; }
+        .shop-location { color: #888; margin: 4px 0 6px; font-size: 0.82rem; }
 
         .status-badge {
             position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 10px;
@@ -155,6 +155,7 @@
         }
         .status-open { background: #17B978; }
         .status-closed { background: #FF3838; }
+        .crowd-badge { background: #0984e3; color: white; padding: 3px 8px; border-radius: 8px; font-size: 0.72rem; font-weight: 700; display: inline-block; margin-bottom: 6px; }
 
         .bookmark-icon-btn {
             position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); width: 32px; height: 32px;
@@ -241,7 +242,7 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের রিয়েল লোকেশন ও স্ট্রিট ফুড হাব লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">স্মার্ট জিপিএস নেভিগেশন ও ফুড হাব লোড হচ্ছে...</p>
     </div>
 
     <!-- Header Navigation -->
@@ -286,7 +287,7 @@
     <!-- Hero Banner -->
     <div class="hero">
         <h1>লুকানো স্বাদ — বাংলাদেশের স্ট্রিট ফুড ও ফাস্টফুড শপ লোকেটর</h1>
-        <p>আপনার এলাকার বিখ্যাত ফাস্টফুড শপের সঠিক ঠিকানা ও সরাসরি গুগল ম্যাপস জিপিএস ডিরেকশন!</p>
+        <p>কাছের দোকান, বাস ও রিকশা ভাড়া গাইড এবং সরাসরি গুগল ম্যাপস জিপিএস নেভিগেশন!</p>
         
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="বাংলা বা ইংরেজিতে সার্চ করুন...">
@@ -299,7 +300,7 @@
                 🎲 আজকে কী খাবেন? (Spin Wheel)
             </button>
             <button class="btn btn-secondary" onclick="openDirectGoogleMapsNearMe()" style="padding: 5px 12px; font-size:0.78rem; background:#00b894; color:white;">
-                🗺️ গুগল ম্যাপসে আশেপাশের খাবার (GPS)
+                🗺️ ম্যাপসে আশেপাশের দোকান (GPS)
             </button>
             <button class="btn btn-outline" onclick="openModal('storyModal')" style="padding: 5px 12px; font-size:0.78rem; color:white; border-color:white;">
                 📖 ৬৪ জেলার গল্প (Stories)
@@ -361,7 +362,7 @@
                     <div class="form-group"><label>খোলার সময়:</label><input type="time" id="newShopOpenTime" value="09:00" required></div>
                     <div class="form-group"><label>বন্ধের সময়:</label><input type="time" id="newShopCloseTime" value="23:00" required></div>
                     <div class="form-group"><label>বিশেষত্ব:</label><input type="text" id="newShopSpecial" placeholder="যেমন: মোমো, পিজ্জা" required></div>
-                    <div class="form-group"><label>বাস রুট:</label><input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি, তিতাস" required></div>
+                    <div class="form-group"><label>বাস ও রিকশা ভাড়া গাইড:</label><input type="text" id="newShopBuses" placeholder="যেমন: প্রজাপতি বাস, রিকশা ভাড়া ৩০৳" required></div>
                     <div class="form-group"><label>গুগল ম্যাপ লিংক:</label><input type="url" id="newShopMap" placeholder="https://maps.google.com/..." required></div>
                     <div class="form-group"><label>ছবির লিংক:</label><input type="url" id="newShopImg" placeholder="https://..." required></div>
                     
@@ -572,12 +573,12 @@
 
         function generateAllUpazilaShops() {
             const foodCatalog = [
-                { bnName: "চিজি মোমো ও ফ্রাই স্পট", enName: "Cheesy Momo & Fried Corner", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন মোমো", price: 120 },
-                { bnName: "স্পেশাল দই ফুচকা ঘর", enName: "Special Doi Fuchka House", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", item: "টক-ঝাল দই ফুচকা", price: 70 },
-                { bnName: "বিফ চাপ ও পরোটা হাউস", enName: "Beef Chop & Porota House", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80", item: "হাঁসের মাংস ও পরোটা", price: 180 },
-                { bnName: "মালাই চা ও ফাস্টফুড কর্নার", enName: "Malai Tea & Fast Food Corner", img: "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80", item: "কুলফি ও মালাই চা", price: 40 },
-                { bnName: "জুসি চিকেন শর্মা কর্নার", enName: "Juicy Chicken Shawarma Corner", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন শর্মা", price: 150 },
-                { bnName: "ক্রিসপি বার্গার এক্সপ্রেস", enName: "Crispy Burger Express", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80", item: "ডাবল চিজ বার্গার", price: 220 }
+                { bnName: "চিজি মোমো ও ফ্রাই স্পট", enName: "Cheesy Momo & Fried Corner", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন মোমো", price: 120, crowd: "স্বাভাবিক ভিড় 🟢" },
+                { bnName: "স্পেশাল দই ফুচকা ঘর", enName: "Special Doi Fuchka House", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", item: "টক-ঝাল দই ফুচকা", price: 70, crowd: "প্রচণ্ড ভিড় 🔥" },
+                { bnName: "বিফ চাপ ও পরোটা হাউস", enName: "Beef Chop & Porota House", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80", item: "হাঁসের মাংস ও পরোটা", price: 180, crowd: "স্বাভাবিক ভিড় 🟢" },
+                { bnName: "মালাই চা ও ফাস্টফুড কর্নার", enName: "Malai Tea & Fast Food Corner", img: "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80", item: "কুলফি ও মালাই চা", price: 40, crowd: "শান্ত পরিবেশ ☕" },
+                { bnName: "জুসি চিকেন শর্মা কর্নার", enName: "Juicy Chicken Shawarma Corner", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন শর্মা", price: 150, crowd: "মাঝারি ভিড় 🟡" },
+                { bnName: "ক্রিসপি বার্গার এক্সপ্রেস", enName: "Crispy Burger Express", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80", item: "ডাবল চিজ বার্গার", price: 220, crowd: "প্রচণ্ড ভিড় 🔥" }
             ];
 
             let generatedShops = [];
@@ -589,7 +590,7 @@
                     const upazilaList = districtsObj[distName];
                     upazilaList.forEach(upzName => {
                         if(upzName !== "সকল উপজেলা/থানা") {
-                            for(let i = 1; i <= 90; i++) {
+                            for(let i = 1; i <= 50; i++) {
                                 let catalogItem = foodCatalog[i % foodCatalog.length];
                                 let destinationQuery = encodeURIComponent(`${catalogItem.bnName}, ${upzName}, ${distName}`);
                                 let directDirUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}`;
@@ -604,7 +605,8 @@
                                     openTime: "09:00",
                                     closeTime: "23:00",
                                     special: `${catalogItem.item}, স্পেশাল চাটনি ও ড্রিংকস`,
-                                    buses: "লোকাল বাস, সিএনজি, ইজি বাইক",
+                                    transport: "লোকাল বাস, সিএনজি, রিকশা ভাড়া ২০-৪০৳",
+                                    crowdStatus: catalogItem.crowd,
                                     mapUrl: directDirUrl,
                                     img: catalogItem.img,
                                     rating: (4.2 + (i % 8) * 0.1).toFixed(1),
@@ -826,8 +828,10 @@
                     <img src="${shop.img}" alt="${sanitizeInput(shop.name)}">
                     <div class="shop-body">
                         <span class="menu-badge">🔥 ${sanitizeInput(shop.special)}</span>
-                        <h2 class="shop-title" style="margin-top:4px;">${sanitizeInput(shop.name)}</h2>
+                        <div style="margin-top:6px;"><span class="crowd-badge">👥 ${shop.crowdStatus || 'স্বাভাবিক ভিড় 🟢'}</span></div>
+                        <h2 class="shop-title" style="margin-top:2px;">${sanitizeInput(shop.name)}</h2>
                         <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)} (${shop.upazila ? shop.upazila + ', ' : ''}${shop.district || ''})</div>
+                        <div style="font-size:0.78rem; color:#0984e3; margin-bottom:6px; font-weight:600;"><i class="fa-solid fa-bus"></i> ${sanitizeInput(shop.transport || 'লোকাল বাস ও রিকশা গাইড')}</div>
                         ${timeStr ? `<div style="font-size:0.78rem; color:#e17055; margin-bottom:8px; font-weight:600;"><i class="fa-regular fa-clock"></i> ${timeStr}</div>` : ''}
                         
                         <div class="rating-box">
@@ -958,7 +962,8 @@
                 openTime: document.getElementById('newShopOpenTime').value,
                 closeTime: document.getElementById('newShopCloseTime').value,
                 special: document.getElementById('newShopSpecial').value,
-                buses: document.getElementById('newShopBuses').value,
+                transport: document.getElementById('newShopBuses').value,
+                crowdStatus: "স্বাভাবিক ভিড় 🟢",
                 mapUrl: document.getElementById('newShopMap').value,
                 img: document.getElementById('newShopImg').value,
                 rating: 5.0, reviewsCount: 1,
