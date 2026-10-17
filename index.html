@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>লুকানো স্বাদ | Lukano Shad - Ultra Advanced Bangladesh Food Hub</title>
+    <title>লুকানো স্বাদ | Lukano Shad - Bangladesh Street Food Locator</title>
 
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -101,7 +101,7 @@
         }
         .notif-badge-count { background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: 700; }
 
-        /* Hero Banner & Voice Search Box */
+        /* Hero Banner & Search */
         .hero { 
             text-align: center; padding: 20px 12px 15px; background: var(--header-bg); color: white;
             border-radius: 0 0 20px 20px; margin-bottom: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);
@@ -162,7 +162,6 @@
         }
 
         .menu-badge { background: #ffeaa7; color: #d63031; padding: 4px 10px; border-radius: 10px; font-weight: 600; font-size: 0.75rem; display: inline-block; }
-        .voucher-badge { background: #e3f2fd; color: #0d47a1; border: 1px dashed #1565c0; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-left: 5px; cursor: pointer; }
         
         .menu-list { margin-top: 10px; background: rgba(0,0,0,0.04); padding: 10px; border-radius: 10px; }
         .menu-item { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; }
@@ -181,15 +180,6 @@
         /* Wheel Game Modal Styles */
         .wheel-container { position: relative; width: 220px; height: 220px; margin: 15px auto; border-radius: 50%; border: 5px solid var(--primary); overflow: hidden; transition: transform 4s cubic-bezier(0.15, 0.99, 0.35, 1); }
         .wheel-part { position: absolute; width: 50%; height: 50%; transform-origin: 100% 100%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 0.85rem; }
-
-        /* Social Auth Buttons */
-        .social-login-grid { display: flex; justify-content: center; gap: 10px; margin: 12px 0 6px; }
-        .btn-social { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white; cursor: pointer; border: none; }
-        .btn-google { background: #ea4335; }
-        .btn-fb { background: #1877f2; }
-        .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-
-        .forget-btn-link { color: var(--primary); font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: underline; margin-top: 6px; display: inline-block; }
 
         /* Modal Styles */
         .modal {
@@ -251,7 +241,7 @@
             <div class="food-item-icon food-4">☕</div>
             <h2 style="color: #FF9F1A; font-size: 1.8rem; margin-top: 15px;">লুকানো স্বাদ</h2>
         </div>
-        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">ভয়েস সার্চ, স্পিন গেম ও জিপিএস নেভিগেশন লোড হচ্ছে...</p>
+        <p style="margin-top: 15px; color: #a4b0be; font-size: 0.85rem;">বাংলাদেশের রিয়েল লোকেশন ও স্ট্রিট ফুড হাব লোড হচ্ছে...</p>
     </div>
 
     <!-- Header Navigation -->
@@ -295,8 +285,8 @@
 
     <!-- Hero Banner -->
     <div class="hero">
-        <h1>লুকানো স্বাদ — বাংলাদেশের রিয়েল ফাস্টফুড ও স্ট্রিট ফুড গাইড</h1>
-        <p>আপনার নিজ থানা ও উপজেলার আসল বিখ্যাত ফাস্টফুড শপের সঠিক লোকেশন ও জিপিএস নেভিগেশন!</p>
+        <h1>লুকানো স্বাদ — বাংলাদেশের স্ট্রিট ফুড ও ফাস্টফুড শপ লোকেটর</h1>
+        <p>আপনার এলাকার বিখ্যাত ফাস্টফুড শপের সঠিক ঠিকানা ও সরাসরি গুগল ম্যাপস জিপিএস ডিরেকশন!</p>
         
         <div class="search-box-wrapper">
             <input type="text" id="searchInput" onkeyup="filterShops()" placeholder="বাংলা বা ইংরেজিতে সার্চ করুন...">
@@ -432,7 +422,7 @@
         <div class="auth-card-single">
             <span style="position: absolute; top:10px; right:15px; font-size:1.2rem; cursor:pointer; color:#888;" onclick="closeModal('spinModal')">&times;</span>
             <h3 style="color: var(--primary); margin-bottom: 6px;">🎲 আজকে কী খাবেন?</h3>
-            <p style="font-size:0.8rem; color:#666;">সিদ্ধান্ত নিতে পারছেন না? চাকা ঘুরিয়ে ভাগ্য পরীক্ষা করুন!</p>
+            <p style="font-size:0.8rem; color:#666;">সিদ্ধান্ত নিতে পারছেন না? চাকা ঘুরিয়ে আপনার পছন্দের খাবারটি জানুন!</p>
             <div class="wheel-container" id="wheel">
                 <div class="wheel-part" style="background:#ff7675; transform: rotate(0deg) skewY(-30deg);">🍔 বার্গার</div>
                 <div class="wheel-part" style="background:#74b9ff; transform: rotate(60deg) skewY(-30deg);">🍕 পিজ্জা</div>
@@ -456,11 +446,6 @@
                 <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">লগইন করুন</button>
             </form>
             <span class="forget-btn-link" onclick="openForgetModal()">Forget Password? (পাসওয়ার্ড ভুলে গেছেন?)</span>
-            <div class="social-login-grid">
-                <button class="btn-social btn-google" onclick="socialLogin('Google')"><i class="fa-brands fa-google"></i></button>
-                <button class="btn-social btn-fb" onclick="socialLogin('Facebook')"><i class="fa-brands fa-facebook-f"></i></button>
-                <button class="btn-social btn-insta" onclick="socialLogin('Instagram')"><i class="fa-brands fa-instagram"></i></button>
-            </div>
         </div>
     </div>
 
@@ -539,7 +524,7 @@
                 "কুমিল্লা": ["সকল উপজেলা/থানা", "কান্দিরপাড়", "কুমিল্লা সদর", "দাউদকান্দি", "লাকসাম"]
             },
             "সিলেট বিভাগ": {
-                "সিলেট": ["সকল উপজেলা/থানা", "জیندাবাজার", "আম্বরখানা", "শাহজালাল দরগাহ", "গোলাপগঞ্জ"],
+                "সিলেট": ["সকল উপজেলা/থানা", "জিন্দাবাজার", "আম্বরখানা", "শাহজালাল দরগাহ", "গোলাপগঞ্জ"],
                 "মৌলভীবাজার": ["সকল উপজেলা/থানা", "মৌলভীবাজার সদর", "শ্রীমঙ্গল", "কুলাউড়া"]
             },
             "রাজশাহী বিভাগ": {
@@ -562,7 +547,7 @@
         };
 
         const foodStoriesBD = {
-            "ঢাকা": "<b>বিখ্যাত খাবার:</b> বাকরখানি, বিফ চাপ ও কাচ্চি বিরিয়ানি<br><b>প্রখ্যাত দোকান:</b> আনন্দ বাকরখানি, মোস্তাকিম কাবাব ঘর<br><b>লোকেশন:</b> নাজিরাবাজার ও মোহাম্মদপুর टाউনহল, ঢাকা।",
+            "ঢাকা": "<b>বিখ্যাত খাবার:</b> বাকরখানি, বিফ চাপ ও কাচ্চি বিরিয়ানি<br><b>প্রখ্যাত দোকান:</b> আনন্দ বাকরখানি, মোস্তাকিম কাবাব ঘর<br><b>লোকেশন:</b> নাজিরাবাজার ও মোহাম্মদপুর টাউনহল, ঢাকা।",
             "কুমিল্লা": "<b>বিখ্যাত খাবার:</b> আসল রসমালাই<br><b>প্রখ্যাত দোকান:</b> মাতৃভান্ডার<br><b>লোকেশন:</b> মনোহরপুর, কান্দিরপাড়, কুমিল্লা।",
             "চট্টগ্রাম": "<b>বিখ্যাত খাবার:</b> মেযবানি গোশত ও পতেঙ্গা ক্র্যাব ফ্রাই<br><b>প্রখ্যাত দোকান:</b> জামান হোটেল ও মেযবান হাইপ<br><b>লোকেশন:</b> জিইসি মোড় ও পতেঙ্গা সী-বিচ, চট্টগ্রাম।"
         };
@@ -587,12 +572,12 @@
 
         function generateAllUpazilaShops() {
             const foodCatalog = [
-                { bnName: "চিজি মোমো ও ফ্রাই স্পট", enName: "Cheesy Momo & Fried Corner", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন মোমো", price: 120, voucher: "LUKANO10" },
-                { bnName: "স্পেশাল দই ফুচকা ঘর", enName: "Special Doi Fuchka House", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", item: "টক-ঝাল দই ফুচকা", price: 70, voucher: "FUCHKA15" },
-                { bnName: "বিফ চাপ ও পরোটা হাউস", enName: "Beef Chop & Porota House", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80", item: "হাঁসের মাংস ও পরোটা", price: 180, voucher: "CHOP50" },
-                { bnName: "মালাই চা ও ফাস্টফুড কর্নার", enName: "Malai Tea & Fast Food Corner", img: "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80", item: "কুলফি ও মালাই চা", price: 40, voucher: "FREETEA" },
-                { bnName: "জুসি চিকেন শর্মা কর্নার", enName: "Juicy Chicken Shawarma Corner", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন শর্মা", price: 150, voucher: "SHAWARMA20" },
-                { bnName: "ক্রিসপি বার্গার এক্সপ্রেস", enName: "Crispy Burger Express", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80", item: "ডাবল চিজ বার্গার", price: 220, voucher: "BURGER10" }
+                { bnName: "চিজি মোমো ও ফ্রাই স্পট", enName: "Cheesy Momo & Fried Corner", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন মোমো", price: 120 },
+                { bnName: "স্পেশাল দই ফুচকা ঘর", enName: "Special Doi Fuchka House", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", item: "টক-ঝাল দই ফুচকা", price: 70 },
+                { bnName: "বিফ চাপ ও পরোটা হাউস", enName: "Beef Chop & Porota House", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80", item: "হাঁসের মাংস ও পরোটা", price: 180 },
+                { bnName: "মালাই চা ও ফাস্টফুড কর্নার", enName: "Malai Tea & Fast Food Corner", img: "https://images.unsplash.com/photo-1571934811356-5cc531766b1e?auto=format&fit=crop&w=600&q=80", item: "কুলফি ও মালাই চা", price: 40 },
+                { bnName: "জুসি চিকেন শর্মা কর্নার", enName: "Juicy Chicken Shawarma Corner", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80", item: "স্পেশাল চিকেন শর্মা", price: 150 },
+                { bnName: "ক্রিসপি বার্গার এক্সপ্রেস", enName: "Crispy Burger Express", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80", item: "ডাবল চিজ বার্গার", price: 220 }
             ];
 
             let generatedShops = [];
@@ -619,7 +604,6 @@
                                     openTime: "09:00",
                                     closeTime: "23:00",
                                     special: `${catalogItem.item}, স্পেশাল চাটনি ও ড্রিংকস`,
-                                    voucher: catalogItem.voucher,
                                     buses: "লোকাল বাস, সিএনজি, ইজি বাইক",
                                     mapUrl: directDirUrl,
                                     img: catalogItem.img,
@@ -692,7 +676,7 @@
             const foods = ["বার্গার 🍔", "পিজ্জা 🍕", "মোমো 🥟", "দই ফুচকা 🥣", "বিফ চাপ 🍖", "মালাই চা ☕"];
             setTimeout(() => {
                 const picked = foods[Math.floor(Math.random() * foods.length)];
-                resultText.innerHTML = `🎉 অভিনন্দন! আজ আপনার জন্য সেরা খাবার: <b>${picked}</b>`;
+                resultText.innerHTML = `🎉 আপনার জন্য পছন্দসই খাবার: <b>${picked}</b>`;
                 document.getElementById('searchInput').value = picked.split(' ')[0];
                 filterShops();
             }, 4000);
@@ -813,9 +797,19 @@
             }
         }
 
-        function sendWhatsAppOrder(shopName) {
-            const text = encodeURIComponent(`হ্যালো! আমি 'লুকানো স্বাদ' প্ল্যাটফর্ম থেকে ${shopName} এর জন্য একটি খাবার অর্ডার করতে চাচ্ছি।`);
-            window.open(`https://wa.me/8801888183241?text=${text}`, '_blank');
+        async function shareNativeShop(shopName, shopLoc, mapUrl) {
+            const shareData = {
+                title: shopName,
+                text: `🍔 'লুকানো স্বাদ' এ দেখুন বিখ্যাত স্ট্রিট ফুড স্পট: ${shopName} (${shopLoc})!`,
+                url: mapUrl || window.location.href,
+            };
+
+            if (navigator.share) {
+                try { await navigator.share(shareData); } catch (err) {}
+            } else {
+                navigator.clipboard.writeText(`${shareData.text} \n ম্যাপ: ${shareData.url}`);
+                alert("✅ লিংক কপি হয়েছে! যেকোনো সোশ্যাল মিডিয়ায় পেস্ট করে শেয়ার করুন।");
+            }
         }
 
         function renderSingleCard(shop, container) {
@@ -832,7 +826,6 @@
                     <img src="${shop.img}" alt="${sanitizeInput(shop.name)}">
                     <div class="shop-body">
                         <span class="menu-badge">🔥 ${sanitizeInput(shop.special)}</span>
-                        <span class="voucher-badge" onclick="alert('🎁 কুপন কোড ${shop.voucher} কপি হয়েছে!')">🎟️ কোড: ${shop.voucher || 'LUKANO10'}</span>
                         <h2 class="shop-title" style="margin-top:4px;">${sanitizeInput(shop.name)}</h2>
                         <div class="shop-location"><i class="fa-solid fa-location-dot"></i> ${sanitizeInput(shop.loc)} (${shop.upazila ? shop.upazila + ', ' : ''}${shop.district || ''})</div>
                         ${timeStr ? `<div style="font-size:0.78rem; color:#e17055; margin-bottom:8px; font-weight:600;"><i class="fa-regular fa-clock"></i> ${timeStr}</div>` : ''}
@@ -848,7 +841,7 @@
                             <span style="font-weight:700; font-size:0.8rem;">${shop.rating || 5.0} (${shop.reviewsCount || 1})</span>
                         </div>
 
-                        <div class="menu-list"><strong>📋 খাবারের মেনু:</strong>${menuHTML}</div>
+                        <div class="menu-list"><strong>📋 খাবারের মেনু ও আনুমানিক দাম:</strong>${menuHTML}</div>
                         
                         <div class="review-section">
                             <strong style="font-size:0.8rem;">💬 ইউজার রিভিউ ও মতামত:</strong>
@@ -861,7 +854,7 @@
                         
                         <div class="card-action-btns" style="margin-top:12px;">
                             <button class="btn btn-outline" style="flex:1; justify-content:center; padding:8px; background:#e8f5e9; color:#2e7d32; border-color:#2e7d32;" onclick="showMapDetails(${shop.id})">🗺️ ডিরেকশন (GPS Route)</button>
-                            <button class="btn btn-secondary" style="flex:1; justify-content:center; padding:8px; background:#25D366;" onclick="sendWhatsAppOrder('${sanitizeInput(shop.name)}')"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
+                            <button class="btn btn-primary" style="flex:1; justify-content:center; padding:8px; background:linear-gradient(45deg, #00b894, #00cec9);" onclick="shareNativeShop('${sanitizeInput(shop.name)}', '${sanitizeInput(shop.loc)}', '${shop.mapUrl}')"><i class="fa-solid fa-share-nodes"></i> শেয়ার করুন</button>
                             <button class="btn btn-outline" style="border-color:#d63031; color:#d63031; padding:8px;" onclick="removeShopDirect(${shop.id})"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
@@ -1046,16 +1039,6 @@
             } else {
                 alert('⚠️ ভুল ইউজার আইডি/ফোন অথবা পাসওয়ার্ড! সঠিক তথ্য দিন।');
             }
-        }
-
-        function socialLogin(provider) {
-            const name = `${provider}_User_${Math.floor(Math.random()*1000)}`;
-            currentUser = { name: name, contact: `${provider.toLowerCase()}@auth.com`, avatar: defaultAvatar };
-            localStorage.setItem('lukanoShad_user', JSON.stringify(currentUser));
-            setupLoggedInView(currentUser);
-            closeModal('loginModal');
-            closeModal('signupModal');
-            alert(`🎉 ${provider} একাউন্ট দিয়ে সফলভাবে লগইন করা হয়েছে!`);
         }
 
         function openForgetModal() {
